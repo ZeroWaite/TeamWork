@@ -12,5 +12,5 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="你的好友向你扔了一只蕾sss姆444啊!" />
+        android:text="你的好友向d 你扔了一只蕾sss姆444啊!" />
 </RelativeLayout>
