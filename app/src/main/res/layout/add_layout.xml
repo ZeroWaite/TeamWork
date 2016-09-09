@@ -73,7 +73,7 @@
             android:id="@+id/tv_foundPalette_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创建画板"
+            android:text="创建画板1"
             android:textSize="35dp" />
 
     </LinearLayout>
