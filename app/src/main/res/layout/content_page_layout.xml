@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/ib_back_onPage"
+            android:layout_width="wrap_content"
+            android:text="back"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/ib_collect_onPage"
+            android:layout_width="wrap_content"
+            android:text="收藏－红心"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/ib_transPond_onPage"
+            android:layout_width="wrap_content"
+            android:text="转发－底部弹出ITEM"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/ib_getNew_onPage"
+            android:layout_width="60dp"
+            android:text="采集-"
+            android:textColor="#ffffff"
+            android:background="#bb1010"
+            android:layout_margin="10dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_interImage_larger"
+        android:layout_width="match_parent"
+        android:src="@mipmap/ic_launcher"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_from_onPage"
+            android:text="sina.com"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_imageIntroduce_onPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_from_onPage"
+            android:layout_below="@+id/tv_from_onPage"
+            android:layout_marginBottom="10dp"
+            android:text="the content of this picture" />
+
+        <TextView
+            android:id="@+id/tv_upDataTime_onPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_imageIntroduce_onPage"
+            android:layout_alignLeft="@+id/tv_imageIntroduce_onPage"
+            android:textSize="12sp"
+            android:text="时间" />
+
+        <TextView
+            android:id="@+id/tv_transPond_onPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_upDataTime_onPage"
+            android:layout_below="@+id/tv_imageIntroduce_onPage"
+            android:text="52"
+            android:layout_marginLeft="10dp"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tv_collect_onPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_imageIntroduce_onPage"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_transPond_onPage"
+            android:text="52"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_comment_onPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_imageIntroduce_onPage"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tv_collect_onPage"
+            android:text="20"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_userLayout_onPage"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/tv_upDataTime_onPage"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_userHead_onPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:id="@+id/tv_username_onPage"
+                android:layout_width="wrap_content"
+                android:layout_alignTop="@+id/iv_userHead_onPage"
+                android:layout_toRightOf="@id/iv_userHead_onPage"
+                android:text="用户名"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_drawBoardLayout_onPage"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/ll_userLayout_onPage"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_drawBoardHead_onPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:id="@+id/tv_drawBoardName_onPage"
+                android:layout_width="wrap_content"
+                android:text="画板名"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_addNewCommit_onPage"
+            android:layout_width="match_parent"
+            android:hint="添加评论..."
+            android:layout_margin="10dp"
+            android:layout_below="@+id/ll_drawBoardLayout_onPage"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="#dbd9d9"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="推荐采集"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content" />
+
+        <GridView
+            android:layout_margin="5dp"
+            android:id="@+id/gv_reCommentList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2">
+
+
+        </GridView>
+
+    </LinearLayout>
+
+
+</LinearLayout>
