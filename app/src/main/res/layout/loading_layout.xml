@@ -60,7 +60,7 @@
      <Button
          android:id="@+id/bt_forgetPsw"
          android:text="忘记密码？"
-         android:layout_marginLeft="15dp"
+         android:layout_marginLeft="16dp"
          android:textColor="#87CEEB"
          android:background="#FFFFF0"
          android:layout_width="wrap_content"
