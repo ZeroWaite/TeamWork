@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/iv_userHead_collect_item"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_username_collect_item"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="用户名称"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_fins_collect_item"
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:text="0粉丝"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/bt_follow_collect_item"
+            android:layout_width="wrap_content"
+            android:text="+关注"
+            android:textSize="12sp"
+            android:background="#ffffff"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>
