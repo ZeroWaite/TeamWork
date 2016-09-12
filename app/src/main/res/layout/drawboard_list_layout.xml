@@ -4,4 +4,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/ib_back_transPond"
+            android:layout_width="wrap_content"
+            android:text="back"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_margin="5dp"
+            android:text="选择画板"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:background="#f0eded"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_imageSmall_drawBoard_list"
+            android:layout_width="50dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/tv_imageIntroduce_drawBoard_list"
+            android:layout_width="wrap_content"
+            android:text="imageIntroduce....."
+            android:textColor="#000000"
+            android:layout_alignTop="@+id/iv_imageSmall_drawBoard_list"
+            android:layout_toRightOf="@+id/iv_imageSmall_drawBoard_list"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="最近采集"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:layout_margin="10dp"
+        android:id="@+id/lv_drawBoard_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+
 </LinearLayout>

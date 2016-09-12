@@ -19,7 +19,7 @@
         android:text="the content of this picture" />
 
     <TextView
-        android:id="@+id/tv_transpond_item"
+        android:id="@+id/tv_transPond_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_image_introduce_item"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/tv_transpond_item"
+        android:layout_toRightOf="@+id/tv_transPond_item"
         android:text="52"
         android:textSize="12sp" />
 
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_alignLeft="@+id/tv_image_introduce_item"
-        android:layout_below="@id/tv_transpond_item"
+        android:layout_below="@id/tv_transPond_item"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
