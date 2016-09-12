@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sousuo" />
+
+        <TextView
+            android:id="@+id/tv_photoGather_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相册上传采集"
+            android:textSize="35dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sousuo" />
+
+        <TextView
+            android:id="@+id/tv_photographGather_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拍照上传采集"
+            android:textSize="35dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sousuo" />
+
+        <TextView
+            android:id="@+id/tv_urlGather_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网址采集"
+            android:textSize="35dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/sousuo" />
+
+        <TextView
+            android:id="@+id/tv_foundPalette_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创建画板1"
+            android:textSize="35dp" />
+
+    </LinearLayout>
+</LinearLayout>
