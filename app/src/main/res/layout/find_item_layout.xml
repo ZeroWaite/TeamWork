@@ -12,7 +12,7 @@
 
         <TextView
             android:text="手机壁纸"
-            android:textSize="30dp"
+            android:textSize="31dp"
             android:layout_alignBottom="@+id/iv_phone_wallpaper"
             android:background="#FFE4B5"
             android:gravity="center"
