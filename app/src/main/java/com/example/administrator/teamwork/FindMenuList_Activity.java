@@ -53,7 +53,7 @@ public class FindMenuList_Activity extends Activity {
                 view1.startAnimation(animation);
 
 
-            }
+             }
           /*  private void showpop(final Context context){
                 View view1=View.inflate(context,R.layout.find2_layout,null);
                 popupWindow1=new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT,false){
