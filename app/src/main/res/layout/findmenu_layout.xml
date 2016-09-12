@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+
+    android:background="#ffffff"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 <ScrollView
     android:layout_width="match_parent"
+
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +18,7 @@
     <TextView
         android:id="@+id/tv_latest"
         android:text="最新"
+        android:gravity="center"
         android:layout_margin="20dp"
         android:textSize="25sp"
         android:textColor="#000000"
@@ -22,6 +27,7 @@
     <TextView
         android:id="@+id/tv_latestread"
         android:text="最近浏览"
+        android:gravity="center"
         android:layout_margin="20dp"
         android:textSize="18sp"
         android:layout_width="match_parent"
@@ -29,6 +35,7 @@
     <TextView
         android:id="@+id/tv_plane"
         android:text="平面"
+        android:gravity="center"
         android:layout_margin="20dp"
         android:textSize="25sp"
         android:textColor="#000000"
@@ -39,6 +46,7 @@
         <TextView
             android:id="@+id/tv_modelling"
             android:text="造型/美妆"
+            android:gravity="center"
             android:layout_margin="20dp"
             android:textSize="25sp"
             android:textColor="#000000"
@@ -47,6 +55,7 @@
         <TextView
             android:id="@+id/tv_manfashion"
             android:text="男士/风尚"
+            android:gravity="center"
             android:layout_margin="20dp"
             android:textColor="#000000"
             android:textSize="25sp"
@@ -54,6 +63,7 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_other"
+            android:gravity="center"
             android:text="其他分类"
             android:layout_margin="20dp"
             android:textSize="18sp"
@@ -62,6 +72,7 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_uiux"
+            android:gravity="center"
             android:text="UI/UX"
             android:layout_margin="20dp"
             android:textSize="25sp"
@@ -73,6 +84,7 @@
         <TextView
             android:id="@+id/tv_inset"
             android:text="插画/漫画"
+            android:gravity="center"
             android:layout_margin="20dp"
             android:textSize="25sp"
             android:textColor="#000000"
@@ -84,6 +96,7 @@
             android:layout_margin="20dp"
             android:textColor="#000000"
             android:textSize="25sp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
@@ -92,6 +105,7 @@
             android:layout_margin="20dp"
             android:textSize="25sp"
             android:textColor="#000000"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -100,6 +114,7 @@
             android:id="@+id/tv_wedding"
             android:text="婚礼"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textSize="25sp"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -108,6 +123,7 @@
             android:id="@+id/tv_industrydesign"
             android:text="工业设计"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textColor="#000000"
             android:textSize="25sp"
             android:layout_width="match_parent"
@@ -116,6 +132,7 @@
             android:id="@+id/tv_shoot"
             android:text="摄影"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textSize="25sp"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -127,6 +144,7 @@
             android:text="美食 "
             android:layout_margin="20dp"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -134,6 +152,7 @@
             android:id="@+id/tv_travel"
             android:text="旅行"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textColor="#000000"
             android:textSize="25sp"
             android:layout_width="match_parent"
@@ -142,6 +161,7 @@
             android:id="@+id/tv_handwork"
             android:text="手工/布艺"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textSize="25sp"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -150,6 +170,7 @@
             android:id="@+id/tv_dance"
             android:text="健身/舞蹈"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textColor="#000000"
             android:textSize="25sp"
             android:layout_width="match_parent"
@@ -158,6 +179,7 @@
             android:id="@+id/tv_children"
             android:text="儿童"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textSize="25sp"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -166,6 +188,7 @@
 
         <TextView
             android:id="@+id/tv_pet"
+            android:gravity="center"
             android:text="宠物"
             android:layout_margin="20dp"
             android:textSize="25sp"
@@ -177,6 +200,7 @@
             android:text="美图"
             android:layout_margin="20dp"
             android:textColor="#000000"
+            android:gravity="center"
             android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -185,7 +209,7 @@
             android:text="明星"
             android:layout_margin="20dp"
             android:textSize="18sp"
-
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
@@ -193,6 +217,7 @@
             android:text="美女"
             android:layout_margin="20dp"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -205,6 +230,7 @@
             android:textSize="25sp"
             android:textColor="#000000"
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_geek"
@@ -212,6 +238,7 @@
             android:layout_margin="20dp"
             android:textColor="#000000"
             android:textSize="25sp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
@@ -219,6 +246,7 @@
             android:text="动漫"
             android:layout_margin="20dp"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -228,6 +256,7 @@
             android:id="@+id/tv_constructiondesign"
             android:text="建筑设计"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textSize="25sp"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -236,6 +265,7 @@
             android:id="@+id/tv_humanityart"
             android:text="人文艺术"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textColor="#000000"
             android:textSize="25sp"
             android:layout_width="match_parent"
@@ -244,6 +274,7 @@
             android:id="@+id/tv_databasephoto"
             android:text="数据图"
             android:layout_margin="20dp"
+            android:gravity="center"
             android:textSize="25sp"
             android:textColor="#000000"
             android:layout_width="match_parent"
@@ -255,6 +286,7 @@
             android:text="游戏"
             android:layout_margin="20dp"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -263,6 +295,7 @@
             android:text="汽车摩托"
             android:layout_margin="20dp"
             android:textColor="#000000"
+            android:gravity="center"
             android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -271,6 +304,7 @@
             android:text="电影/图书"
             android:layout_margin="20dp"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -279,6 +313,7 @@
             android:text="生活百科"
             android:layout_margin="20dp"
             android:textColor="#000000"
+            android:gravity="center"
             android:textSize="25sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -287,6 +322,7 @@
             android:text="教育"
             android:layout_margin="20dp"
             android:textSize="25sp"
+            android:gravity="center"
             android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -295,6 +331,7 @@
         <TextView
             android:id="@+id/tv_athlete"
             android:text="运动"
+            android:gravity="center"
             android:layout_margin="20dp"
             android:textSize="25sp"
             android:textColor="#000000"
@@ -306,6 +343,7 @@
             android:layout_margin="20dp"
             android:textColor="#000000"
             android:textSize="25sp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
