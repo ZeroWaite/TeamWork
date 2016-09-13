@@ -6,6 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
+<style name="Popwindow" parent="Animation.AppCompat.Dialog">
+       <item name="android:windowEnterAnimation">@anim/show_animotion</item>
+    <item name="android:windowExitAnimation">@anim/add_animotion</item>
+</style>
+
 
 </resources>

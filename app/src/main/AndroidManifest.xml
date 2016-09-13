@@ -13,6 +13,12 @@
         </activity>
 
         <activity android:name=".FindMenuList_Activity">
+
+        </activity>
+<activity android:name=".MineTestActivity">
+
+</activity>
+        <activity android:name=".TakePopwindowActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

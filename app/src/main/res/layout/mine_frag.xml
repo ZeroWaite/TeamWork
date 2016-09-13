@@ -17,19 +17,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_search_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/sousuo" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_setup_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/sousuo" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_add_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
