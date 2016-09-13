@@ -48,7 +48,7 @@ public class FragmentFind extends Fragment {
 
         findmenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v ) {
+            public void onClick(View v) {
 
                 popupWindow.showAtLocation(findmenu, Gravity.CENTER,0,0);
             /*    Animation animation;

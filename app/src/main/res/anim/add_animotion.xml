@@ -5,7 +5,7 @@
 
     //退出动画
     <translate
-        android:fromYDelta=" 0"
+        android:fromYDelta="0"
         android:toYDelta="50%p"/>
 <alpha
     android:fromAlpha="1.0"

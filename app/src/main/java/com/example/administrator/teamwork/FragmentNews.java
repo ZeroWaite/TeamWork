@@ -17,7 +17,6 @@ public class FragmentNews extends  Fragment {
         View view=inflater.inflate(R.layout.message_frag,null);
         return view;
     }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
