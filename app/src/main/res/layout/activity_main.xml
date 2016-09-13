@@ -20,6 +20,7 @@
     </fragment>
 
     <RadioGroup
+        android:id="@+id/rg_all"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="wrap_content">

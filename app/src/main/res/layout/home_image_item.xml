@@ -1,79 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#ffffff"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <ImageView
-        android:id="@+id/iv_interImage_item"
+        android:id="@+id/iv_interImage_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/tv_image_introduce_item"
+        android:id="@+id/tv_image_introduce_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_interImage_item"
+        android:layout_below="@+id/iv_interImage_home"
         android:layout_margin="10dp"
         android:text="the content of this picture" />
 
     <TextView
-        android:id="@+id/tv_transPond_item"
+        android:id="@+id/tv_transPond_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_alignLeft="@+id/tv_image_introduce_item"
-        android:layout_below="@+id/tv_image_introduce_item"
+        android:layout_alignLeft="@+id/tv_image_introduce_home"
+        android:layout_below="@+id/tv_image_introduce_home"
         android:text="52"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/tv_collect_item"
+        android:id="@+id/tv_collect_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_image_introduce_item"
+        android:layout_below="@+id/tv_image_introduce_home"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/tv_transPond_item"
+        android:layout_toRightOf="@+id/tv_transPond_home"
         android:text="52"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/tv_comment_item"
+        android:id="@+id/tv_comment_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_image_introduce_item"
+        android:layout_below="@id/tv_image_introduce_home"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/tv_collect_item"
+        android:layout_toRightOf="@id/tv_collect_home"
         android:text="20"
         android:textSize="12sp" />
 
     <ImageView
-        android:id="@+id/iv_userHead_item"
+        android:id="@+id/iv_userHead_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_image_introduce_home"
+        android:layout_below="@id/tv_transPond_home"
         android:layout_margin="5dp"
-        android:layout_alignLeft="@+id/tv_image_introduce_item"
-        android:layout_below="@id/tv_transPond_item"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:layout_marginTop="3dp"
-        android:id="@+id/tv_username_item"
+        android:id="@+id/tv_username_home"
         android:layout_width="wrap_content"
-        android:layout_alignTop="@+id/iv_userHead_item"
-        android:layout_toRightOf="@id/iv_userHead_item"
-        android:text="用户名"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_userHead_home"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/iv_userHead_home"
+        android:text="用户名" />
 
     <TextView
+        android:id="@+id/tv_userDrawBoard_home"
         android:layout_width="wrap_content"
-        android:id="@+id/tv_userDrawBoard_item"
-        android:text="用户画板"
-        android:layout_toRightOf="@+id/iv_userHead_item"
-        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_userHead_home"
         android:layout_marginBottom="3dp"
-        android:layout_alignBottom="@+id/iv_userHead_item"
-        android:layout_height="wrap_content" />
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/iv_userHead_home"
+        android:text="用户画板" />
 
 </RelativeLayout>
