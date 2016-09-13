@@ -1,4 +1,4 @@
-package com.example.administrator.teamwork;
+package com.example.administrator.teamwork.MyFragment;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +14,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+
+import com.example.administrator.teamwork.R;
 
 /**
  * Created by Administrator on 2016/9/12.

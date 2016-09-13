@@ -1,4 +1,4 @@
-package com.example.administrator.teamwork;
+package com.example.administrator.teamwork.MyFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,19 +7,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.administrator.teamwork.R;
+
 /**
  * Created by Administrator on 2016/9/12.
  */
-public class FragmentHome extends Fragment {
+public class FragmentMine extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.activity_main,null);
+        View view=inflater.inflate(R.layout.mine_frag,null);
         return view;
+
     }
 
-    @Override
+  /*  @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    }
+
+
+
+    }*/
 }
