@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by anzhuo on 2016/9/12.
  */
-public class MyHomeInfo {
+public class InterHomePageInfo {
 
 
     /**
