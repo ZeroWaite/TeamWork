@@ -4,27 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/iv_return_search"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+       android:background="#ffffff"
         android:gravity="center"
         android:src="@mipmap/sousuo" />
 
-    <SearchView
+    <EditText
         android:id="@+id/sv_search_search"
         android:layout_width="0dp"
+        android:hint="搜索我的"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center"
-        ></SearchView>
+        android:gravity="top"
+        ></EditText>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/iv_clickSearch_Search"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+         android:background="#ffffff"
         android:gravity="center"
         android:src="@mipmap/sousuo" />
 

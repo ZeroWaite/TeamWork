@@ -5,23 +5,25 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
 
-        <ImageView
-            android:id="@+id/iv_back_account_setup"
+        <ImageButton
+            android:id="@+id/ib_back_account_setup"
             android:layout_width="wrap_content"
+            android:background="#ffffff"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:src="@mipmap/sousuo" />
+            android:src="@drawable/pink_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="35dp"
             android:text="账号设置"
-            android:textSize="35dp" />
+            android:textSize="25dp" />
     </LinearLayout>
 
     <TextView

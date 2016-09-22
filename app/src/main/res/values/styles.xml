@@ -8,10 +8,24 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
+    <style name="all">
+        <item name="android:width">0dp</item>
+        <item name="android:checked">true</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/color_selector</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 <style name="Popwindow" parent="Animation.AppCompat.Dialog">
        <item name="android:windowEnterAnimation">@anim/show_animotion</item>
+
     <item name="android:windowExitAnimation">@anim/add_animotion</item>
 </style>
 
+<style name="Popwindow2" parent="Animation.AppCompat.Dialog">
+    <item name="android:windowEnterAnimation">@anim/setuo_show_animotion</item>
+    <item name="android:windowExitAnimation">@anim/setup_exit_animotion</item>
+</style>
 
 </resources>
