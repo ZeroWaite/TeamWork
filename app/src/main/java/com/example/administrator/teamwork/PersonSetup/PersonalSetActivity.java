@@ -30,7 +30,7 @@ public class PersonalSetActivity extends Activity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(PersonalSetActivity.this,"成功保存了账号设置",Toast.LENGTH_SHORT).show();
+                Toast.makeText(PersonalSetActivity.this," 成功保存了账号设置",Toast.LENGTH_SHORT).show();
             }
         });
     }

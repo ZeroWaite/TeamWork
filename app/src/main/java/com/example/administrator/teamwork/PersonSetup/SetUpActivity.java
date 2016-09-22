@@ -93,7 +93,7 @@ public class SetUpActivity extends Activity {
                cancels.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View v) {
-                       WindowManager manager= (WindowManager) getSystemService(WINDOW_SERVICE);
+                        WindowManager manager= (WindowManager) getSystemService(WINDOW_SERVICE);
                        manager.removeViewImmediate(v);
                    }
                });

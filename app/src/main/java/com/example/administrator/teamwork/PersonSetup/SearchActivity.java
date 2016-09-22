@@ -21,7 +21,7 @@ public class SearchActivity extends Activity {
         backSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                finish ();
             }
         });
     }

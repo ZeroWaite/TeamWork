@@ -18,7 +18,7 @@
 
         <activity android:name=".FindMenuList_Activity">
 
-        </activity>
+        </activity >
 
         <activity android:name=".PersonSetup.SetUpActivity">
 
