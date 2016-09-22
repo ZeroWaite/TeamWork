@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#FAFFF0"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
@@ -8,9 +9,10 @@
         android:id="@+id/iv_return_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:background="#ffffff"
+       android:background="#FAFFF0"
+        android:layout_margin="5dp"
         android:gravity="center"
-        android:src="@mipmap/sousuo" />
+        android:src="@drawable/pink_back" />
 
     <EditText
         android:id="@+id/sv_search_search"
@@ -24,8 +26,9 @@
     <ImageButton
         android:id="@+id/iv_clickSearch_Search"
         android:layout_width="wrap_content"
+        android:layout_margin="5dp"
         android:layout_height="wrap_content"
-         android:background="#ffffff"
+         android:background="#FAFFF0"
         android:gravity="center"
         android:src="@mipmap/sousuo" />
 
