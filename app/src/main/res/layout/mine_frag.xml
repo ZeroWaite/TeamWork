@@ -20,14 +20,14 @@
         <ImageButton
             android:id="@+id/ib_search_person"
             android:layout_width="wrap_content"
-            android:background="#ffffff"
+            android:background="#FAFFF0"
             android:layout_height="wrap_content"
             android:src="@mipmap/search" />
 
         <ImageButton
             android:id="@+id/ib_setup_person"
             android:layout_width="wrap_content"
-            android:background="#ffffff"
+            android:background="#FAFFF0"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:src="@mipmap/setup" />
@@ -35,7 +35,7 @@
         <ImageButton
             android:id="@+id/iv_add_person"
             android:layout_width="wrap_content"
-            android:background="#ffffff"
+            android:background="#FAFFF0"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:src="@mipmap/add" />

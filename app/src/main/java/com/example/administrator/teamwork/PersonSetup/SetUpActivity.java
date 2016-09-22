@@ -79,6 +79,7 @@ public class SetUpActivity extends Activity {
         });
         cancels= (TextView) findViewById(R.id.bt_cancal);
         sure= (TextView) findViewById(R.id.bt_sure);
+
         exit.setOnClickListener(new View.OnClickListener() {
 
             @Override
