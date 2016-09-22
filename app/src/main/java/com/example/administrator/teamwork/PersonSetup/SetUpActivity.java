@@ -46,7 +46,6 @@ public class SetUpActivity extends Activity {
         popupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
         popupWindow.setFocusable(true);
         popupWindow.setTouchable(true);
-
         popupWindow.setOutsideTouchable(true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         popupWindow.setAnimationStyle(R.style.Popwindow2);
