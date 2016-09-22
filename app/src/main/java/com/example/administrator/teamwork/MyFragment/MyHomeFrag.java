@@ -7,14 +7,15 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.GridView;
 
-import com.example.administrator.teamwork.MyInfo.MyHomeInfo;
+import com.example.administrator.teamwork.MyAdapter.MyImageAdapter;
+import com.example.administrator.teamwork.MyInfo.InterHomePageInfo;
+import com.example.administrator.teamwork.MyInfo.LocalHomePageInfo;
 import com.example.administrator.teamwork.R;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -26,10 +27,11 @@ import okhttp3.Response;
  */
 public class MyHomeFrag extends Activity {
     private static final int MSG = 1;
-    MyHomeInfo myHomeInfo;
-    MyHomeInfo.WeekliesBean weekliesBean;
-    List<MyHomeInfo> mList;
-    List<MyHomeInfo.WeekliesBean> wList;
+    InterHomePageInfo interHomePageInfo;
+    MyImageAdapter myImageAdapter;
+    List<LocalHomePageInfo> mList = new ArrayList<>();
+    LocalHomePageInfo localHomePageInfo;
+
     GridView gridView;
     OkHttpClient okHttpClient;
     String str;
@@ -41,9 +43,19 @@ public class MyHomeFrag extends Activity {
                 case MSG:
                     Log.i("str", str);
                     Gson gson = new Gson();
+                    interHomePageInfo = gson.fromJson(str, InterHomePageInfo.class);
+                    for (int i = 0; i < interHomePageInfo.getWeeklies().toArray().length; i++) {
+                        localHomePageInfo = new LocalHomePageInfo();
+                        localHomePageInfo.setContent(interHomePageInfo.getWeeklies().get(i).getDescription());
+                        localHomePageInfo.setUsername(interHomePageInfo.getWeeklies().get(i).getTitle());
+                        localHomePageInfo.setImageContent("http://" + interHomePageInfo.getImgHost() + interHomePageInfo.getWeeklies().get(i).getCover());
+                        mList.add(localHomePageInfo);
+                    }
+                    myImageAdapter = new MyImageAdapter(mList, MyHomeFrag.this);
+                    gridView.setAdapter(myImageAdapter);
 
-                    mList = gson.fromJson(str, new TypeToken<List<MyHomeInfo>>() {
-                    }.getType());
+                  /*  mList = gson.fromJson(str, new TypeToken<List<InterHomePageInfo>>() {
+                    }.getType());*/
 
                     break;
             }
