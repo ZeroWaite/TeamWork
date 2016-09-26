@@ -1,12 +1,10 @@
 package com.example.administrator.teamwork;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.administrator.teamwork.MyFragment.FragmentFind;
@@ -17,7 +15,6 @@ import com.example.administrator.teamwork.MyFragment.FragmentNews;
 public class MainActivity extends AppCompatActivity {
 
     RadioGroup rg_home;
-
     FragmentManager manager;
     FragmentTransaction transaction;
     FragmentHome fragmentHome;
@@ -32,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rg_home = (RadioGroup) findViewById(R.id.rg_all);
-        showFragment(0);
+
         rg_home.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -109,5 +106,10 @@ public class MainActivity extends AppCompatActivity {
             transaction.hide(fragmentMine);
         }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

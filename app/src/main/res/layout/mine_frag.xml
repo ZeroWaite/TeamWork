@@ -70,53 +70,75 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/rb_palette_person"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+
+
+
+
+        <RadioGroup
+
+            android:id="@+id/rg_1"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:text="画板"
-            android:textSize="8dp" />
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/rb_gather_person"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="采集"
-            android:textSize="8dp" />
 
-        <RadioButton
-            android:id="@+id/rb_like_person"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="喜欢"
-            android:textSize="8dp" />
+            <RadioButton
+                android:id="@+id/rb_plate"
+                style="@style/fg"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@null"
+                android:text="画板"
+                android:textSize="18dp" />
 
-        <RadioButton
-            android:id="@+id/rb_concern_person"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="关注"
-            android:textSize="8dp" />
+            <RadioButton
+                android:id="@+id/rb_gather"
+                style="@style/fg"
 
-    </LinearLayout>
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@null"
+                android:text="采集"
+                android:textSize="18dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp" />
+            <RadioButton
+                android:id="@+id/rb_like"
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                style="@style/fg"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@null"
+                android:text="喜欢"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/rb_concern"
+                android:layout_width="0dp"
+
+                style="@style/fg"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@null"
+                android:text="关注"
+                android:textSize="18dp" />
+        </RadioGroup>
+        <FrameLayout
+            android:id="@+id/fg_minePage2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </FrameLayout>
+
+
 
 </LinearLayout>

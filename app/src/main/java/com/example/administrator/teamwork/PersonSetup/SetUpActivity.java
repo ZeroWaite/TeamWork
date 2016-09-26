@@ -50,7 +50,13 @@ public class SetUpActivity extends Activity {
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         popupWindow.setAnimationStyle(R.style.Popwindow2);
         popupWindow.setOnDismissListener(new PoponDismissListener());
-
+        cancels= (TextView) v.findViewById(R.id.bt_cancal);
+        cancels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         setupBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,8 +83,9 @@ public class SetUpActivity extends Activity {
                 Toast.makeText( SetUpActivity.this,"清除缓存成功",Toast.LENGTH_SHORT).show();
             }
         });
-        cancels= (TextView) findViewById(R.id.bt_cancal);
-        sure= (TextView) findViewById(R.id.bt_sure);
+
+
+
 
         exit.setOnClickListener(new View.OnClickListener() {
 
@@ -88,17 +95,7 @@ public class SetUpActivity extends Activity {
                 backgroundAlpha(0.3f);
 
             }
-           public void  popwindowItemClick(View v, final WindowManager.LayoutParams params){
-               cancels= (TextView) findViewById(R.id.bt_cancal);
-               cancels.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                        WindowManager manager= (WindowManager) getSystemService(WINDOW_SERVICE);
-                       manager.removeViewImmediate(v);
-                   }
-               });
 
-           }
         });
 
 

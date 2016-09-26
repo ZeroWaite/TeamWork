@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+
+        android:id="@+id/rg_2"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+        <RadioButton
+            android:id="@+id/rb_plate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:button="@null"
+            android:text="画板"
+            android:textSize="18dp" />
+
+        <RadioButton
+            android:id="@+id/rb_gather"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:button="@null"
+            android:text="采集"
+            android:textSize="18dp" />
+
+        <RadioButton
+            android:id="@+id/rb_like"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:button="@null"
+            android:text="喜欢"
+            android:textSize="18dp" />
+
+        <RadioButton
+            android:id="@+id/rb_concern"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:button="@null"
+            android:text="关注"
+            android:textSize="18dp" />
+    </RadioGroup>
+    <FrameLayout
+        android:id="@+id/fg_minePage2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </FrameLayout>
+</LinearLayout>
