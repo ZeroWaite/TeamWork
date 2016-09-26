@@ -3,6 +3,7 @@ package com.example.administrator.teamwork.MyFragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.print.PrintJobInfo;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -22,7 +23,6 @@ import com.example.administrator.teamwork.R;
  */
 public class FragmentFind extends Fragment {
     ImageButton findmenu;
-
     PopupWindow popupWindow;
 
 
@@ -39,20 +39,26 @@ public class FragmentFind extends Fragment {
         findmenu= (ImageButton) view.findViewById(R.id.ib_find_menu);
         popupWindow=new PopupWindow();
         View v= LayoutInflater.from(this.getActivity()).inflate(R.layout.findmenu_layout,null);
-
         popupWindow.setContentView(v);
         popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setTouchable(true);
         popupWindow.setFocusable(true);
+        popupWindow.setAnimationStyle(R.style.Popwindow);
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+        popupWindow.setOnDismissListener(new PoponDismissListener());
         findmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                backgroundAlpha(0.3f);
                 popupWindow.showAtLocation(findmenu, Gravity.CENTER,0,0);
+                popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        backgroundAlpha(1f);
+                    }
+                });
             /*    Animation animation;
                 animation = AnimationUtils.loadAnimation(null, R.anim.findmenu_layout);
                 view1.startAnimation(animation);*/
@@ -74,5 +80,21 @@ public class FragmentFind extends Fragment {
                 popupWindow1.showAtLocation(animation,Gravity.BOTTOM,0,0);
             }*/
         });
+    }
+
+    private void backgroundAlpha(float v) {
+        WindowManager.LayoutParams lp=this.getActivity().getWindow().getAttributes();
+        lp.alpha=v;
+        this .getActivity().getWindow().setAttributes(lp);
+    }
+
+
+
+
+    private class PoponDismissListener implements PopupWindow.OnDismissListener {
+        @Override
+        public void onDismiss() {
+
+        }
     }
 }

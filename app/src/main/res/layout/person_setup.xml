@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF5EE"
     android:orientation="vertical">
 
     <LinearLayout
@@ -9,16 +10,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
 
-        <ImageView
-            android:id="@+id/iv_backward_person_setup"
+        <ImageButton
+            android:id="@+id/ib_backward_person_setup"
             android:layout_width="wrap_content"
+            android:background="#FFF5EE"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:src="@mipmap/sousuo" />
+            android:src="@drawable/pink_back" />
 
         <TextView
             android:id="@+id/tv_editing_person_setup"
             android:layout_width="0dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_weight="1"
@@ -28,6 +31,7 @@
         <ImageView
             android:id="@+id/iv_commit_person_setup"
             android:layout_width="wrap_content"
+            android:clickable="true"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:src="@mipmap/sousuo" />

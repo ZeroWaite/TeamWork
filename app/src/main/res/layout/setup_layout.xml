@@ -2,18 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="#FAFFF0"
     android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     >
-<ImageView
-    android:id="@+id/iv_back_setup"
+<ImageButton
+    android:id="@+id/ib_back_setup"
     android:layout_width="wrap_content"
+    android:background="#ffffff"
     android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
-    android:src="@mipmap/sousuo"/>
+    android:src="@drawable/pink_back"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,17 +25,27 @@
         />
 </LinearLayout>
     <TextView
+        android:layout_width="match_parent"
+        android:background="#DCDCDC"
+        android:layout_height="wrap_content"
+    />
+
+    <TextView
         android:id="@+id/tv_personSet_setup"
+        android:layout_margin="18dp"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+
         android:text="个人设置"
         android:textSize="30dp"
         />
     <TextView
         android:id="@+id/tv_idSet_setup"
+        android:layout_margin="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:layout_marginTop="40dp"
         android:text="账号设置"
         android:textSize="30dp"
@@ -41,6 +53,7 @@
     <TextView
         android:id="@+id/tv_about_setup"
         android:layout_width="match_parent"
+        android:layout_margin="18dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="关于花瓣"
@@ -50,12 +63,15 @@
         android:id="@+id/tv_clearCache_setup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="18dp"
         android:layout_marginTop="40dp"
         android:text="清除缓存"
         android:textSize="30dp"
         />
     <TextView
         android:id="@+id/tv_logout_setup"
+        android:layout_margin="18dp"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
