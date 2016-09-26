@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -27,10 +28,13 @@ public class MyImageAdapter extends BaseAdapter {
     Context mContext;
 
 
-    public MyImageAdapter(List<LocalHomePageInfo> mList, Context mContext) {
+    public MyImageAdapter(List<LocalHomePageInfo> mList, Context context) {
 
         this.mList = mList;
-        this.mContext = mContext;
+        this.mContext = context;
+
+
+
     }
 
     @Override
@@ -48,14 +52,14 @@ public class MyImageAdapter extends BaseAdapter {
         return i;
     }
 
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
 
         ViewHolder holder = null;
         if (view == null) {
             view = LayoutInflater.from(mContext).inflate(R.layout.home_image_item, null);
-
-
             holder = new ViewHolder();
             holder.userHead = (ImageView) view.findViewById(R.id.iv_userHead_home);
             holder.imageContent = (ImageView) view.findViewById(R.id.iv_interImage_home);
@@ -81,6 +85,7 @@ public class MyImageAdapter extends BaseAdapter {
 
         return view;
     }
+
 
     class ViewHolder {
         //用户头像
