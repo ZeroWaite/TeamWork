@@ -3,7 +3,6 @@ package com.example.administrator.teamwork.MyFragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.print.PrintJobInfo;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -11,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 
@@ -48,6 +45,7 @@ public class FragmentFind extends Fragment {
         popupWindow.setAnimationStyle(R.style.Popwindow);
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popupWindow.setOnDismissListener(new PoponDismissListener());
+
         findmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
