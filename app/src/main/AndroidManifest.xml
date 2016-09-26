@@ -11,21 +11,36 @@
         android:name=".MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <data android:scheme="tencent你的AppId"  />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".FindMenuList_Activity">
+
+        </activity >
+
+        <activity android:name=".PersonSetup.SetUpActivity">
+
 
         </activity>
         <activity android:name=".MyFragment.MyHomeFrag">
 
         </activity>
-        <activity android:name=".MyFragment.PrettyGirlFrag">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
         <activity android:name=".ContentActivity">
 
         </activity>
+
+<activity android:name=".PersonSetup.NewDrawboardActivity">
+
+</activity>
+
+
+
     </application>
 
 </manifest>
