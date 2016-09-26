@@ -56,6 +56,7 @@
         <TextView
             android:id="@+id/tv_urlGather_add"
             android:layout_width="wrap_content"
+            android:clickable="true"
             android:layout_height="wrap_content"
             android:text="网址采集"
             android:textSize="35dp" />
@@ -75,6 +76,7 @@
         <TextView
             android:id="@+id/tv_foundPalette_add"
             android:layout_width="wrap_content"
+            android:clickable="true"
             android:layout_height="wrap_content"
             android:text="创建画板1"
             android:textSize="35dp" />

@@ -16,10 +16,14 @@
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="fg">
+        <item name="android:checked">true</item>
+        <item name="android:textColor">@color/minechild_color_selector</item>
+
+    </style>
 
 <style name="Popwindow" parent="Animation.AppCompat.Dialog">
        <item name="android:windowEnterAnimation">@anim/show_animotion</item>
-
     <item name="android:windowExitAnimation">@anim/add_animotion</item>
 </style>
 
