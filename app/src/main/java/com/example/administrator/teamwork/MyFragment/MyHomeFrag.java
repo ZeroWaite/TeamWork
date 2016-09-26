@@ -54,8 +54,6 @@ public class MyHomeFrag extends Activity {
                     myImageAdapter = new MyImageAdapter(mList, MyHomeFrag.this);
                     gridView.setAdapter(myImageAdapter);
 
-                  /*  mList = gson.fromJson(str, new TypeToken<List<InterHomePageInfo>>() {
-                    }.getType());*/
 
                     break;
             }
@@ -89,4 +87,5 @@ public class MyHomeFrag extends Activity {
         }
         return str;
     }
+
 }

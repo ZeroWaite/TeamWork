@@ -1,76 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_margin="1dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
     android:background="#ffffff">
 
     <ImageView
         android:id="@+id/iv_interImage_home"
+        android:src="@mipmap/ic_launcher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tv_image_introduce_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_interImage_home"
-        android:layout_margin="10dp"
-        android:text="the content of this picture" />
+        android:text="this is the introduce of image"
+        android:layout_margin="5dp" />
 
+    <LinearLayout
+        android:id="@+id/ll_threeData"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/tv_transPond_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_image_introduce_home"
-        android:layout_below="@+id/tv_image_introduce_home"
-        android:text="52"
+
         android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_collect_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_image_introduce_home"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/tv_transPond_home"
-        android:text="52"
+
         android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tv_comment_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_image_introduce_home"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/tv_collect_home"
-        android:text="20"
+
         android:textSize="12sp" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/iv_userHead_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_image_introduce_home"
-        android:layout_below="@id/tv_transPond_home"
+
+    <RelativeLayout
+        android:id="@+id/rl_userMsg_home"
+        android:layout_width="match_parent"
         android:layout_margin="5dp"
-        android:src="@mipmap/ic_launcher" />
+        android:clickable="true"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_username_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/iv_userHead_home"
-        android:layout_toRightOf="@id/iv_userHead_home"
-        android:text="用户名" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_userHead_home"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            fresco:placeholderImage="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_userDrawBoard_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_username_home"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/iv_userHead_home"
-        android:text="用户画板" />
+        <TextView
+            android:id="@+id/tv_username_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="14dp"
+            android:layout_alignTop="@+id/iv_userHead_home"
+            android:layout_toRightOf="@id/iv_userHead_home"
+            android:text="用户名" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_userDrawBoard_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_username_home"
+            android:layout_marginTop="5dp"
+            android:textSize="14dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"
+            android:layout_toRightOf="@+id/iv_userHead_home"
+            android:text="用户画板" />
+    </RelativeLayout>
+
+</LinearLayout>
