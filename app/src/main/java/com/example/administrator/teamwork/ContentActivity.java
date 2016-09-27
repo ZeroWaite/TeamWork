@@ -64,7 +64,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         commenting.setOnClickListener(this);
         imageLager.setOnClickListener(this);
 
-
+  /*  f*/
         Intent intent = getIntent();
 
         String contentImg = intent.getExtras().getString("contentImg");
