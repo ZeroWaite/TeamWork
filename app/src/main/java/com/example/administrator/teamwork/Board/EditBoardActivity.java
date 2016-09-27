@@ -23,6 +23,7 @@ import com.example.administrator.teamwork.R;
 public class EditBoardActivity extends Activity {
     PopupWindow pop;
     ImageView save;
+
     ImageView back;
     Button delete_board;
     TextView cancel;

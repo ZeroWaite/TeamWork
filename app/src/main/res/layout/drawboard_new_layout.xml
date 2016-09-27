@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_margin="10dp"
+        android:layout_margin="11dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -36,7 +36,7 @@
             android:id="@+id/ib_true_new_board"
             android:layout_width="wrap_content"
             android:background="#ffffff"
-            android:src="@mipmap/gougou"
+            android:src="@drawable/dg"
             android:clickable="true"
             android:layout_margin="10dp"
             android:layout_height="wrap_content" />

@@ -19,6 +19,7 @@ import com.example.administrator.teamwork.R;
  */
 public class BoardNewFinishi extends Activity {
     ImageView back,edit,share;
+
   PopupWindow popupWindow;
 
     @Override
@@ -27,7 +28,7 @@ public class BoardNewFinishi extends Activity {
         setContentView(R.layout.drawboard_list_item);
         back= (ImageView) findViewById(R.id.tv_drawBoardName_drawBoard_item);
         edit= (ImageView) findViewById(R.id.board_edit);
-        share= (ImageView) findViewById(R.id.iv_board_share);
+        share=  (ImageView) findViewById(R.id.iv_board_share);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

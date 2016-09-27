@@ -19,6 +19,7 @@ public class NewDrawboardActivity extends Activity {
     ImageButton back;
     ImageView save;
     EditText boradTitle;
+
     TextView description;
     TextView kind;
     public EditText getBoradTitle() {
