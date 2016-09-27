@@ -74,11 +74,13 @@ public class FragmentHome extends Fragment {
                             intent.putExtra("userHead", mList.get(position).getUserHead());
                             intent.putExtra("created_at", mList.get(position).getCreated_at());
                             intent.putExtra("from", mList.get(position).getSource());
-                            intent.putExtra("comment_count", "评论:" + mList.get(position).getComment_count());
-                            intent.putExtra("like_count", "收藏:" + mList.get(position).getLike_count());
-                            intent.putExtra("repin_count", "转发:" + mList.get(position).getRepin_count());
-                            intent.putExtra("follow_count", "关注:" + mList.get(position).getFollow_count());
+                            intent.putExtra("comment_count", mList.get(position).getComment_count());
+                            intent.putExtra("like_count", mList.get(position).getLike_count());
+                            intent.putExtra("repin_count", mList.get(position).getRepin_count());
+                           /* intent.putExtra("follow_count", "关注:" + mList.get(position).getFollow_count());*/
                             intent.putExtra("boardImg", mList.get(position).getBoardImg());
+                            intent.putExtra("imgWidth", mList.get(position).getImgWidth());
+                            intent.putExtra("imgHeight", mList.get(position).getImgHeight());
 
                             startActivity(intent);
 
@@ -216,6 +218,8 @@ public class FragmentHome extends Fragment {
             localPrettyGirlInfo.setRepin_count(interPrettyGirlInfo.getPins().get(i).getRepin_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getRepin_count()));
             localPrettyGirlInfo.setFollow_count(interPrettyGirlInfo.getPins().get(i).getLike_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getLike_count()));
             localPrettyGirlInfo.setBoardImg(HTTP + interPrettyGirlInfo.getPins().get(i).getFile().getKey());
+            localPrettyGirlInfo.setImgWidth(interPrettyGirlInfo.getPins().get(i).getFile().getWidth());
+            localPrettyGirlInfo.setImgHeight(interPrettyGirlInfo.getPins().get(i).getFile().getHeight());
             mList.add(0, localPrettyGirlInfo);
 
         }

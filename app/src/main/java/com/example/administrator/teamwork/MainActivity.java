@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.administrator.teamwork.MyFragment.FragmentFind;
@@ -15,6 +16,7 @@ import com.example.administrator.teamwork.MyFragment.FragmentNews;
 public class MainActivity extends AppCompatActivity {
 
     RadioGroup rg_home;
+    RadioButton rb_home;
     FragmentManager manager;
     FragmentTransaction transaction;
     FragmentHome fragmentHome;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rg_home = (RadioGroup) findViewById(R.id.rg_all);
+        rb_home = (RadioButton) findViewById(R.id.rb_homePage);
+        showFragment(0);
 
         rg_home.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

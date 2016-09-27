@@ -17,6 +17,24 @@ public class LocalPrettyGirlInfo {
     private String contentImg;
     private String pin_count; /*: 829  被采集*/
     private String follow_count;/* : 265 被关注*/
+    private String imgWidth;
+    private String imgHeight;
+
+    public String getImgWidth() {
+        return imgWidth;
+    }
+
+    public void setImgWidth(String imgWidth) {
+        this.imgWidth = imgWidth;
+    }
+
+    public String getImgHeight() {
+        return imgHeight;
+    }
+
+    public void setImgHeight(String imgHeight) {
+        this.imgHeight = imgHeight;
+    }
 
     public String getUsername() {
         return username;
