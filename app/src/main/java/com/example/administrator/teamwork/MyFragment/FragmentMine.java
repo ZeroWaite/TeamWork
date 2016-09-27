@@ -18,7 +18,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.administrator.teamwork.PersonSetup.NewDrawboardActivity;
+import com.example.administrator.teamwork.Board.NewDrawboardActivity;
 import com.example.administrator.teamwork.PersonSetup.SearchActivity;
 import com.example.administrator.teamwork.PersonSetup.SetUpActivity;
 import com.example.administrator.teamwork.R;
@@ -136,7 +136,7 @@ public class FragmentMine extends Fragment {
         setup= (ImageButton) view.findViewById(R.id.ib_setup_person);
         add= (ImageButton) view.findViewById(R.id.iv_add_person);
         popupWindow=new PopupWindow();
-       View v = LayoutInflater.from(FragmentMine.this.getActivity()).inflate(R.layout.add_layout,null);
+        View v = LayoutInflater.from(FragmentMine.this.getActivity()).inflate(R.layout.add_layout,null);
         popupWindow.setContentView(v);
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);

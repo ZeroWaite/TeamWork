@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ public class ContentActivity extends Activity {
     TextView created_at;
     TextView raw_text;
     TextView collect;
-
+    ImageView back;
     TextView transPond;
     TextView comment;
     EditText commenting;
@@ -45,6 +46,13 @@ public class ContentActivity extends Activity {
         comment = (TextView) findViewById(R.id.tv_comment_onPage);
         commenting = (EditText) findViewById(R.id.et_addNewCommit_onPage);
         boardImg = (ImageView) findViewById(R.id.iv_drawBoardHead_onPage);
+        back= (ImageView) findViewById(R.id.ib_back_onPage);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Intent intent = getIntent();
 
         String contentImg = intent.getExtras().getString("contentImg");
