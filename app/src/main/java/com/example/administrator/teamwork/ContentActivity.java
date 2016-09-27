@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -15,7 +17,7 @@ import com.squareup.picasso.Picasso;
 /**
  * Created by anzhuo on 2016/9/26.
  */
-public class ContentActivity extends Activity {
+public class ContentActivity extends Activity implements View.OnClickListener {
     SimpleDraweeView imageLager;
     TextView link;
     TextView username;
@@ -30,6 +32,8 @@ public class ContentActivity extends Activity {
     TextView comment;
     EditText commenting;
 
+    LinearLayout ll_user;
+    LinearLayout ll_drawBarad;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,20 @@ public class ContentActivity extends Activity {
         comment = (TextView) findViewById(R.id.tv_comment_onPage);
         commenting = (EditText) findViewById(R.id.et_addNewCommit_onPage);
         boardImg = (SimpleDraweeView) findViewById(R.id.iv_drawBoardHead_onPage);
+
+        ll_user = (LinearLayout) findViewById(R.id.ll_userLayout_onPage);
+        ll_drawBarad = (LinearLayout) findViewById(R.id.ll_drawBoardLayout_onPage);
+
+        ll_user.setOnClickListener(this);
+        ll_drawBarad.setOnClickListener(this);
+        link.setOnClickListener(this);
+        collect.setOnClickListener(this);
+        comment.setOnClickListener(this);
+        transPond.setOnClickListener(this);
+        commenting.setOnClickListener(this);
+        imageLager.setOnClickListener(this);
+
+
         Intent intent = getIntent();
 
         String contentImg = intent.getExtras().getString("contentImg");
@@ -103,5 +121,33 @@ public class ContentActivity extends Activity {
 
            /* intent.putExtra("follow_count",mList.get(position).getFollow_count());*/
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_interImage_larger:
+                break;
+            case R.id.tv_from_onPage:
+                break;
+            case R.id.tv_transPond_onPage:
+                Intent intent0 = new Intent(ContentActivity.this, TransPondActivity.class);
+                startActivity(intent0);
+                break;
+            case R.id.tv_collect_onPage:
+                Intent intent1 = new Intent(ContentActivity.this, CollectActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.tv_comment_onPage:
+                Intent intent2 = new Intent(ContentActivity.this, CommentActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.ll_userLayout_onPage:
+                break;
+            case R.id.ll_drawBoardLayout_onPage:
+                break;
+            case R.id.et_addNewCommit_onPage:
+                break;
+        }
     }
 }

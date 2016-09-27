@@ -20,8 +20,8 @@
         android:layout_height="wrap_content">
 
         <RadioButton
-
             android:id="@+id/rb_homePage"
+            android:checked="true"
             android:layout_height="wrap_content"
             style="@style/all"
             android:drawableTop="@drawable/home_selector"

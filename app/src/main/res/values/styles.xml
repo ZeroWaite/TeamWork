@@ -10,8 +10,8 @@
     </style>
     <style name="all">
         <item name="android:width">0dp</item>
-        <item name="android:checked">true</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">15dp</item>
         <item name="android:textColor">@color/color_selector</item>
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
