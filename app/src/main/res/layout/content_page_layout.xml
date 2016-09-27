@@ -62,83 +62,101 @@
             android:layout_height="30dp" />
     </LinearLayout>
 
-    <ImageView
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:id="@+id/iv_interImage_larger"
-        android:layout_width="match_parent"
-        android:src="@mipmap/ic_launcher"
-        android:layout_height="wrap_content" />
+            <com.facebook.drawee.view.SimpleDraweeView
 
-    <RelativeLayout
+                android:id="@+id/iv_interImage_larger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fresco:placeholderImage="@mipmap/ic_launcher" />
+
+
+            <LinearLayout
         android:layout_width="match_parent"
+                android:orientation="vertical"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv_from_onPage"
             android:text="sina.com"
             android:textColor="#000000"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
 
         <TextView
             android:id="@+id/tv_imageIntroduce_onPage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/tv_from_onPage"
-            android:layout_below="@+id/tv_from_onPage"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+
             android:text="the content of this picture" />
 
-        <TextView
-            android:id="@+id/tv_upDataTime_onPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_imageIntroduce_onPage"
-            android:layout_alignLeft="@+id/tv_imageIntroduce_onPage"
-            android:textSize="12sp"
-            android:text="时间" />
-
-        <TextView
-            android:id="@+id/tv_transPond_onPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_upDataTime_onPage"
-            android:layout_below="@+id/tv_imageIntroduce_onPage"
-            android:text="52"
+                <LinearLayout
             android:layout_marginLeft="10dp"
-            android:textSize="12sp" />
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_upDataTime_onPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:textColor="#000000"
+                        android:text="时间" />
+
+                    <TextView
+                        android:drawablePadding="5dp"
+                        android:textColor="#000000"
+                        android:drawableLeft="@mipmap/rep"
+                        android:id="@+id/tv_transPond_onPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="52"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp" />
 
 
-        <TextView
-            android:id="@+id/tv_collect_onPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_imageIntroduce_onPage"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/tv_transPond_onPage"
-            android:text="52"
-            android:textSize="12sp" />
+                    <TextView
+                        android:drawablePadding="5dp"
+                        android:drawableLeft="@mipmap/like"
+                        android:gravity="center"
+                        android:id="@+id/tv_collect_onPage"
+                        android:textColor="#000000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="52"
+                        android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/tv_comment_onPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_imageIntroduce_onPage"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/tv_collect_onPage"
-            android:text="20"
-            android:textSize="12sp" />
+                    <TextView
+                        android:drawablePadding="5dp"
+                        android:drawableLeft="@mipmap/comment"
+                        android:id="@+id/tv_comment_onPage"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="20"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-        <LinearLayout
+
+                <LinearLayout
             android:id="@+id/ll_userLayout_onPage"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_margin="10dp"
             android:gravity="center_vertical"
-            android:layout_below="@+id/tv_upDataTime_onPage"
             android:layout_height="wrap_content">
 
             <com.facebook.drawee.view.SimpleDraweeView
@@ -146,16 +164,15 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
-                fresco:placeholderImage="@mipmap/ic_launcher" />
+                fresco:placeholderImage="@null" />
 
 
             <TextView
                 android:layout_marginTop="3dp"
                 android:id="@+id/tv_username_onPage"
                 android:layout_width="wrap_content"
-                android:layout_alignTop="@+id/iv_userHead_onPage"
-                android:layout_toRightOf="@id/iv_userHead_onPage"
                 android:text="用户名"
+                android:layout_marginLeft="5dp"
                 android:textColor="#000000"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -166,7 +183,6 @@
             android:orientation="horizontal"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:layout_below="@+id/ll_userLayout_onPage"
             android:layout_height="wrap_content">
 
             <com.facebook.drawee.view.SimpleDraweeView
@@ -174,10 +190,11 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
-                fresco:placeholderImage="@mipmap/ic_launcher" />
+                fresco:placeholderImage="@null" />
 
             <TextView
                 android:layout_marginTop="3dp"
+                android:layout_marginLeft="5dp"
                 android:id="@+id/tv_drawBoardName_onPage"
                 android:layout_width="wrap_content"
                 android:textColor="#000000"
@@ -189,12 +206,13 @@
             android:id="@+id/et_addNewCommit_onPage"
             android:layout_width="match_parent"
             android:hint="添加评论..."
+            android:background="#dbd9d9"
             android:layout_margin="10dp"
-            android:layout_below="@+id/ll_drawBoardLayout_onPage"
+            android:padding="3dp"
             android:layout_height="wrap_content" />
 
 
-    </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

@@ -68,15 +68,14 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-         /* Picasso.with(mContext).load(localPrettyGirlInfo.getUserHead()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.lock).into(holder.userHead);*/
-      /*  holder.localPrettyGirlInfo.setCreated_at(String.valueOf(interPrettyGirlInfo.getPins().get(i).getCreated_at()));//需转换为时间差
-        holder.localPrettyGirlInfo.setComment_count(String.valueOf(interPrettyGirlInfo.getPins().get(i).getComment_count()));
-        holder.localPrettyGirlInfo.setLike_count(String.valueOf(interPrettyGirlInfo.getPins().get(i).getLike_count()));
-        holder.localPrettyGirlInfo.setRepin_count(String.valueOf(interPrettyGirlInfo.getPins().get(i).getRepin_count()));
-        holder.localPrettyGirlInfo.setFollow_count(String.valueOf(interPrettyGirlInfo.getPins().get(i).getLike_count()));*/
+
         localPrettyGirlInfo = mList.get(position);
 
-        Picasso.with(mContext).load(localPrettyGirlInfo.getContentImg()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.lock).into(holder.imageContent);
+        /*Picasso.with(mContext).load(localPrettyGirlInfo.getContentImg()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.lock).into(holder.imageContent);*/
+        holder.imageContent.setImageURI(localPrettyGirlInfo.getContentImg());
+        float imgWidth = Float.parseFloat(localPrettyGirlInfo.getImgWidth());
+        float imgHeight = Float.parseFloat(localPrettyGirlInfo.getImgHeight());
+        holder.imageContent.setAspectRatio(imgWidth / imgHeight);
 
         holder.userHead.setImageURI(localPrettyGirlInfo.getUserHead());
         holder.username.setText(localPrettyGirlInfo.getUsername());
@@ -146,7 +145,7 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
         //用户头像
         SimpleDraweeView userHead;
         //图片内容
-        ImageView imageContent;
+        SimpleDraweeView imageContent;
         //用户名
         TextView username;
         //画板名
@@ -168,7 +167,7 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
             super(itemView);
             userMsg = (RelativeLayout) itemView.findViewById(R.id.rl_userMsg_home);
             userHead = (SimpleDraweeView) itemView.findViewById(R.id.iv_userHead_home);
-            imageContent = (ImageView) itemView.findViewById(R.id.iv_interImage_home);
+            imageContent = (SimpleDraweeView) itemView.findViewById(R.id.iv_interImage_home);
             username = (TextView) itemView.findViewById(R.id.tv_username_home);
             imageIntroduce = (TextView) itemView.findViewById(R.id.tv_image_introduce_home);
             drawBoardName = (TextView) itemView.findViewById(R.id.tv_userDrawBoard_home);
