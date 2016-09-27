@@ -7,7 +7,7 @@
 
         android:id="@+id/rg_2"
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="11dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_height="wrap_content">

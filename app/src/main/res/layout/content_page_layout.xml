@@ -20,10 +20,13 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_back_onPage"
+            android:layout_margin="8dp"
+            android:clickable="true"
             android:layout_width="wrap_content"
-            android:text="back"
+            android:layout_gravity="center"
+             android:src="@mipmap/back"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -32,24 +35,29 @@
             android:visibility="invisible"
             android:layout_height="wrap_content" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_collect_onPage"
             android:layout_width="wrap_content"
-            android:text="收藏－红心"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:src="@mipmap/like"
             android:layout_height="wrap_content" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_transPond_onPage"
             android:layout_width="wrap_content"
-            android:text="转发－底部弹出ITEM"
+           android:src="@mipmap/shares"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content" />
 
-        <Button
+        <ImageView
             android:id="@+id/ib_getNew_onPage"
             android:layout_width="60dp"
-            android:text="采集-"
+             android:src="@mipmap/caiji"
             android:textColor="#ffffff"
-            android:background="#bb1010"
+            android:clickable="true"
             android:layout_margin="10dp"
             android:layout_height="30dp" />
     </LinearLayout>
