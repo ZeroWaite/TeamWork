@@ -13,16 +13,16 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-<<<<<<< HEAD
+
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 =======
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <data android:scheme="tencent你的AppId"  />
-            </intent-filter>
-        </activity>
+
+
+
+
 
         <activity android:name=".FindMenuList_Activity">
 
@@ -36,17 +36,21 @@
 
         </activity>
 
->>>>>>> origin/master
+
 
         <activity android:name=".ContentActivity">
 
         </activity>
 
-<activity android:name=".PersonSetup.NewDrawboardActivity">
+ <activity android:name=".Board.BoardNewFinishi">
+
+ </activity>
+<activity android:name=".Board.EditBoardActivity">
 
 </activity>
+<activity android:name=".Board.NewDrawboardActivity">
 
-
+</activity>
 
     </application>
 

@@ -42,7 +42,7 @@
         android:textSize="12sp" />
 
     <TextView
-        android:drawableLeft="@mipmap/like"
+        android:drawableLeft="@drawable/like_black"
         android:id="@+id/tv_collect_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

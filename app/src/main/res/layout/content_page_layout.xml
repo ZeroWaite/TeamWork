@@ -41,7 +41,7 @@
             android:layout_margin="8dp"
             android:layout_gravity="center"
             android:clickable="true"
-            android:src="@mipmap/like"
+            android:src="@drawable/like_black"
             android:layout_height="wrap_content" />
 
         <ImageView
@@ -63,9 +63,9 @@
     </LinearLayout>
 
             <com.facebook.drawee.view.SimpleDraweeView
-
                 android:id="@+id/iv_interImage_larger"
                 android:layout_width="match_parent"
+                android:clickable="true"
                 android:layout_height="wrap_content"
                 fresco:placeholderImage="@mipmap/ic_launcher" />
 
@@ -126,7 +126,7 @@
 
                     <TextView
                         android:drawablePadding="5dp"
-                        android:drawableLeft="@mipmap/like"
+                        android:drawableLeft="@drawable/like_black"
                         android:gravity="center"
                         android:id="@+id/tv_collect_onPage"
                         android:textColor="#000000"
