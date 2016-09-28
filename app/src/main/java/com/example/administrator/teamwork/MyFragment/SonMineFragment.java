@@ -18,11 +18,12 @@ public class SonMineFragment extends AppCompatActivity {
     ConcernFragment concernFragment;
     DrawBoardFragment drawBoardFragment;
     LikeFragment likeFragment;
+
     GatherFragment gatherFragment;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void  onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.son_fragment);
         radioGroup = (RadioGroup) findViewById(R.id.rg_2);

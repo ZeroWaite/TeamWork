@@ -1,5 +1,6 @@
 package com.example.administrator.teamwork.MyFragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.example.administrator.teamwork.ContentActivity;
 import com.example.administrator.teamwork.R;
 
 import static com.example.administrator.teamwork.R.id.tv_humanityart;
@@ -184,15 +186,15 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
            switch (v.getId()){
                case R.id.tv_latest:
+                   Intent intent=new Intent(FragmentFind.this.getActivity(), ContentActivity.class);
+                   startActivity(intent);
                    break;
                case R.id.tv_latestread:
 
                    break;
                case R.id.tv_plane:
-
                    break;
                case R.id.tv_modelling:
-
                    break;
                case R.id.tv_manfashion:
                    break;
