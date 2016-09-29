@@ -75,7 +75,12 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
         holder.imageContent.setImageURI(localPrettyGirlInfo.getContentImg());
         float imgWidth = Float.parseFloat(localPrettyGirlInfo.getImgWidth());
         float imgHeight = Float.parseFloat(localPrettyGirlInfo.getImgHeight());
-        holder.imageContent.setAspectRatio(imgWidth / imgHeight);
+        if (imgWidth / imgHeight < 0.5) {
+            holder.imageContent.setAspectRatio(0.5f);
+        } else {
+            holder.imageContent.setAspectRatio(imgWidth / imgHeight);
+        }
+
 
         holder.userHead.setImageURI(localPrettyGirlInfo.getUserHead());
         holder.username.setText(localPrettyGirlInfo.getUsername());

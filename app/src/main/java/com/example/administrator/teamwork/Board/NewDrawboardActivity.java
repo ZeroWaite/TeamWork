@@ -1,6 +1,7 @@
-package com.example.administrator.teamwork.PersonSetup;
+package com.example.administrator.teamwork.Board;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ public class NewDrawboardActivity extends Activity {
     ImageButton back;
     ImageView save;
     EditText boradTitle;
+
     TextView description;
     TextView kind;
     public EditText getBoradTitle() {
@@ -54,16 +56,15 @@ public class NewDrawboardActivity extends Activity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name=boradTitle.getText().toString();
 
-                 if (name==null){
-                     Toast.makeText(NewDrawboardActivity.this,"请填写画板名称",Toast.LENGTH_SHORT).show();
-                 }else if (kind==null){
-                     Toast.makeText(NewDrawboardActivity.this,"请选择画板",Toast.LENGTH_SHORT).show();
-                 }else {
-                     Toast.makeText(NewDrawboardActivity.this,"创建完成",Toast.LENGTH_SHORT).show();
 
-                 }
+
+
+                 Toast.makeText(NewDrawboardActivity.this,"创建完成",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(NewDrawboardActivity.this,BoardNewFinishi.class);
+                startActivity(intent);
+
+
             }
         });
 

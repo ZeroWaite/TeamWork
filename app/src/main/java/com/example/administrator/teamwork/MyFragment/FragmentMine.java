@@ -18,7 +18,7 @@ import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.administrator.teamwork.PersonSetup.NewDrawboardActivity;
+import com.example.administrator.teamwork.Board.NewDrawboardActivity;
 import com.example.administrator.teamwork.PersonSetup.SearchActivity;
 import com.example.administrator.teamwork.PersonSetup.SetUpActivity;
 import com.example.administrator.teamwork.R;
@@ -34,7 +34,7 @@ public class FragmentMine extends Fragment {
     DrawBoardFragment drawBoardFragment;
     LikeFragment likeFragment;
     GatherFragment gatherFragment;
-     View fragment;
+    View fragment;
     PopupWindow popupWindow;
     PopupWindow popupWindow2;
   ImageButton search;
@@ -45,13 +45,13 @@ public class FragmentMine extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.mine_frag,container,false);
-        fragment=view.findViewById(R.id.fg_minePage2);
-        rg= (RadioGroup) view.findViewById(R.id.rg_1);
+        View view = inflater.inflate(R.layout.mine_frag, container, false);
+        fragment = view.findViewById(R.id.fg_minePage2);
+        rg = (RadioGroup) view.findViewById(R.id.rg_1);
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.rb_plate:
                         showFragment(0);
                         break;
@@ -71,14 +71,14 @@ public class FragmentMine extends Fragment {
     }
 
     private void showFragment(int i) {
-        manager=FragmentMine.this.getActivity().getSupportFragmentManager();
-        transaction=manager.beginTransaction();
+        manager = FragmentMine.this.getActivity().getSupportFragmentManager();
+        transaction = manager.beginTransaction();
         hideAll(transaction);
         switch (i) {
             case 0:
                 if (drawBoardFragment == null) {
                     drawBoardFragment = new DrawBoardFragment();
-                    transaction.add(R.id.fg_minePage2,  drawBoardFragment);
+                    transaction.add(R.id.fg_minePage2, drawBoardFragment);
                 } else {
                     transaction.show(drawBoardFragment);
                 }
@@ -136,7 +136,7 @@ public class FragmentMine extends Fragment {
         setup= (ImageButton) view.findViewById(R.id.ib_setup_person);
         add= (ImageButton) view.findViewById(R.id.iv_add_person);
         popupWindow=new PopupWindow();
-       View v = LayoutInflater.from(FragmentMine.this.getActivity()).inflate(R.layout.add_layout,null);
+        View v = LayoutInflater.from(FragmentMine.this.getActivity()).inflate(R.layout.add_layout, null);
         popupWindow.setContentView(v);
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
@@ -147,8 +147,8 @@ public class FragmentMine extends Fragment {
         popupWindow.setAnimationStyle(R.style.Popwindow);
         popupWindow.setOnDismissListener(new PoponDismissListener());
 
-       popupWindow2=new PopupWindow();
-        View v2= LayoutInflater.from(FragmentMine.this.getActivity()).inflate(R.layout.url_collect_layout,null);
+        popupWindow2 = new PopupWindow();
+        View v2 = LayoutInflater.from(FragmentMine.this.getActivity()).inflate(R.layout.url_collect_layout, null);
         popupWindow2.setContentView(v2);
         popupWindow2.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow2.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
@@ -160,22 +160,22 @@ public class FragmentMine extends Fragment {
         popupWindow2.setOnDismissListener(new PoponDismissListener());
 
 
-        urlCollect= (TextView) v.findViewById(R.id.tv_urlGather_add);
+        urlCollect = (TextView) v.findViewById(R.id.tv_urlGather_add);
         urlCollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow2.showAtLocation(urlCollect,Gravity.CENTER,0,0);
+                popupWindow2.showAtLocation(urlCollect, Gravity.CENTER, 0, 0);
                 backgroundAlpha(0.4f);
             }
         });
-        newDrawBoard= (TextView) v.findViewById(R.id.tv_foundPalette_add);
-         newDrawBoard.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intent=new Intent(FragmentMine.this.getActivity(), NewDrawboardActivity.class);
-                 startActivity(intent);
-             }
-         });
+        newDrawBoard = (TextView) v.findViewById(R.id.tv_foundPalette_add);
+        newDrawBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FragmentMine.this.getActivity(), NewDrawboardActivity.class);
+                startActivity(intent);
+            }
+        });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,7 +222,7 @@ public class FragmentMine extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLayoutInflater(R.layout.son_fragment,null);
+        getLayoutInflater(R.layout.son_fragment, null);
     }
 
     private void getLayoutInflater(int son_fragment, Object o) {

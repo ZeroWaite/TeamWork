@@ -2,20 +2,25 @@ package com.example.administrator.teamwork;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by anzhuo on 2016/9/26.
  */
-public class ContentActivity extends Activity {
+public class ContentActivity extends Activity implements View.OnClickListener {
     SimpleDraweeView imageLager;
     TextView link;
     TextView username;
@@ -25,11 +30,13 @@ public class ContentActivity extends Activity {
     TextView created_at;
     TextView raw_text;
     TextView collect;
-
+    SimpleDraweeView image_blow;
     TextView transPond;
     TextView comment;
     EditText commenting;
 
+    LinearLayout ll_user;
+    LinearLayout ll_drawBarad;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,20 @@ public class ContentActivity extends Activity {
         comment = (TextView) findViewById(R.id.tv_comment_onPage);
         commenting = (EditText) findViewById(R.id.et_addNewCommit_onPage);
         boardImg = (SimpleDraweeView) findViewById(R.id.iv_drawBoardHead_onPage);
+
+        ll_user = (LinearLayout) findViewById(R.id.ll_userLayout_onPage);
+        ll_drawBarad = (LinearLayout) findViewById(R.id.ll_drawBoardLayout_onPage);
+
+        ll_user.setOnClickListener(this);
+        ll_drawBarad.setOnClickListener(this);
+        link.setOnClickListener(this);
+        collect.setOnClickListener(this);
+        comment.setOnClickListener(this);
+        transPond.setOnClickListener(this);
+        commenting.setOnClickListener(this);
+        imageLager.setOnClickListener(this);
+
+  /*  f*/
         Intent intent = getIntent();
 
         String contentImg = intent.getExtras().getString("contentImg");
@@ -56,6 +77,8 @@ public class ContentActivity extends Activity {
         float imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
 
         imageLager.setImageURI(Uri.parse(contentImg));
+        image_blow= (SimpleDraweeView) findViewById(R.id.iv_image_load);
+
         imageLager.setAspectRatio(imgWidth / imgHeight);
        /* Picasso.with(this).load(contentImg).placeholder(R.mipmap.ic_launcher).error(R.mipmap.lock).into(imageLager);*/
         userHead.setImageURI(Uri.parse(head));
@@ -103,5 +126,58 @@ public class ContentActivity extends Activity {
 
            /* intent.putExtra("follow_count",mList.get(position).getFollow_count());*/
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_interImage_larger:
+                PopupWindow pop=new PopupWindow();
+                View v= LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load,null);
+                pop.setContentView(v);
+                pop.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+                pop.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+                pop.setFocusable(true);
+                pop.setTouchable(true);
+                pop.setOutsideTouchable(true);
+                pop.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                pop.setAnimationStyle(R.style.Popwindow2);
+                pop.setOnDismissListener(new PoponDismissListener());
+                pop.showAtLocation(imageLager, Gravity.CENTER_HORIZONTAL,0,0);
+                backgroundAlpha(0.3f);
+                break;
+            case R.id.tv_from_onPage:
+                break;
+            case R.id.tv_transPond_onPage:
+                Intent intent0 = new Intent(ContentActivity.this, TransPondActivity.class);
+                startActivity(intent0);
+                break;
+            case R.id.tv_collect_onPage:
+                Intent intent1 = new Intent(ContentActivity.this, CollectActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.tv_comment_onPage:
+                Intent intent2 = new Intent(ContentActivity.this, CommentActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.ll_userLayout_onPage:
+                break;
+            case R.id.ll_drawBoardLayout_onPage:
+                break;
+            case R.id.et_addNewCommit_onPage:
+                break;
+        }
+    }
+    private class PoponDismissListener implements PopupWindow.OnDismissListener {
+        @Override
+        public void onDismiss() {
+            backgroundAlpha(1f);
+        }
+    }
+
+    private void backgroundAlpha(float v) {
+        WindowManager.LayoutParams lp=this.getWindow().getAttributes();
+        lp.alpha=v;
+        this.getWindow().setAttributes(lp);
     }
 }

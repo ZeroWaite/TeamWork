@@ -1,11 +1,9 @@
 package com.example.administrator.teamwork;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +12,16 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
-
-import static com.example.administrator.teamwork.R.layout.find2_layout;
+import android.widget.TextView;
 
 /**
  * Created by Administrator on 2016/9/12.
  */
 public class FindMenuList_Activity extends Activity {
     ImageButton findmenu;
-
     PopupWindow popupWindow;
+
+
 
     View v ;
 

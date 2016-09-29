@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         rg_home = (RadioGroup) findViewById(R.id.rg_all);
         rb_home = (RadioButton) findViewById(R.id.rb_homePage);
+
         showFragment(0);
 
         rg_home.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
