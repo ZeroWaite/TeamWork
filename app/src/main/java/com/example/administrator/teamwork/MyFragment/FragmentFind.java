@@ -14,8 +14,9 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.administrator.teamwork.ContentActivity;
+import com.example.administrator.teamwork.PersonSetup.IdSetupActivity;
 import com.example.administrator.teamwork.R;
 
 import static com.example.administrator.teamwork.R.id.tv_humanityart;
@@ -48,7 +49,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
         super.onViewCreated(view, savedInstanceState);
         findmenu= (ImageButton) view.findViewById(R.id.ib_find_menu);
         popupWindow=new PopupWindow();
-        View v= LayoutInflater.from(this.getActivity()).inflate(R.layout.findmenu_layout,null);
+        View v= LayoutInflater.from(FragmentFind.this.getActivity()).inflate(R.layout.findmenu_layout,null);
         popupWindow.setContentView(v);
         popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
@@ -136,12 +137,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
         funny.setOnClickListener(this);
 
 
-        newly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         findmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,11 +182,11 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
            switch (v.getId()){
                case R.id.tv_latest:
-                   Intent intent=new Intent(FragmentFind.this.getActivity(), ContentActivity.class);
+                   Toast.makeText(FragmentFind.this.getActivity(), "SS", Toast.LENGTH_SHORT).show();
+                   Intent intent=new Intent(FragmentFind.this.getActivity(), IdSetupActivity.class);
                    startActivity(intent);
                    break;
                case R.id.tv_latestread:
-
                    break;
                case R.id.tv_plane:
                    break;
@@ -205,13 +201,12 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                case R.id.tv_inset:
                    break;
                case R.id.tv_wedding:
-                   ;
                    break;
                case R.id.tv_industrydesign:
-
                    break;
                case R.id.tv_shoot:
-
+                   break;
+               case R.id.tv_food:
                    break;
                case R.id.tv_travel:
                    break;
@@ -219,17 +214,13 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                    break;
                case R.id.tv_dance:
                    break;
-
                case R.id.tv_children:
                    break;
                case R.id.tv_pet:
-
                    break;
                case R.id.tv_prettypicture:
-
                    break;
                case R.id.tv_star:
-
                    break;
                case R.id.tv_beauty:
                    break;
