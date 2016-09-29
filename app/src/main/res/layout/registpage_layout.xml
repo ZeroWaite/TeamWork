@@ -11,8 +11,10 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/iv_regist_back"
-            android:src="@mipmap/backy"
+            android:src="@drawable/back"
             android:layout_margin="8dp"
+            android:clickable="true"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -28,10 +30,11 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/bt_regist_next"
+        <TextView
+            android:id="@+id/tv_regist_next"
             android:text="下一步"
             android:textSize="18dp"
+            android:clickable="true"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
