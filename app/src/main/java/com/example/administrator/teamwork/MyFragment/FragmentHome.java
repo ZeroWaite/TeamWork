@@ -230,7 +230,7 @@ public class FragmentHome extends Fragment {
         new Thread() {
             @Override
             public void run() {
-                requstUrl("http://api.huaban.com/favorite/beauty?limit=20");
+                requstUrl("http://api.huaban.com/popular/?limit=20");
                 handler.sendEmptyMessage(MSG);
             }
         }.start();
