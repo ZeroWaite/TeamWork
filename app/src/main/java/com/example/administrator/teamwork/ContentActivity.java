@@ -2,8 +2,6 @@ package com.example.administrator.teamwork;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -144,17 +142,16 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 image_blow.setAspectRatio(imgWidth / imgHeight);
 
 
-
                 pop.setContentView(v);
                 pop.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
                 pop.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
                 pop.setFocusable(true);
                 pop.setTouchable(true);
                 pop.setOutsideTouchable(true);
-                pop.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+
                 pop.setAnimationStyle(R.style.Popwindow2);
                 pop.setOnDismissListener(new PoponDismissListener());
-                pop.showAtLocation(imageLager, Gravity.CENTER_HORIZONTAL, 0, 0);
+                pop.showAtLocation(imageLager, Gravity.CENTER, 0, 0);
                 backgroundAlpha(0.3f);
                 break;
             case R.id.tv_from_onPage:
