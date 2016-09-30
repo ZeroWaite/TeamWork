@@ -1,35 +1,36 @@
 package com.example.administrator.teamwork.MyAdapter;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.administrator.teamwork.MyInfo.LocalHomePageInfo;
+
 import com.example.administrator.teamwork.MyInfo.LocalPrettyGirlInfo;
 import com.example.administrator.teamwork.R;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by anzhuo on 2016/9/19.
  */
-public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.MyViewHolder> {
+public class PrettyGirlAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<LocalPrettyGirlInfo> mList;
-    LocalPrettyGirlInfo localPrettyGirlInfo;
+    LocalPrettyGirlInfo localImgListInfo;
     Context mContext;
     LayoutInflater mInflater;
     private MyClickListener mListener = null;
+    protected final int mItemLayoutId;
+
+    public enum ITEM_TYPE {
+        ITEM1,
+        ITEM2
+    }
 
     public void setClickListener(MyClickListener listener) {
 
@@ -43,22 +44,43 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
         void onUserMsgClick(int position);
     }
 
-    public PrettyGirlAdapter(List<LocalPrettyGirlInfo> List, Context context) {
+    public PrettyGirlAdapter(List<LocalPrettyGirlInfo> List, Context context, int itemId) {
         this.mList = List;
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
+        this.mItemLayoutId = itemId;
 
 
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.home_image_item, parent, false);
+    public int getItemViewType(int position) {
+        if (mItemLayoutId == 1) {
+            return ITEM_TYPE.ITEM1.ordinal();
+        } else {
+            return ITEM_TYPE.ITEM2.ordinal();
+        }
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        if (viewType == ITEM_TYPE.ITEM1.ordinal()) {
+            return new MyViewHolder1(mInflater.inflate(R.layout.home_image_item, parent, false));
+        } else {
+            Log.i("get","adapter2");
+            return new MyViewHolder2(mInflater.inflate(R.layout.find_item_layout, parent, false));
+        }
+
+       /* View view = mInflater.inflate(R.layout.home_image_item, parent, false);
+
+        View view1 = mInflater.inflate(R.layout.find_item_layout,parent,false);
 
         MyViewHolder holder = new MyViewHolder(view);
 
-        return holder;
+        return holder;*/
     }
+
 
 
     @Override
@@ -67,69 +89,75 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        localImgListInfo = mList.get(position);
 
-        localPrettyGirlInfo = mList.get(position);
+        if (holder instanceof MyViewHolder2) {
+            ((MyViewHolder2) holder).coverTitle.setText(localImgListInfo.getCoverTitle());
+            ((MyViewHolder2) holder).coverImg.setImageURI(localImgListInfo.getCoverImg());
+            ((MyViewHolder2) holder).coverImg.setAspectRatio(1.0f);
 
-        /*Picasso.with(mContext).load(localPrettyGirlInfo.getContentImg()).placeholder(R.mipmap.ic_launcher).error(R.mipmap.lock).into(holder.imageContent);*/
-        holder.imageContent.setImageURI(localPrettyGirlInfo.getContentImg());
-        float imgWidth = Float.parseFloat(localPrettyGirlInfo.getImgWidth());
-        float imgHeight = Float.parseFloat(localPrettyGirlInfo.getImgHeight());
-        if (imgWidth / imgHeight < 0.5) {
-            holder.imageContent.setAspectRatio(0.5f);
-        } else {
-            holder.imageContent.setAspectRatio(imgWidth / imgHeight);
-        }
-
-
-        holder.userHead.setImageURI(localPrettyGirlInfo.getUserHead());
-        holder.username.setText(localPrettyGirlInfo.getUsername());
-        holder.imageIntroduce.setText(localPrettyGirlInfo.getRaw_text());
-        if (localPrettyGirlInfo.getRaw_text().equals("")) {
-            holder.imageIntroduce.setVisibility(View.GONE);
-        } else {
-            holder.imageIntroduce.setVisibility(View.VISIBLE);
-            holder.imageIntroduce.setText(localPrettyGirlInfo.getRaw_text());
-        }
-        if (localPrettyGirlInfo.getRepin_count().equals("0")) {
-            holder.transPond.setVisibility(View.GONE);
-        } else {
-            holder.transPond.setVisibility(View.VISIBLE);
-            holder.transPond.setText(localPrettyGirlInfo.getRepin_count());
-        }
-        if (localPrettyGirlInfo.getLike_count().equals("0")) {
-            holder.collect.setVisibility(View.GONE);
-        } else {
-            holder.collect.setVisibility(View.VISIBLE);
-            holder.collect.setText(localPrettyGirlInfo.getLike_count());
-        }
-        if (localPrettyGirlInfo.getComment_count().equals("0")) {
-            holder.comments.setVisibility(View.GONE);
-        } else {
-            holder.comments.setVisibility(View.VISIBLE);
-            holder.comments.setText(localPrettyGirlInfo.getComment_count());
-        }
+        } else if (holder instanceof MyViewHolder1) {
+            ((MyViewHolder1) holder).imageContent.setImageURI(localImgListInfo.getContentImg());
+            float imgWidth = Float.parseFloat(localImgListInfo.getImgWidth());
+            float imgHeight = Float.parseFloat(localImgListInfo.getImgHeight());
+            if (imgWidth / imgHeight < 0.5) {
+                ((MyViewHolder1) holder).imageContent.setAspectRatio(0.5f);
+            } else {
+                ((MyViewHolder1) holder).imageContent.setAspectRatio(imgWidth / imgHeight);
+            }
 
 
-     /*   holder.from.setText(localPrettyGirlInfo.getSource());*/
-        holder.drawBoardName.setText(localPrettyGirlInfo.getTitle());
-        if (mListener != null) {
-            holder.imageContent.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onImageContentClick(position);
-                }
-            });
-            holder.userMsg.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onUserMsgClick(position);
-                }
-            });
+            ((MyViewHolder1) holder).userHead.setImageURI(localImgListInfo.getUserHead());
+            ((MyViewHolder1) holder).username.setText(localImgListInfo.getUsername());
+            ((MyViewHolder1) holder).imageIntroduce.setText(localImgListInfo.getRaw_text());
+            if (localImgListInfo.getRaw_text().equals("")) {
+                ((MyViewHolder1) holder).imageIntroduce.setVisibility(View.GONE);
+            } else {
+                ((MyViewHolder1) holder).imageIntroduce.setVisibility(View.VISIBLE);
+                ((MyViewHolder1) holder).imageIntroduce.setText(localImgListInfo.getRaw_text());
+            }
+            if (localImgListInfo.getRepin_count().equals("0")) {
+                ((MyViewHolder1) holder).transPond.setVisibility(View.GONE);
+            } else {
+                ((MyViewHolder1) holder).transPond.setVisibility(View.VISIBLE);
+                ((MyViewHolder1) holder).transPond.setText(localImgListInfo.getRepin_count());
+            }
+            if (localImgListInfo.getLike_count().equals("0")) {
+                ((MyViewHolder1) holder).collect.setVisibility(View.GONE);
+            } else {
+                ((MyViewHolder1) holder).collect.setVisibility(View.VISIBLE);
+                ((MyViewHolder1) holder).collect.setText(localImgListInfo.getLike_count());
+            }
+            if (localImgListInfo.getComment_count().equals("0")) {
+                ((MyViewHolder1) holder).comments.setVisibility(View.GONE);
+            } else {
+                ((MyViewHolder1) holder).comments.setVisibility(View.VISIBLE);
+                ((MyViewHolder1) holder).comments.setText(localImgListInfo.getComment_count());
+            }
+
+            ((MyViewHolder1) holder).drawBoardName.setText(localImgListInfo.getTitle());
+            if (mListener != null) {
+                ((MyViewHolder1) holder).imageContent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mListener.onImageContentClick(position);
+                    }
+                });
+                ((MyViewHolder1) holder).userMsg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mListener.onUserMsgClick(position);
+                    }
+                });
+            }
+
+
         }
 
 
     }
+
 
     public void onDataChange(List<LocalPrettyGirlInfo> list) {
         this.mList = list;
@@ -137,15 +165,28 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
     }
 
 
-    /* public void addItem(List<LocalPrettyGirlInfo> newDatas) {
-         //mTitles.add(position, data);
-         //notifyItemInserted(position);
+    /*public void addItem(List<LocalImgListInfo> newDatas) {
+        *//* mTitles.add(position, data);
+         notifyItemInserted(position);*//*
          newDatas.addAll(mList);
          mList.removeAll(mList);
          mList.addAll(newDatas);
          notifyDataSetChanged();
      }*/
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder2 extends RecyclerView.ViewHolder {
+        SimpleDraweeView coverImg;
+        TextView coverTitle;
+
+        public MyViewHolder2(View itemView) {
+            super(itemView);
+            coverImg = (SimpleDraweeView) itemView.findViewById(R.id.iv_phone_wallpaper);
+            coverTitle = (TextView) itemView.findViewById(R.id.tv_phone_wallpaper);
+        }
+    }
+
+    public static class MyViewHolder1 extends RecyclerView.ViewHolder {
+
+
         RelativeLayout userMsg;
         //用户头像
         SimpleDraweeView userHead;
@@ -168,8 +209,9 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
         //收藏
         TextView collect;
 
-        public MyViewHolder(View itemView) {
+        public MyViewHolder1(View itemView) {
             super(itemView);
+
             userMsg = (RelativeLayout) itemView.findViewById(R.id.rl_userMsg_home);
             userHead = (SimpleDraweeView) itemView.findViewById(R.id.iv_userHead_home);
             imageContent = (SimpleDraweeView) itemView.findViewById(R.id.iv_interImage_home);
@@ -179,6 +221,7 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<PrettyGirlAdapter.My
             transPond = (TextView) itemView.findViewById(R.id.tv_transPond_home);
             collect = (TextView) itemView.findViewById(R.id.tv_collect_home);
             comments = (TextView) itemView.findViewById(R.id.tv_comment_home);
+
 
         }
 

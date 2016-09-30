@@ -58,7 +58,7 @@ public class FragmentHome extends Fragment {
                     mList.clear();
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
-                        prettyGirlAdapter = new PrettyGirlAdapter(mList, FragmentHome.this.getActivity());
+                        prettyGirlAdapter = new PrettyGirlAdapter(mList, FragmentHome.this.getActivity(),1);
                     } else {
                         prettyGirlAdapter.onDataChange(mList);
                     }
