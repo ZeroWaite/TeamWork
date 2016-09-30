@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="80dp"
+    android:layout_margin="2dp"
+    android:layout_height="80dp">
 
-        <ImageView
-            android:id="@+id/iv_phone_wallpaper"
-            android:layout_margin="8dp"
-            android:src="@mipmap/night"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:text="手机壁纸"
-            android:textSize="31dp"
-            android:layout_alignBottom="@+id/iv_phone_wallpaper"
-            android:background="#FFE4B5"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/iv_phone_wallpaper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    fresco:placeholderImage="@null" />
+                <TextView
+                    android:id="@+id/tv_phone_wallpaper"
+                    android:text="手机壁纸"
+                    android:layout_alignBottom="@+id/iv_phone_wallpaper"
+                    android:background="#FFE4B5"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+        </RelativeLayout>
 
 
 
-</RelativeLayout>
+
+
+</LinearLayout>

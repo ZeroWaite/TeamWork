@@ -4,6 +4,26 @@ package com.example.administrator.teamwork.MyInfo;
  * Created by anzhuo on 2016/9/19.
  */
 public class LocalPrettyGirlInfo {
+
+    private String coverTitle;
+    private String coverImg;
+
+    public String getCoverTitle() {
+        return coverTitle;
+    }
+
+    public void setCoverTitle(String coverTitle) {
+        this.coverTitle = coverTitle;
+    }
+
+    public String getCoverImg() {
+        return coverImg;
+    }
+
+    public void setCoverImg(String coverImg) {
+        this.coverImg = coverImg;
+    }
+
     private String username; /*: 刘真人仙风道骨*/
     private String title; /*: 小清新 画板名*/
     private String raw_text; /*: 携一抹眷恋，安放于流年的渡口，在生命的剪影中，且行且惜；在似水流年的光阴里，莫失莫忘。*/
