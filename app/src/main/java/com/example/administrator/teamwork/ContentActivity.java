@@ -137,14 +137,12 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_interImage_larger:
-                PopupWindow pop = new PopupWindow();
+                final PopupWindow pop = new PopupWindow();
                 View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
+                pop.setContentView(v);
                 image_blow = (SimpleDraweeView) v.findViewById(R.id.iv_image_load);
                 image_blow.setImageURI(contentImg);
                 image_blow.setAspectRatio(imgWidth / imgHeight);
-
-
-                pop.setContentView(v);
                 pop.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
                 pop.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
                 pop.setFocusable(true);
@@ -155,9 +153,17 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 pop.setOnDismissListener(new PoponDismissListener());
                 pop.showAtLocation(imageLager, Gravity.CENTER, 0, 0);
                 backgroundAlpha(0.3f);
+                image_blow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pop.dismiss();
+                    }
+                });
                 break;
             case R.id.tv_from_onPage:
                 break;
+
+
             case R.id.tv_transPond_onPage:
                 Intent intent0 = new Intent(ContentActivity.this, TransPondActivity.class);
                 startActivity(intent0);
