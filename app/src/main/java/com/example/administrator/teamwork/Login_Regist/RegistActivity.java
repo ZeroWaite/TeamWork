@@ -30,6 +30,8 @@ public class RegistActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(RegistActivity.this,CompleteRegistActivity.class);
+                String userphone=phone_number.getText().toString().trim();
+                intent.putExtra("username",userphone);
                 startActivity(intent);
             }
         });
