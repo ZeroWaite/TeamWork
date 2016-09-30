@@ -2,6 +2,8 @@ package com.example.administrator.teamwork;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -148,7 +150,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 pop.setFocusable(true);
                 pop.setTouchable(true);
                 pop.setOutsideTouchable(true);
-
+                pop.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 pop.setAnimationStyle(R.style.Popwindow2);
                 pop.setOnDismissListener(new PoponDismissListener());
                 pop.showAtLocation(imageLager, Gravity.CENTER, 0, 0);
