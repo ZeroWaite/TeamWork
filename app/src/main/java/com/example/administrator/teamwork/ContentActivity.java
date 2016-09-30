@@ -146,7 +146,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
 
 
                 pop.setContentView(v);
-                pop.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+                pop.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
                 pop.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
                 pop.setFocusable(true);
                 pop.setTouchable(true);
