@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.administrator.teamwork.ContentActivity;
-import com.example.administrator.teamwork.MyAdapter.PrettyGirlAdapter;
+import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterPrettyGirlInfo;
 import com.example.administrator.teamwork.MyInfo.LocalPrettyGirlInfo;
 import com.example.administrator.teamwork.R;
@@ -39,7 +39,7 @@ public class FragmentHome extends Fragment {
     private static final int MSG = 1;
 
     InterPrettyGirlInfo interPrettyGirlInfo;
-    PrettyGirlAdapter prettyGirlAdapter;
+    ImgListAdapter prettyGirlAdapter;
     List<LocalPrettyGirlInfo> mList = new ArrayList<>();
     LocalPrettyGirlInfo localPrettyGirlInfo;
     public static final String HTTP = "http://img.hb.aicdn.com/";
@@ -58,11 +58,11 @@ public class FragmentHome extends Fragment {
                     mList.clear();
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
-                        prettyGirlAdapter = new PrettyGirlAdapter(mList, FragmentHome.this.getActivity(),1);
+                        prettyGirlAdapter = new ImgListAdapter(mList, FragmentHome.this.getActivity(),1);
                     } else {
                         prettyGirlAdapter.onDataChange(mList);
                     }
-                    prettyGirlAdapter.setClickListener(new PrettyGirlAdapter.MyClickListener() {
+                    prettyGirlAdapter.setClickListener(new ImgListAdapter.MyClickListener() {
 
                         @Override
                         public void onImageContentClick(int position) {

@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by anzhuo on 2016/9/19.
  */
-public class PrettyGirlAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<LocalPrettyGirlInfo> mList;
     LocalPrettyGirlInfo localImgListInfo;
     Context mContext;
@@ -44,7 +44,7 @@ public class PrettyGirlAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         void onUserMsgClick(int position);
     }
 
-    public PrettyGirlAdapter(List<LocalPrettyGirlInfo> List, Context context, int itemId) {
+    public ImgListAdapter(List<LocalPrettyGirlInfo> List, Context context, int itemId) {
         this.mList = List;
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);

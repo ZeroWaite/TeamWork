@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.administrator.teamwork.ContentActivity;
-import com.example.administrator.teamwork.MyAdapter.PrettyGirlAdapter;
+import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterPrettyGirlInfo;
 import com.example.administrator.teamwork.MyInfo.LocalPrettyGirlInfo;
 import com.example.administrator.teamwork.R;
@@ -41,8 +41,8 @@ public class FragCollect extends Fragment {
     String getUrl;
 
     InterPrettyGirlInfo interPrettyGirlInfo;
-    PrettyGirlAdapter prettyGirlAdapter;
-    PrettyGirlAdapter prettyGirlAdapter2;
+    ImgListAdapter prettyGirlAdapter;
+    ImgListAdapter prettyGirlAdapter2;
     List<LocalPrettyGirlInfo> mList = new ArrayList<>();
     List<LocalPrettyGirlInfo> mList1 = new ArrayList<>();
     LocalPrettyGirlInfo localPrettyGirlInfo;
@@ -66,11 +66,11 @@ public class FragCollect extends Fragment {
                     getList1(str);
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
-                        prettyGirlAdapter = new PrettyGirlAdapter(mList, FragCollect.this.getActivity(),1);
+                        prettyGirlAdapter = new ImgListAdapter(mList, FragCollect.this.getActivity(),1);
                     } else {
                         prettyGirlAdapter.onDataChange(mList);
                     }
-                    prettyGirlAdapter.setClickListener(new PrettyGirlAdapter.MyClickListener() {
+                    prettyGirlAdapter.setClickListener(new ImgListAdapter.MyClickListener() {
 
                         @Override
                         public void onImageContentClick(int position) {
@@ -107,7 +107,7 @@ public class FragCollect extends Fragment {
                         }
                     });
 
-                    prettyGirlAdapter2 = new PrettyGirlAdapter(mList1,FragCollect.this.getActivity(),2);
+                    prettyGirlAdapter2 = new ImgListAdapter(mList1,FragCollect.this.getActivity(),2);
                     mRecyclerViewH.setAdapter(prettyGirlAdapter2);
                     mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
 
