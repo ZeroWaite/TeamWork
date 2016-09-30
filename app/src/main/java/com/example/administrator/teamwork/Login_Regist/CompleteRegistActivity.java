@@ -31,13 +31,17 @@ public class CompleteRegistActivity extends Activity {
         psw= (EditText) findViewById(R.id.et_regist_password);
         username= (EditText) findViewById(R.id.et_regist_name);
         sure= (Button) findViewById(R.id.bt_regist_sure);
+        final Intent intent=getIntent();
+        String username=intent.getStringExtra("username");
+        String userNum=username;
+        this.present_num.setText(userNum);
 
         sure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CompleteRegistActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(CompleteRegistActivity.this,LoginAcitivity.class);
-                startActivity(i);
+                 Toast.makeText(CompleteRegistActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                 Intent intent1=new Intent(CompleteRegistActivity.this,LoginAcitivity.class);
+                 startActivity(intent1);
             }
         });
     }
