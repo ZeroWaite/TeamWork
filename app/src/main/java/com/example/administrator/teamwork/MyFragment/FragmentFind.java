@@ -1,7 +1,6 @@
 package com.example.administrator.teamwork.MyFragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -55,8 +54,10 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
         popupWindow.setOutsideTouchable(true);
         popupWindow.setTouchable(true);
         popupWindow.setFocusable(true);
+        view.setFocusableInTouchMode(true);
+        view.setFocusable(true);
         popupWindow.setAnimationStyle(R.style.Popwindow);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
         popupWindow.setOnDismissListener(new PoponDismissListener());
 
         hot= (TextView) v.findViewById(R.id.tv_latest);
@@ -103,12 +104,14 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
 
         findmenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v) {
                 backgroundAlpha(0.3f);
+
                 popupWindow.showAtLocation(findmenu, Gravity.CENTER,0,0);
                 popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
                     @Override
                     public void onDismiss() {
+
                         backgroundAlpha(1f);
                     }
                 });
@@ -148,55 +151,68 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                    Toast.makeText(FragmentFind.this.getActivity(), "SS", Toast.LENGTH_SHORT).show();
                    Intent intent=new Intent(FragmentFind.this.getActivity(), IdSetupActivity.class);
                    startActivity(intent);
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_plane:
                    sendUrl("http://api.huaban.com/favorite/design?limit=20",plane.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_modelling:
                    sendUrl("http://api.huaban.com/favorite/modeling_hair?limit=20",modeling.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_manfashion:
                    sendUrl("http://api.huaban.com/favorite/men?limit=20",manfashion.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_inset:
                    sendUrl("http://api.huaban.com/favorite/illustration?limit=20",inset.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_home:
                    sendUrl("http://api.huaban.com/favorite/home?limit=20",home.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_wedding:
                    sendUrl("http://api.huaban.com/favorite/wedding_events?limit=20",wedding.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_food:
                    sendUrl("http://api.huaban.com/favorite/food_drink?limit=20",food.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_travel:
                    sendUrl("http://api.huaban.com/favorite/travel_places?limit=20",travel.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_pet:
                    sendUrl("http://api.huaban.com/favorite/pets?limit=20",pet.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_beauty:
                    sendUrl("http://api.huaban.com/favorite/beauty?limit=20",beauty.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_present:
                    sendUrl("http://api.huaban.com/favorite/desire?limit=20",present.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_constructiondesign:
                    sendUrl("http://api.huaban.com/favorite/architecture?limit=20",constructiondesign.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_humanityart:
                    sendUrl("http://api.huaban.com/favorite/art?limit=20",humanityart.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_movie_book:
                    sendUrl("http://api.huaban.com/favorite/film_music_books?limit=20",movie_book.getText().toString());
+                   popupWindow.dismiss();
                    break;
                case R.id.tv_Encyclopedias:
                    sendUrl("http://api.huaban.com/favorite/tips?limit=20",Encyclopedias.getText().toString());
+                   popupWindow.dismiss();
                    break;
-
-
-
            }
     }
 
@@ -213,7 +229,6 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
     private class PoponDismissListener implements PopupWindow.OnDismissListener {
         @Override
         public void onDismiss() {
-
         }
     }
 }

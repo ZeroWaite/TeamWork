@@ -37,7 +37,7 @@
 
  <activity android:name=".Board.BoardNewFinishi">
  </activity>
-
+<activity android:name=".PersonSetup.PersonalSetActivity"/>
 <activity android:name=".Board.EditBoardActivity"/>
 <activity android:name=".Board.NewDrawboardActivity"/>
  <activity android:name=".Login_Regist.LoginAcitivity">

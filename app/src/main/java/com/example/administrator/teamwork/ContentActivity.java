@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -35,10 +36,11 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     TextView transPond;
     TextView comment;
     EditText commenting;
-
     LinearLayout ll_user;
     LinearLayout ll_drawBarad;
-
+    ImageView gather;
+    ImageView share;
+    ImageView back;
 
 
     String contentImg;
@@ -62,6 +64,9 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         comment = (TextView) findViewById(R.id.tv_comment_onPage);
         commenting = (EditText) findViewById(R.id.et_addNewCommit_onPage);
         boardImg = (SimpleDraweeView) findViewById(R.id.iv_drawBoardHead_onPage);
+        gather= (ImageView) findViewById(R.id.ib_getNew_onPage);
+        share= (ImageView) findViewById(R.id.ib_transPond_onPage);
+        back= (ImageView) findViewById(R.id.ib_back_onPage);
 
         ll_user = (LinearLayout) findViewById(R.id.ll_userLayout_onPage);
         ll_drawBarad = (LinearLayout) findViewById(R.id.ll_drawBoardLayout_onPage);
@@ -74,6 +79,9 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         transPond.setOnClickListener(this);
         commenting.setOnClickListener(this);
         imageLager.setOnClickListener(this);
+        gather.setOnClickListener(this);
+        share.setOnClickListener(this);
+        back.setOnClickListener(this);
 
   /*  f*/
         Intent intent = getIntent();
@@ -83,10 +91,8 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         String boardHead = intent.getExtras().getString("boardImg");
         imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
         imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
-
         imageLager.setImageURI(Uri.parse(contentImg));
         imageLager.setAspectRatio(imgWidth / imgHeight);
-
         userHead.setImageURI(Uri.parse(head));
         username.setText(intent.getExtras().getString("username"));
         boardName.setText(intent.getExtras().getString("title"));
@@ -139,7 +145,6 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             case R.id.iv_interImage_larger:
                 final PopupWindow pop = new PopupWindow();
                 View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
-
                 pop.setContentView(v);
                 image_blow = (SimpleDraweeView) v.findViewById(R.id.iv_image_load);
                 image_blow.setImageURI(contentImg);
@@ -149,7 +154,6 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 pop.setFocusable(true);
                 pop.setTouchable(true);
                 pop.setOutsideTouchable(true);
-                pop.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 pop.setAnimationStyle(R.style.Popwindow2);
                 pop.setOnDismissListener(new PoponDismissListener());
                 pop.showAtLocation(imageLager, Gravity.CENTER, 0, 0);
@@ -163,7 +167,9 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_from_onPage:
                 break;
-
+            case R.id.ib_back_onPage:
+                finish();
+                break;
 
             case R.id.tv_transPond_onPage:
                 Intent intent0 = new Intent(ContentActivity.this, TransPondActivity.class);
@@ -182,6 +188,25 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             case R.id.ll_drawBoardLayout_onPage:
                 break;
             case R.id.et_addNewCommit_onPage:
+                break;
+            case R.id.ib_transPond_onPage:
+                PopupWindow popupWindow=new PopupWindow();
+                View v0= LayoutInflater.from(ContentActivity.this ).inflate(R.layout.share_picture_layout,null);
+                popupWindow.setContentView(v0);
+                popupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+                popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setTouchable(true);
+                popupWindow.setFocusable(true);
+                view.setFocusableInTouchMode(true);
+                view.setFocusable(true);
+                popupWindow.setAnimationStyle(R.style.Popwindow2);
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                popupWindow.showAtLocation(imageLager, Gravity.BOTTOM, 0, 0);
+                backgroundAlpha(0.3f);
+                popupWindow.setOnDismissListener(new PoponDismissListener());
+                break;
+            case R.id.ib_getNew_onPage:
                 break;
         }
     }
