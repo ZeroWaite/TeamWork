@@ -2,16 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="80dp"
-    android:layout_margin="2dp"
-    android:layout_height="80dp">
+    android:layout_width="100dp"
+
+    android:layout_margin="5dp"
+    android:layout_height="100dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
+
             android:layout_height="match_parent">
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/iv_phone_wallpaper"
+                    fresco:roundedCornerRadius="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     fresco:placeholderImage="@null" />
@@ -19,8 +22,10 @@
                     android:id="@+id/tv_phone_wallpaper"
                     android:text="手机壁纸"
                     android:layout_alignBottom="@+id/iv_phone_wallpaper"
-                    android:background="#FFE4B5"
-                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:padding="8dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/shape_corner_down"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
