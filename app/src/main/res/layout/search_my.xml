@@ -10,9 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
        android:background="#FAFFF0"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:src="@drawable/pink_back" />
+        android:layout_margin="15dp"
+
+        android:src="@mipmap/back" />
 
     <EditText
         android:id="@+id/sv_search_search"
@@ -26,10 +26,10 @@
     <ImageButton
         android:id="@+id/iv_clickSearch_Search"
         android:layout_width="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="15dp"
         android:layout_height="wrap_content"
          android:background="#FAFFF0"
         android:gravity="center"
-        android:src="@mipmap/sousuo" />
+        android:src="@mipmap/searcg" />
 
 </LinearLayout>
