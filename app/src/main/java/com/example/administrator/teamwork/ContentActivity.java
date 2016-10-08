@@ -139,6 +139,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             case R.id.iv_interImage_larger:
                 final PopupWindow pop = new PopupWindow();
                 View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
+
                 pop.setContentView(v);
                 image_blow = (SimpleDraweeView) v.findViewById(R.id.iv_image_load);
                 image_blow.setImageURI(contentImg);
