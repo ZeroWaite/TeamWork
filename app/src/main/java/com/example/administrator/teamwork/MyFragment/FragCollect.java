@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.administrator.teamwork.ContentActivity;
+import com.example.administrator.teamwork.InterestActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterPrettyGirlInfo;
 import com.example.administrator.teamwork.MyInfo.LocalPrettyGirlInfo;
@@ -71,7 +72,10 @@ public class FragCollect extends Fragment {
                         prettyGirlAdapter.onDataChange(mList);
                     }
                     prettyGirlAdapter.setClickListener(new ImgListAdapter.MyClickListener() {
+                        @Override
+                        public void onThisItemClick(int position) {
 
+                        }
                         @Override
                         public void onImageContentClick(int position) {
                             Intent intent = new Intent(FragCollect.this.getActivity(), ContentActivity.class);
@@ -108,8 +112,29 @@ public class FragCollect extends Fragment {
                     });
 
                     prettyGirlAdapter2 = new ImgListAdapter(mList1,FragCollect.this.getActivity(),2);
+                    prettyGirlAdapter2.setClickListener(new ImgListAdapter.MyClickListener() {
+                        @Override
+                        public void onThisItemClick(int position) {
+                            Intent intent = new Intent(FragCollect.this.getActivity(), InterestActivity.class);
+                            intent.putExtra("title",mList1.get(position).getCoverTitle());
+                            intent.putExtra("intro",mList1.get(position).getCoverIntro());
+                            Toast.makeText(FragCollect.this.getActivity(), "横向列表之"+position, Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onImageContentClick(int position) {
+
+                        }
+
+                        @Override
+                        public void onUserMsgClick(int position) {
+
+                        }
+                    });
                     mRecyclerViewH.setAdapter(prettyGirlAdapter2);
                     mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
+
 
                     mRecyclerViewV.setAdapter(prettyGirlAdapter);
                     mRecyclerViewV.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
@@ -226,6 +251,7 @@ public class FragCollect extends Fragment {
             localPrettyGirlInfo = new LocalPrettyGirlInfo();
             localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
             localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
+            localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
             mList1.add(localPrettyGirlInfo);
 
 

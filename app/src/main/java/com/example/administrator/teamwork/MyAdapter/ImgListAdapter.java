@@ -39,6 +39,7 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public interface MyClickListener {
+        void onThisItemClick(int position);
         void onImageContentClick(int position);
 
         void onUserMsgClick(int position);
@@ -97,6 +98,17 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ((MyViewHolder2) holder).coverImg.setImageURI(localImgListInfo.getCoverImg());
             ((MyViewHolder2) holder).coverImg.setAspectRatio(1.0f);
 
+
+            if (mListener != null) {
+                ((MyViewHolder2) holder).itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mListener.onThisItemClick(position);
+                    }
+                });
+            }
+
+
         } else if (holder instanceof MyViewHolder1) {
             ((MyViewHolder1) holder).imageContent.setImageURI(localImgListInfo.getContentImg());
             float imgWidth = Float.parseFloat(localImgListInfo.getImgWidth());
@@ -138,6 +150,7 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             ((MyViewHolder1) holder).drawBoardName.setText(localImgListInfo.getTitle());
             if (mListener != null) {
+
                 ((MyViewHolder1) holder).imageContent.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -150,6 +163,7 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         mListener.onUserMsgClick(position);
                     }
                 });
+
             }
 
 
@@ -174,11 +188,13 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
          notifyDataSetChanged();
      }*/
     public static class MyViewHolder2 extends RecyclerView.ViewHolder {
+
         SimpleDraweeView coverImg;
         TextView coverTitle;
 
         public MyViewHolder2(View itemView) {
             super(itemView);
+
             coverImg = (SimpleDraweeView) itemView.findViewById(R.id.iv_phone_wallpaper);
             coverTitle = (TextView) itemView.findViewById(R.id.tv_phone_wallpaper);
         }

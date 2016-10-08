@@ -7,6 +7,15 @@ public class LocalPrettyGirlInfo {
 
     private String coverTitle;
     private String coverImg;
+    private String coverIntro;
+
+    public String getCoverIntro() {
+        return coverIntro;
+    }
+
+    public void setCoverIntro(String coverIntro) {
+        this.coverIntro = coverIntro;
+    }
 
     public String getCoverTitle() {
         return coverTitle;
