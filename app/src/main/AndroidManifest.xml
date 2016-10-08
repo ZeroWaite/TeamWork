@@ -46,6 +46,7 @@
 
 <activity android:name=".Login_Regist.RegistActivity"/>
 <activity android:name=".Login_Regist.CompleteRegistActivity"/>
+        <activity android:name=".InterestActivity"></activity>
 
     </application>
 

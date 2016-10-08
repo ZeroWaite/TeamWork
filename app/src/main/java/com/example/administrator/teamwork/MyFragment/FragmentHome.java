@@ -63,6 +63,10 @@ public class FragmentHome extends Fragment {
                         prettyGirlAdapter.onDataChange(mList);
                     }
                     prettyGirlAdapter.setClickListener(new ImgListAdapter.MyClickListener() {
+                        @Override
+                        public void onThisItemClick(int position) {
+
+                        }
 
                         @Override
                         public void onImageContentClick(int position) {
