@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by anzhuo on 2016/9/19.
  */
-public class InterPrettyGirlInfo {
+public class InterShareInfo {
 
 
     /**

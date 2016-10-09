@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.administrator.teamwork.ContentActivity;
 import com.example.administrator.teamwork.InterestActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
-import com.example.administrator.teamwork.MyInfo.InterPrettyGirlInfo;
+import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
 import com.google.gson.Gson;
@@ -41,7 +41,7 @@ public class FragCollect extends Fragment {
     private static final int MSG = 1;
     String getUrl;
 
-    InterPrettyGirlInfo interPrettyGirlInfo;
+    InterShareInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
     ImgListAdapter prettyGirlAdapter2;
     List<LocalShareInfo> mList = new ArrayList<>();
@@ -245,7 +245,7 @@ public class FragCollect extends Fragment {
 
         Log.i("str", "一大波数据已经更新");
         Gson gson = new Gson();
-        interPrettyGirlInfo = gson.fromJson(str, InterPrettyGirlInfo.class);
+        interPrettyGirlInfo = gson.fromJson(str, InterShareInfo.class);
 
         for (int i = 0; i < interPrettyGirlInfo.getExplores().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
@@ -266,7 +266,7 @@ public class FragCollect extends Fragment {
 
 
         Gson gson = new Gson();
-        interPrettyGirlInfo = gson.fromJson(str, InterPrettyGirlInfo.class);
+        interPrettyGirlInfo = gson.fromJson(str, InterShareInfo.class);
         for (int i = 0; i < interPrettyGirlInfo.getPins().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
             localPrettyGirlInfo.setUsername(interPrettyGirlInfo.getPins().get(i).getUser().getUsername());

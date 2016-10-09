@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.administrator.teamwork.ContentActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
-import com.example.administrator.teamwork.MyInfo.InterPrettyGirlInfo;
+import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
 import com.google.gson.Gson;
@@ -38,7 +38,7 @@ import okhttp3.Response;
 public class FragmentHome extends Fragment {
     private static final int MSG = 1;
 
-    InterPrettyGirlInfo interPrettyGirlInfo;
+    InterShareInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
     List<LocalShareInfo> mList = new ArrayList<>();
     LocalShareInfo localPrettyGirlInfo;
@@ -206,7 +206,7 @@ public class FragmentHome extends Fragment {
 
         Log.i("str", "一大波数据已经更新");
         Gson gson = new Gson();
-        interPrettyGirlInfo = gson.fromJson(str, InterPrettyGirlInfo.class);
+        interPrettyGirlInfo = gson.fromJson(str, InterShareInfo.class);
         for (int i = 0; i < interPrettyGirlInfo.getPins().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
             localPrettyGirlInfo.setUsername(interPrettyGirlInfo.getPins().get(i).getUser().getUsername());
