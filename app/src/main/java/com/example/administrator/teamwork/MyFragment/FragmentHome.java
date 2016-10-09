@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.administrator.teamwork.ContentActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterPrettyGirlInfo;
-import com.example.administrator.teamwork.MyInfo.LocalPrettyGirlInfo;
+import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
 import com.google.gson.Gson;
 
@@ -40,8 +40,8 @@ public class FragmentHome extends Fragment {
 
     InterPrettyGirlInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
-    List<LocalPrettyGirlInfo> mList = new ArrayList<>();
-    LocalPrettyGirlInfo localPrettyGirlInfo;
+    List<LocalShareInfo> mList = new ArrayList<>();
+    LocalShareInfo localPrettyGirlInfo;
     public static final String HTTP = "http://img.hb.aicdn.com/";
     StaggeredGridLayoutManager staggeredGridLayoutManager;
     SwipeRefreshLayout demo_swiperefreshlayout;
@@ -202,13 +202,13 @@ public class FragmentHome extends Fragment {
         });
     }
 
-    private List<LocalPrettyGirlInfo> getJsonData(String str) {
+    private List<LocalShareInfo> getJsonData(String str) {
 
         Log.i("str", "一大波数据已经更新");
         Gson gson = new Gson();
         interPrettyGirlInfo = gson.fromJson(str, InterPrettyGirlInfo.class);
         for (int i = 0; i < interPrettyGirlInfo.getPins().toArray().length; i++) {
-            localPrettyGirlInfo = new LocalPrettyGirlInfo();
+            localPrettyGirlInfo = new LocalShareInfo();
             localPrettyGirlInfo.setUsername(interPrettyGirlInfo.getPins().get(i).getUser().getUsername());
             localPrettyGirlInfo.setTitle(interPrettyGirlInfo.getPins().get(i).getBoard().getTitle());
             localPrettyGirlInfo.setRaw_text(interPrettyGirlInfo.getPins().get(i).getRaw_text() == null ? "" : interPrettyGirlInfo.getPins().get(i).getRaw_text());

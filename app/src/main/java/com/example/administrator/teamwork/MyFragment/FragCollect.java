@@ -20,7 +20,7 @@ import com.example.administrator.teamwork.ContentActivity;
 import com.example.administrator.teamwork.InterestActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterPrettyGirlInfo;
-import com.example.administrator.teamwork.MyInfo.LocalPrettyGirlInfo;
+import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
 import com.google.gson.Gson;
 
@@ -44,9 +44,9 @@ public class FragCollect extends Fragment {
     InterPrettyGirlInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
     ImgListAdapter prettyGirlAdapter2;
-    List<LocalPrettyGirlInfo> mList = new ArrayList<>();
-    List<LocalPrettyGirlInfo> mList1 = new ArrayList<>();
-    LocalPrettyGirlInfo localPrettyGirlInfo;
+    List<LocalShareInfo> mList = new ArrayList<>();
+    List<LocalShareInfo> mList1 = new ArrayList<>();
+    LocalShareInfo localPrettyGirlInfo;
     public static final String HTTP = "http://img.hb.aicdn.com/";
     StaggeredGridLayoutManager staggeredGridLayoutManager;
     SwipeRefreshLayout demo_swiperefreshlayout;
@@ -241,14 +241,14 @@ public class FragCollect extends Fragment {
     }
 
 
-    private List<LocalPrettyGirlInfo> getList1(String str) {
+    private List<LocalShareInfo> getList1(String str) {
 
         Log.i("str", "一大波数据已经更新");
         Gson gson = new Gson();
         interPrettyGirlInfo = gson.fromJson(str, InterPrettyGirlInfo.class);
 
         for (int i = 0; i < interPrettyGirlInfo.getExplores().toArray().length; i++) {
-            localPrettyGirlInfo = new LocalPrettyGirlInfo();
+            localPrettyGirlInfo = new LocalShareInfo();
             localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
             localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
             localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
@@ -262,13 +262,13 @@ public class FragCollect extends Fragment {
 
     }
 
-    private List<LocalPrettyGirlInfo> getJsonData(String str) {
+    private List<LocalShareInfo> getJsonData(String str) {
 
 
         Gson gson = new Gson();
         interPrettyGirlInfo = gson.fromJson(str, InterPrettyGirlInfo.class);
         for (int i = 0; i < interPrettyGirlInfo.getPins().toArray().length; i++) {
-            localPrettyGirlInfo = new LocalPrettyGirlInfo();
+            localPrettyGirlInfo = new LocalShareInfo();
             localPrettyGirlInfo.setUsername(interPrettyGirlInfo.getPins().get(i).getUser().getUsername());
             localPrettyGirlInfo.setTitle(interPrettyGirlInfo.getPins().get(i).getBoard().getTitle());
             localPrettyGirlInfo.setRaw_text(interPrettyGirlInfo.getPins().get(i).getRaw_text() == null ? "" : interPrettyGirlInfo.getPins().get(i).getRaw_text());

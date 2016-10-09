@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.example.administrator.teamwork.MyInfo.LocalPrettyGirlInfo;
+import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -20,8 +20,8 @@ import java.util.List;
  * Created by anzhuo on 2016/9/19.
  */
 public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    List<LocalPrettyGirlInfo> mList;
-    LocalPrettyGirlInfo localImgListInfo;
+    List<LocalShareInfo> mList;
+    LocalShareInfo localImgListInfo;
     Context mContext;
     LayoutInflater mInflater;
     private MyClickListener mListener = null;
@@ -45,7 +45,7 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         void onUserMsgClick(int position);
     }
 
-    public ImgListAdapter(List<LocalPrettyGirlInfo> List, Context context, int itemId) {
+    public ImgListAdapter(List<LocalShareInfo> List, Context context, int itemId) {
         this.mList = List;
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
@@ -173,7 +173,7 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
 
-    public void onDataChange(List<LocalPrettyGirlInfo> list) {
+    public void onDataChange(List<LocalShareInfo> list) {
         this.mList = list;
         this.notifyDataSetChanged();
     }
