@@ -141,7 +141,7 @@ public class FragmentHome extends Fragment {
                     int lastVisiblePosition = getMaxElem(lastVisiblePositions);
                     int totalItemCount = manager.getItemCount();
                     if (lastVisiblePosition == (totalItemCount - 1) && isSlidingToLast) {
-
+                        Toast.makeText(FragmentHome.this.getActivity(), "正在加载更多", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
