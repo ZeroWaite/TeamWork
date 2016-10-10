@@ -97,6 +97,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         username.setText(intent.getExtras().getString("username"));
         boardName.setText(intent.getExtras().getString("title"));
 
+
         created_at.setText(intent.getExtras().getString("created_at"));
         if (intent.getExtras().getString("raw_text").equals("")) {
             raw_text.setVisibility(View.GONE);
