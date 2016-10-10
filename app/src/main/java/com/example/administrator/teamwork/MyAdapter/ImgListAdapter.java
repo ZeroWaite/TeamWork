@@ -1,6 +1,7 @@
 package com.example.administrator.teamwork.MyAdapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +13,11 @@ import android.widget.TextView;
 
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 import java.util.List;
 
@@ -110,7 +115,20 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
         } else if (holder instanceof MyViewHolder1) {
-            ((MyViewHolder1) holder).imageContent.setImageURI(localImgListInfo.getContentImg());
+
+
+            ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(localImgListInfo.getContentImg()))
+                    .setProgressiveRenderingEnabled(true)
+                    .build();
+            DraweeController controller = Fresco.newDraweeControllerBuilder()
+                    .setImageRequest(request)
+                    .setAutoPlayAnimations(true)
+                    .setOldController(((MyViewHolder1) holder).imageContent.getController())
+                    .build();
+            ((MyViewHolder1) holder).imageContent.setController(controller);
+
+
+         /*   ((MyViewHolder1) holder).imageContent.setImageURI(localImgListInfo.getContentImg());*/
             float imgWidth = Float.parseFloat(localImgListInfo.getImgWidth());
             float imgHeight = Float.parseFloat(localImgListInfo.getImgHeight());
             if (imgWidth / imgHeight < 0.5) {
