@@ -19,6 +19,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.io.File;
@@ -156,7 +158,15 @@ public class ContentActivity extends Activity implements View.OnClickListener {
 
                 image_blow = (SimpleDraweeView) v.findViewById(R.id.iv_image_load);
                 download= (ImageView) v.findViewById(R.id.image_load);
-                image_blow.setImageURI(contentImg);
+
+                DraweeController controller = Fresco.newDraweeControllerBuilder()
+                        .setUri(contentImg)
+                        .setAutoPlayAnimations(true)
+
+                        .build();
+
+                image_blow.setController(controller);
+
                 image_blow.setAspectRatio(imgWidth / imgHeight);
                 pop.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
                 pop.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
