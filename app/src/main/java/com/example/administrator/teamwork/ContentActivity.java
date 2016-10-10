@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,8 +17,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.io.File;
 
 /**
  * Created by anzhuo on 2016/9/26.
@@ -41,7 +46,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     ImageView gather;
     ImageView share;
     ImageView back;
-
+    ImageView download;
 
     String contentImg;
     private float imgWidth;
@@ -67,6 +72,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         gather= (ImageView) findViewById(R.id.ib_getNew_onPage);
         share= (ImageView) findViewById(R.id.ib_transPond_onPage);
         back= (ImageView) findViewById(R.id.ib_back_onPage);
+
 
         ll_user = (LinearLayout) findViewById(R.id.ll_userLayout_onPage);
         ll_drawBarad = (LinearLayout) findViewById(R.id.ll_drawBoardLayout_onPage);
@@ -147,7 +153,9 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 final PopupWindow pop = new PopupWindow();
                 View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
                 pop.setContentView(v);
+
                 image_blow = (SimpleDraweeView) v.findViewById(R.id.iv_image_load);
+                download= (ImageView) v.findViewById(R.id.image_load);
                 image_blow.setImageURI(contentImg);
                 image_blow.setAspectRatio(imgWidth / imgHeight);
                 pop.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
@@ -159,10 +167,38 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 pop.setOnDismissListener(new PoponDismissListener());
                 pop.showAtLocation(imageLager, Gravity.CENTER, 0, 0);
                 backgroundAlpha(0.3f);
+                v.setFocusable(true);
+                v.setFocusableInTouchMode(true);
+                v.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (keyCode==KeyEvent.KEYCODE_BACK){
+                            //如果PopupWindow处于显示状态，则关闭PopupWindow
+                            if (pop.isShowing()) {
+                                pop.dismiss();
+                            }
+
+                        }
+                        return false;
+                    }
+                });
+
                 image_blow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         pop.dismiss();
+                    }
+                });
+                download.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(ContentActivity.this, "下载", Toast.LENGTH_SHORT).show();
+                        String filepath="d:/test1/test2/test3";
+                        File fp=new File(filepath);
+                        if (!fp.exists()){
+                            fp.mkdir();
+                            Log.i("str","创建完成"+filepath);
+                        }
                     }
                 });
                 break;
@@ -189,7 +225,10 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             case R.id.ll_drawBoardLayout_onPage:
                 break;
             case R.id.et_addNewCommit_onPage:
+                Intent intent3=new Intent(ContentActivity.this,CommentActivity.class);
+                startActivity(intent3);
                 break;
+
             case R.id.ib_transPond_onPage:
                 PopupWindow popupWindow=new PopupWindow();
                 View v0= LayoutInflater.from(ContentActivity.this ).inflate(R.layout.share_picture_layout,null);
@@ -209,6 +248,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.ib_getNew_onPage:
                 break;
+
         }
     }
 
