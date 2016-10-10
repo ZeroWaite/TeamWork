@@ -7,8 +7,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.facebook.drawee.view.SimpleDraweeView
-
+    <com.example.administrator.teamwork.MyDraweeView
         android:id="@+id/iv_image_load"
         fresco:actualImageScaleType="fitCenter"
         android:layout_width="match_parent"

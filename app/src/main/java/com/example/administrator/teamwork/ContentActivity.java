@@ -39,7 +39,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     TextView created_at;
     TextView raw_text;
     TextView collect;
-    SimpleDraweeView image_blow;
+    MyDraweeView image_blow;
     TextView transPond;
     TextView comment;
     EditText commenting;
@@ -99,7 +99,13 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         String boardHead = intent.getExtras().getString("boardImg");
         imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
         imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
-        imageLager.setImageURI(Uri.parse(contentImg));
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setUri(contentImg)
+                .setAutoPlayAnimations(true)
+
+                .build();
+
+        imageLager.setController(controller);
         imageLager.setAspectRatio(imgWidth / imgHeight);
         userHead.setImageURI(Uri.parse(head));
         username.setText(intent.getExtras().getString("username"));
@@ -156,18 +162,12 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
                 pop.setContentView(v);
 
-                image_blow = (SimpleDraweeView) v.findViewById(R.id.iv_image_load);
+
+
+                image_blow = (MyDraweeView) v.findViewById(R.id.iv_image_load);
                 download= (ImageView) v.findViewById(R.id.image_load);
-
-                DraweeController controller = Fresco.newDraweeControllerBuilder()
-                        .setUri(contentImg)
-                        .setAutoPlayAnimations(true)
-
-                        .build();
-
-                image_blow.setController(controller);
-
-                image_blow.setAspectRatio(imgWidth / imgHeight);
+                image_blow.setImageURI(contentImg);
+                /*image_blow.setAspectRatio(imgWidth / imgHeight);*/
                 pop.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
                 pop.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
                 pop.setFocusable(true);
