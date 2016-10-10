@@ -117,14 +117,13 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else if (holder instanceof MyViewHolder1) {
 
 
-            ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(localImgListInfo.getContentImg()))
-                    .setProgressiveRenderingEnabled(true)
-                    .build();
+
             DraweeController controller = Fresco.newDraweeControllerBuilder()
-                    .setImageRequest(request)
+                    .setUri(localImgListInfo.getContentImg())
                     .setAutoPlayAnimations(true)
-                    .setOldController(((MyViewHolder1) holder).imageContent.getController())
-                    .build();
+
+            .build();
+
             ((MyViewHolder1) holder).imageContent.setController(controller);
 
 

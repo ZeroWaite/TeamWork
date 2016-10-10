@@ -62,12 +62,14 @@
             android:layout_height="30dp" />
     </LinearLayout>
 
-            <com.facebook.drawee.view.SimpleDraweeView
+            <me.relex.photodraweeview.PhotoDraweeView
                 android:id="@+id/iv_interImage_larger"
                 android:layout_width="match_parent"
                 android:clickable="true"
                 android:layout_height="wrap_content"
-                fresco:placeholderImage="@mipmap/ic_launcher" />
+                fresco:placeholderImage="@mipmap/ic_launcher"/>
+
+
 
 
             <LinearLayout
