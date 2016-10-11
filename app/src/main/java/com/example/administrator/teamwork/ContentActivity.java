@@ -79,6 +79,8 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         ll_user = (LinearLayout) findViewById(R.id.ll_userLayout_onPage);
         ll_drawBarad = (LinearLayout) findViewById(R.id.ll_drawBoardLayout_onPage);
 
+        commenting.setOnClickListener(this);
+
         ll_user.setOnClickListener(this);
         ll_drawBarad.setOnClickListener(this);
         link.setOnClickListener(this);
@@ -258,6 +260,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.ib_getNew_onPage:
                 break;
+
 
         }
     }
