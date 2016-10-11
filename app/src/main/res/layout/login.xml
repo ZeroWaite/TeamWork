@@ -92,14 +92,28 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bt_login_login"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="#ffffff"
-        android:text="登录"
-        android:textColor="#a7a5a5" />
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/bt_login_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="#ffffff"
+            android:text="登录"
+            android:textColor="#a7a5a5" />
+        <Button
+            android:id="@+id/bt_login_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="#ffffff"
+            android:text="注册"
+            android:textColor="#a7a5a5" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
