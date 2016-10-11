@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
@@ -116,15 +117,16 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         } else if (holder instanceof MyViewHolder1) {
 
-
-
-            DraweeController controller = Fresco.newDraweeControllerBuilder()
-                    .setUri(localImgListInfo.getContentImg())
+            ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(localImgListInfo.getContentImg()))
+                    .setProgressiveRenderingEnabled(true)
+                    .build();
+            PipelineDraweeController controller1 = (PipelineDraweeController) Fresco.newDraweeControllerBuilder()
+                    .setImageRequest(request)
+                    .setOldController(((MyViewHolder1) holder).imageContent.getController())
                     .setAutoPlayAnimations(true)
+                    .build();
+            ((MyViewHolder1) holder).imageContent.setController(controller1);
 
-            .build();
-
-            ((MyViewHolder1) holder).imageContent.setController(controller);
 
 
          /*   ((MyViewHolder1) holder).imageContent.setImageURI(localImgListInfo.getContentImg());*/
