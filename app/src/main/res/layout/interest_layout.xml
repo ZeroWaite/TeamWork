@@ -34,9 +34,25 @@
         android:padding="20dp"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/demo_title_interest"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_vertical_interest"
+            android:layout_width="match_parent"
+            android:drawSelectorOnTop="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 
 </LinearLayout>
