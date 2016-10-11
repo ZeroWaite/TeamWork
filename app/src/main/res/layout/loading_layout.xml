@@ -11,7 +11,8 @@
       android:layout_height="wrap_content">
       <ImageView
       android:id="@+id/iv_loading_back"
-      android:src="@mipmap/x"
+      android:src="@mipmap/cancel"
+      android:layout_gravity="center_vertical"
       android:layout_margin="10dp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" />
@@ -57,20 +58,26 @@
      android:layout_width="match_parent"
      android:orientation="horizontal"
      android:layout_height="wrap_content">
-     <Button
+     <TextView
          android:id="@+id/bt_forgetPsw"
          android:text="忘记密码？"
-         android:layout_marginLeft="16dp"
+         android:clickable="true"
+         android:layout_marginLeft="20dp"
          android:textColor="#87CEEB"
-         android:background="#FFFFF0"
+         android:textSize="15dp"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content" />
-     <Button
+     <TextView
+         android:layout_width="0dp"
+         android:layout_weight="1"
+         android:layout_height="wrap_content" />
+     <TextView
          android:id="@+id/bt_phone_regist"
-         android:text="忘记密码？"
-        android:layout_marginLeft="170dp"
+         android:text="手机注册"
+         android:clickable="true"
+         android:textSize="15dp"
+         android:layout_marginEnd="20dp"
          android:textColor="#87CEEB"
-         android:background="#FFFFF0"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content" />
  </LinearLayout>

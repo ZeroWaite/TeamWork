@@ -14,9 +14,10 @@
             android:id="@+id/ib_back_account_setup"
             android:layout_width="wrap_content"
             android:background="#FAFFF0"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/pink_back" />
+            android:src="@mipmap/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +43,7 @@
         android:textColor="#FF69B4"
         android:layout_marginTop="35dp"
         android:text="手机号"
-        android:textSize="30dp" />
+        android:textSize="19dp" />
 
     <TextView
         android:id="@+id/tv_email_account_setup"
@@ -51,7 +52,7 @@
         android:textColor="#FF69B4"
         android:layout_marginTop="35dp"
         android:text="邮箱"
-        android:textSize="30dp" />
+        android:textSize="19dp" />
 
     <TextView
         android:id="@+id/tv_loginPassword_account_setup"
@@ -60,7 +61,7 @@
         android:textColor="#FF69B4"
         android:layout_marginTop="35dp"
         android:text="登录密码"
-        android:textSize="30dp" />
+        android:textSize="19dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,7 +78,7 @@
         android:layout_height="wrap_content">
         <RadioButton
             android:id="@+id/tv_sinaWeibo_account_setup"
-            android:drawableTop="@mipmap/sina3f"
+            android:drawableTop="@mipmap/xl"
             android:text="微博"
             style="@style/all"
 
@@ -86,14 +87,14 @@
 
         <RadioButton
             android:id="@+id/tv_qq_account_setup"
-            android:drawableTop="@mipmap/qq_3f"
+            android:drawableTop="@mipmap/qq"
             android:text="QQ"
             style="@style/all"
             android:layout_marginLeft="35dp"/>
 
         <RadioButton
             android:id="@+id/tv_wx_account_setup"
-            android:drawableTop="@mipmap/wx_3f"
+            android:drawableTop="@mipmap/wx"
             android:text="微信"
             style="@style/all"
             android:layout_marginLeft="35dp"
@@ -102,7 +103,7 @@
 
         <RadioButton
             android:id="@+id/tv_db_account_setup"
-            android:drawableTop="@mipmap/souban_3f"
+            android:drawableTop="@mipmap/db"
             android:text="豆瓣"
             style="@style/all"
             android:layout_marginLeft="35dp"/>

@@ -16,7 +16,7 @@ public class LikeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.find2_layout,null);
+        View view=inflater.inflate(R.layout.find_frag,null);
         return view;
     }
 

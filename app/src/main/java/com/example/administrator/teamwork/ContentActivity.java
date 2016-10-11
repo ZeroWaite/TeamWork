@@ -6,21 +6,30 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.io.File;
 
 /**
  * Created by anzhuo on 2016/9/26.
  */
 public class ContentActivity extends Activity implements View.OnClickListener {
+
     SimpleDraweeView imageLager;
     TextView link;
     TextView username;
@@ -30,13 +39,21 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     TextView created_at;
     TextView raw_text;
     TextView collect;
-    SimpleDraweeView image_blow;
+    MyDraweeView image_blow;
     TextView transPond;
     TextView comment;
     EditText commenting;
-
     LinearLayout ll_user;
     LinearLayout ll_drawBarad;
+    ImageView gather;
+    ImageView share;
+    ImageView back;
+    ImageView download;
+
+    String contentImg;
+    private float imgWidth;
+    private float imgHeight;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +71,15 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         comment = (TextView) findViewById(R.id.tv_comment_onPage);
         commenting = (EditText) findViewById(R.id.et_addNewCommit_onPage);
         boardImg = (SimpleDraweeView) findViewById(R.id.iv_drawBoardHead_onPage);
+        gather= (ImageView) findViewById(R.id.ib_getNew_onPage);
+        share= (ImageView) findViewById(R.id.ib_transPond_onPage);
+        back= (ImageView) findViewById(R.id.ib_back_onPage);
+
 
         ll_user = (LinearLayout) findViewById(R.id.ll_userLayout_onPage);
         ll_drawBarad = (LinearLayout) findViewById(R.id.ll_drawBoardLayout_onPage);
+
+        commenting.setOnClickListener(this);
 
         ll_user.setOnClickListener(this);
         ll_drawBarad.setOnClickListener(this);
@@ -66,24 +89,30 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         transPond.setOnClickListener(this);
         commenting.setOnClickListener(this);
         imageLager.setOnClickListener(this);
+        gather.setOnClickListener(this);
+        share.setOnClickListener(this);
+        back.setOnClickListener(this);
 
   /*  f*/
         Intent intent = getIntent();
 
-        String contentImg = intent.getExtras().getString("contentImg");
+         contentImg = intent.getExtras().getString("contentImg");
         String head = intent.getExtras().getString("userHead");
         String boardHead = intent.getExtras().getString("boardImg");
-        float imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
-        float imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
+        imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
+        imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setUri(contentImg)
+                .setAutoPlayAnimations(true)
 
-        imageLager.setImageURI(Uri.parse(contentImg));
-        image_blow= (SimpleDraweeView) findViewById(R.id.iv_image_load);
+                .build();
 
+        imageLager.setController(controller);
         imageLager.setAspectRatio(imgWidth / imgHeight);
-       /* Picasso.with(this).load(contentImg).placeholder(R.mipmap.ic_launcher).error(R.mipmap.lock).into(imageLager);*/
         userHead.setImageURI(Uri.parse(head));
         username.setText(intent.getExtras().getString("username"));
         boardName.setText(intent.getExtras().getString("title"));
+
 
         created_at.setText(intent.getExtras().getString("created_at"));
         if (intent.getExtras().getString("raw_text").equals("")) {
@@ -120,7 +149,6 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         }
 
 
-
         boardImg.setImageURI(Uri.parse(boardHead));
 
 
@@ -132,22 +160,66 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_interImage_larger:
-                PopupWindow pop=new PopupWindow();
-                View v= LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load,null);
+                final PopupWindow pop = new PopupWindow();
+                View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
                 pop.setContentView(v);
-                pop.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
+
+
+
+                image_blow = (MyDraweeView) v.findViewById(R.id.iv_image_load);
+                download= (ImageView) v.findViewById(R.id.image_load);
+                image_blow.setImageURI(contentImg);
+                /*image_blow.setAspectRatio(imgWidth / imgHeight);*/
+                pop.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
                 pop.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
                 pop.setFocusable(true);
                 pop.setTouchable(true);
                 pop.setOutsideTouchable(true);
-                pop.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 pop.setAnimationStyle(R.style.Popwindow2);
                 pop.setOnDismissListener(new PoponDismissListener());
-                pop.showAtLocation(imageLager, Gravity.CENTER_HORIZONTAL,0,0);
+                pop.showAtLocation(imageLager, Gravity.CENTER, 0, 0);
                 backgroundAlpha(0.3f);
+                v.setFocusable(true);
+                v.setFocusableInTouchMode(true);
+                v.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (keyCode==KeyEvent.KEYCODE_BACK){
+                            //如果PopupWindow处于显示状态，则关闭PopupWindow
+                            if (pop.isShowing()) {
+                                pop.dismiss();
+                            }
+
+                        }
+                        return false;
+                    }
+                });
+
+                image_blow.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pop.dismiss();
+                    }
+                });
+                download.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(ContentActivity.this, "下载", Toast.LENGTH_SHORT).show();
+                        String filepath="d:/test1/test2/test3";
+                        File fp=new File(filepath);
+                        if (!fp.exists()){
+                            fp.mkdir();
+                            Log.i("str","创建完成"+filepath);
+                        }
+                    }
+                });
                 break;
             case R.id.tv_from_onPage:
                 break;
+            case R.id.ib_back_onPage:
+                finish();
+                break;
+
             case R.id.tv_transPond_onPage:
                 Intent intent0 = new Intent(ContentActivity.this, TransPondActivity.class);
                 startActivity(intent0);
@@ -165,9 +237,34 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             case R.id.ll_drawBoardLayout_onPage:
                 break;
             case R.id.et_addNewCommit_onPage:
+                Intent intent3=new Intent(ContentActivity.this,CommentActivity.class);
+                startActivity(intent3);
                 break;
+
+            case R.id.ib_transPond_onPage:
+                PopupWindow popupWindow=new PopupWindow();
+                View v0= LayoutInflater.from(ContentActivity.this ).inflate(R.layout.share_picture_layout,null);
+                popupWindow.setContentView(v0);
+                popupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+                popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setTouchable(true);
+                popupWindow.setFocusable(true);
+                view.setFocusableInTouchMode(true);
+                view.setFocusable(true);
+                popupWindow.setAnimationStyle(R.style.Popwindow2);
+                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                popupWindow.showAtLocation(imageLager, Gravity.BOTTOM, 0, 0);
+                backgroundAlpha(0.3f);
+                popupWindow.setOnDismissListener(new PoponDismissListener());
+                break;
+            case R.id.ib_getNew_onPage:
+                break;
+
+
         }
     }
+
     private class PoponDismissListener implements PopupWindow.OnDismissListener {
         @Override
         public void onDismiss() {
@@ -176,8 +273,8 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     }
 
     private void backgroundAlpha(float v) {
-        WindowManager.LayoutParams lp=this.getWindow().getAttributes();
-        lp.alpha=v;
+        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+        lp.alpha = v;
         this.getWindow().setAttributes(lp);
     }
 }

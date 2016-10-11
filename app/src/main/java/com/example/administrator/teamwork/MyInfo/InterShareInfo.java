@@ -3,37 +3,56 @@ package com.example.administrator.teamwork.MyInfo;
 import java.util.List;
 
 /**
- * Created by anzhuo on 2016/9/14.
+ * Created by anzhuo on 2016/9/19.
  */
-public class InterHotInfo {
+public class InterShareInfo {
+
 
     /**
-     * pin_id : 853876673
-     * user_id : 15018060
-     * board_id : 18983479
-     * file_id : 66694389
-     * file : {"id":66694389,"farm":"farm1","bucket":"hbimg","key":"2a011381a1f2d8fc4ae1bf5174d360bfd3079ba977154-Yp3WNp","type":"image/jpeg","width":818,"height":1200,"frames":1,"theme":"EAE7E8"}
+     * pin_id : 858197777
+     * user_id : 18712058
+     * board_id : 30377705
+     * file_id : 91809500
+     * file : {"id":91809500,"farm":"farm1","bucket":"hbimg","key":"3688a99f4fe1aec5d10758ddc58093d3cec51aadaca49-Xftzkg","type":"image/jpeg","height":"2918","frames":"1","width":"2048"}
      * media_type : 0
-     * source : armedskeeter.tumblr.com
-     * link : http://armedskeeter.tumblr.com/
-     * raw_text : Armed Skeeter
+     * source : null
+     * link : null
+     * raw_text : 等老了暮色，等老了年华
+     * 等老了一颗年轻热忱的心
+     * 已等了太久，
+     * 而你依然还是
+     * 那么遥远。
      * text_meta : {}
-     * via : 382398599
-     * via_user_id : 7015509
-     * original : 312092193
-     * created_at : 1473820303
-     * like_count : 1
+     * via : 854107094
+     * via_user_id : 14872004
+     * original : 593188701
+     * created_at : 1474254360
+     * like_count : 0
      * comment_count : 0
-     * repin_count : 2
+     * repin_count : 0
      * is_private : 0
      * orig_source : null
-     * user : {"user_id":15018060,"username":"爱是一切的答案","urlname":"blrsnf98uo","created_at":1408696774,"avatar":{"id":40436447,"farm":"farm1","bucket":"hbimg","key":"5024b543b3bcaeae373484beb0c6c07daab3b6fb229e-cSRo0B","type":"image/gif","width":100,"height":100,"frames":1},"extra":null}
-     * board : {"board_id":18983479,"user_id":15018060,"title":"美好心情","description":"心旷神怡的感觉","category_id":"travel_places","seq":3,"pin_count":1042,"follow_count":86,"like_count":2,"created_at":1420444814,"updated_at":1473820591,"deleting":0,"is_private":0,"extra":{"cover":{"pin_id":"311889011"}}}
-     * via_user : {"user_id":7015509,"username":"妤儿+-+","urlname":"yuer0429","created_at":1364395850,"avatar":{"id":91020224,"farm":"farm1","bucket":"hbimg","key":"899c50ad53429e7b995a353df14f049ac7da35a516f18-tVwop5","type":"image/jpeg","height":"987","frames":"1","width":"658"},"extra":null}
+     * user : {"user_id":18712058,"username":"Molly宝宝","urlname":"wwi9ocsksy","created_at":1462002854,"avatar":{"id":112238192,"farm":"farm1","bucket":"hbimg","key":"d623b6128c7611377d6c1ed3241d3769c091749f8a914-fNM0gq","type":"image/png","width":"580","height":"776","frames":"1"},"extra":null}
+     * board : {"board_id":30377705,"user_id":18712058,"title":"美人志*古韵如烟","description":"此情可待成追忆，只是当时已惘然。 －李商隐《锦瑟》\n北方有佳人，绝世而独立。一顾倾人城，再顾倾人国。宁不知倾城与倾国，佳人难再得！－李延年《佳人歌》","category_id":"beauty","seq":48,"pin_count":829,"follow_count":265,"like_count":11,"created_at":1466594533,"updated_at":1474254377,"deleting":0,"is_private":0,"extra":null}
+     * via_user : {"user_id":14872004,"username":"*胡纸先森ぐ","urlname":"h4qvoilmg7","created_at":1407891771,"avatar":{"id":109262807,"farm":"farm1","bucket":"hbimg","key":"ebc624d8de0f80c34391c42ba6a3b20293e74aea2295a-xcrw2t","type":"image/jpeg","width":"600","height":"900","frames":"1"},"extra":null}
      */
 
     private List<PinsBean> pins;
-    private List<?> explores;
+    /**
+     * keyword_id : 871
+     * name : 闺蜜装
+     * urlname : guimizhuang
+     * cover : {"farm":"farm1","bucket":"hbimg","key":"0fbf467024184c5ea8beb9669b573e5c4511a2b219991-t74ETu","type":"image/jpeg","width":398,"height":600,"frames":1,"file_id":30983125}
+     * description : 恋人之间有情侣装，姐妹之间有闺蜜装。表达情谊的方式有很多种，穿同款不同色的闺蜜装也是不错的方式哦。
+     * recommended_users : null
+     * creator_id : null
+     * created_at : 1421031816
+     * is_hidden : 0
+     * tags : {"must":["闺蜜"],"should":["穿搭","搭配"]}
+     * theme : 19181D
+     */
+
+    private List<ExploresBean> explores;
 
     public List<PinsBean> getPins() {
         return pins;
@@ -43,11 +62,11 @@ public class InterHotInfo {
         this.pins = pins;
     }
 
-    public List<?> getExplores() {
+    public List<ExploresBean> getExplores() {
         return explores;
     }
 
-    public void setExplores(List<?> explores) {
+    public void setExplores(List<ExploresBean> explores) {
         this.explores = explores;
     }
 
@@ -57,21 +76,20 @@ public class InterHotInfo {
         private int board_id;
         private int file_id;
         /**
-         * id : 66694389
+         * id : 91809500
          * farm : farm1
          * bucket : hbimg
-         * key : 2a011381a1f2d8fc4ae1bf5174d360bfd3079ba977154-Yp3WNp
+         * key : 3688a99f4fe1aec5d10758ddc58093d3cec51aadaca49-Xftzkg
          * type : image/jpeg
-         * width : 818
-         * height : 1200
+         * height : 2918
          * frames : 1
-         * theme : EAE7E8
+         * width : 2048
          */
 
         private FileBean file;
         private int media_type;
-        private String source;
-        private String link;
+        private Object source;
+        private Object link;
         private String raw_text;
         private int via;
         private int via_user_id;
@@ -83,39 +101,40 @@ public class InterHotInfo {
         private int is_private;
         private Object orig_source;
         /**
-         * user_id : 15018060
-         * username : 爱是一切的答案
-         * urlname : blrsnf98uo
-         * created_at : 1408696774
-         * avatar : {"id":40436447,"farm":"farm1","bucket":"hbimg","key":"5024b543b3bcaeae373484beb0c6c07daab3b6fb229e-cSRo0B","type":"image/gif","width":100,"height":100,"frames":1}
+         * user_id : 18712058
+         * username : Molly宝宝
+         * urlname : wwi9ocsksy
+         * created_at : 1462002854
+         * avatar : {"id":112238192,"farm":"farm1","bucket":"hbimg","key":"d623b6128c7611377d6c1ed3241d3769c091749f8a914-fNM0gq","type":"image/png","width":"580","height":"776","frames":"1"}
          * extra : null
          */
 
         private UserBean user;
         /**
-         * board_id : 18983479
-         * user_id : 15018060
-         * title : 美好心情
-         * description : 心旷神怡的感觉
-         * category_id : travel_places
-         * seq : 3
-         * pin_count : 1042
-         * follow_count : 86
-         * like_count : 2
-         * created_at : 1420444814
-         * updated_at : 1473820591
+         * board_id : 30377705
+         * user_id : 18712058
+         * title : 美人志*古韵如烟
+         * description : 此情可待成追忆，只是当时已惘然。 －李商隐《锦瑟》
+         * 北方有佳人，绝世而独立。一顾倾人城，再顾倾人国。宁不知倾城与倾国，佳人难再得！－李延年《佳人歌》
+         * category_id : beauty
+         * seq : 48
+         * pin_count : 829
+         * follow_count : 265
+         * like_count : 11
+         * created_at : 1466594533
+         * updated_at : 1474254377
          * deleting : 0
          * is_private : 0
-         * extra : {"cover":{"pin_id":"311889011"}}
+         * extra : null
          */
 
         private BoardBean board;
         /**
-         * user_id : 7015509
-         * username : 妤儿+-+
-         * urlname : yuer0429
-         * created_at : 1364395850
-         * avatar : {"id":91020224,"farm":"farm1","bucket":"hbimg","key":"899c50ad53429e7b995a353df14f049ac7da35a516f18-tVwop5","type":"image/jpeg","height":"987","frames":"1","width":"658"}
+         * user_id : 14872004
+         * username : *胡纸先森ぐ
+         * urlname : h4qvoilmg7
+         * created_at : 1407891771
+         * avatar : {"id":109262807,"farm":"farm1","bucket":"hbimg","key":"ebc624d8de0f80c34391c42ba6a3b20293e74aea2295a-xcrw2t","type":"image/jpeg","width":"600","height":"900","frames":"1"}
          * extra : null
          */
 
@@ -169,19 +188,19 @@ public class InterHotInfo {
             this.media_type = media_type;
         }
 
-        public String getSource() {
+        public Object getSource() {
             return source;
         }
 
-        public void setSource(String source) {
+        public void setSource(Object source) {
             this.source = source;
         }
 
-        public String getLink() {
+        public Object getLink() {
             return link;
         }
 
-        public void setLink(String link) {
+        public void setLink(Object link) {
             this.link = link;
         }
 
@@ -295,10 +314,9 @@ public class InterHotInfo {
             private String bucket;
             private String key;
             private String type;
-            private int width;
-            private int height;
-            private int frames;
-            private String theme;
+            private String height;
+            private String frames;
+            private String width;
 
             public int getId() {
                 return id;
@@ -340,65 +358,47 @@ public class InterHotInfo {
                 this.type = type;
             }
 
-            public int getWidth() {
-                return width;
-            }
-
-            public void setWidth(int width) {
-                this.width = width;
-            }
-
-            public int getHeight() {
+            public String getHeight() {
                 return height;
             }
 
-            public void setHeight(int height) {
+            public void setHeight(String height) {
                 this.height = height;
             }
 
-            public int getFrames() {
+            public String getFrames() {
                 return frames;
             }
 
-            public void setFrames(int frames) {
+            public void setFrames(String frames) {
                 this.frames = frames;
             }
 
-            public String getTheme() {
-                return theme;
+            public String getWidth() {
+                return width;
             }
 
-            public void setTheme(String theme) {
-                this.theme = theme;
+            public void setWidth(String width) {
+                this.width = width;
             }
         }
 
         public static class UserBean {
-            private int user_id;
             private String username;
-            private String urlname;
             private int created_at;
             /**
-             * id : 40436447
+             * id : 112238192
              * farm : farm1
              * bucket : hbimg
-             * key : 5024b543b3bcaeae373484beb0c6c07daab3b6fb229e-cSRo0B
-             * type : image/gif
-             * width : 100
-             * height : 100
+             * key : d623b6128c7611377d6c1ed3241d3769c091749f8a914-fNM0gq
+             * type : image/png
+             * width : 580
+             * height : 776
              * frames : 1
              */
 
             private AvatarBean avatar;
             private Object extra;
-
-            public int getUser_id() {
-                return user_id;
-            }
-
-            public void setUser_id(int user_id) {
-                this.user_id = user_id;
-            }
 
             public String getUsername() {
                 return username;
@@ -406,14 +406,6 @@ public class InterHotInfo {
 
             public void setUsername(String username) {
                 this.username = username;
-            }
-
-            public String getUrlname() {
-                return urlname;
-            }
-
-            public void setUrlname(String urlname) {
-                this.urlname = urlname;
             }
 
             public int getCreated_at() {
@@ -441,22 +433,13 @@ public class InterHotInfo {
             }
 
             public static class AvatarBean {
-                private int id;
                 private String farm;
                 private String bucket;
                 private String key;
                 private String type;
-                private int width;
-                private int height;
-                private int frames;
-
-                public int getId() {
-                    return id;
-                }
-
-                public void setId(int id) {
-                    this.id = id;
-                }
+                private String width;
+                private String height;
+                private String frames;
 
                 public String getFarm() {
                     return farm;
@@ -490,38 +473,35 @@ public class InterHotInfo {
                     this.type = type;
                 }
 
-                public int getWidth() {
+                public String getWidth() {
                     return width;
                 }
 
-                public void setWidth(int width) {
+                public void setWidth(String width) {
                     this.width = width;
                 }
 
-                public int getHeight() {
+                public String getHeight() {
                     return height;
                 }
 
-                public void setHeight(int height) {
+                public void setHeight(String height) {
                     this.height = height;
                 }
 
-                public int getFrames() {
+                public String getFrames() {
                     return frames;
                 }
 
-                public void setFrames(int frames) {
+                public void setFrames(String frames) {
                     this.frames = frames;
                 }
             }
         }
 
         public static class BoardBean {
-            private int board_id;
-            private int user_id;
             private String title;
             private String description;
-            private String category_id;
             private int seq;
             private int pin_count;
             private int follow_count;
@@ -530,27 +510,7 @@ public class InterHotInfo {
             private int updated_at;
             private int deleting;
             private int is_private;
-            /**
-             * cover : {"pin_id":"311889011"}
-             */
-
-            private ExtraBean extra;
-
-            public int getBoard_id() {
-                return board_id;
-            }
-
-            public void setBoard_id(int board_id) {
-                this.board_id = board_id;
-            }
-
-            public int getUser_id() {
-                return user_id;
-            }
-
-            public void setUser_id(int user_id) {
-                this.user_id = user_id;
-            }
+            private Object extra;
 
             public String getTitle() {
                 return title;
@@ -566,14 +526,6 @@ public class InterHotInfo {
 
             public void setDescription(String description) {
                 this.description = description;
-            }
-
-            public String getCategory_id() {
-                return category_id;
-            }
-
-            public void setCategory_id(String category_id) {
-                this.category_id = category_id;
             }
 
             public int getSeq() {
@@ -640,40 +592,12 @@ public class InterHotInfo {
                 this.is_private = is_private;
             }
 
-            public ExtraBean getExtra() {
+            public Object getExtra() {
                 return extra;
             }
 
-            public void setExtra(ExtraBean extra) {
+            public void setExtra(Object extra) {
                 this.extra = extra;
-            }
-
-            public static class ExtraBean {
-                /**
-                 * pin_id : 311889011
-                 */
-
-                private CoverBean cover;
-
-                public CoverBean getCover() {
-                    return cover;
-                }
-
-                public void setCover(CoverBean cover) {
-                    this.cover = cover;
-                }
-
-                public static class CoverBean {
-                    private String pin_id;
-
-                    public String getPin_id() {
-                        return pin_id;
-                    }
-
-                    public void setPin_id(String pin_id) {
-                        this.pin_id = pin_id;
-                    }
-                }
             }
         }
 
@@ -683,14 +607,14 @@ public class InterHotInfo {
             private String urlname;
             private int created_at;
             /**
-             * id : 91020224
+             * id : 109262807
              * farm : farm1
              * bucket : hbimg
-             * key : 899c50ad53429e7b995a353df14f049ac7da35a516f18-tVwop5
+             * key : ebc624d8de0f80c34391c42ba6a3b20293e74aea2295a-xcrw2t
              * type : image/jpeg
-             * height : 987
+             * width : 600
+             * height : 900
              * frames : 1
-             * width : 658
              */
 
             private AvatarBean avatar;
@@ -750,9 +674,9 @@ public class InterHotInfo {
                 private String bucket;
                 private String key;
                 private String type;
+                private String width;
                 private String height;
                 private String frames;
-                private String width;
 
                 public int getId() {
                     return id;
@@ -794,6 +718,14 @@ public class InterHotInfo {
                     this.type = type;
                 }
 
+                public String getWidth() {
+                    return width;
+                }
+
+                public void setWidth(String width) {
+                    this.width = width;
+                }
+
                 public String getHeight() {
                     return height;
                 }
@@ -809,14 +741,215 @@ public class InterHotInfo {
                 public void setFrames(String frames) {
                     this.frames = frames;
                 }
+            }
+        }
+    }
 
-                public String getWidth() {
-                    return width;
-                }
+    public static class ExploresBean {
+        private int keyword_id;
+        private String name;
+        private String urlname;
+        /**
+         * farm : farm1
+         * bucket : hbimg
+         * key : 0fbf467024184c5ea8beb9669b573e5c4511a2b219991-t74ETu
+         * type : image/jpeg
+         * width : 398
+         * height : 600
+         * frames : 1
+         * file_id : 30983125
+         */
 
-                public void setWidth(String width) {
-                    this.width = width;
-                }
+        private CoverBean cover;
+        private String description;
+        private Object recommended_users;
+        private Object creator_id;
+        private int created_at;
+        private int is_hidden;
+        private TagsBean tags;
+        private String theme;
+
+        public int getKeyword_id() {
+            return keyword_id;
+        }
+
+        public void setKeyword_id(int keyword_id) {
+            this.keyword_id = keyword_id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getUrlname() {
+            return urlname;
+        }
+
+        public void setUrlname(String urlname) {
+            this.urlname = urlname;
+        }
+
+        public CoverBean getCover() {
+            return cover;
+        }
+
+        public void setCover(CoverBean cover) {
+            this.cover = cover;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public Object getRecommended_users() {
+            return recommended_users;
+        }
+
+        public void setRecommended_users(Object recommended_users) {
+            this.recommended_users = recommended_users;
+        }
+
+        public Object getCreator_id() {
+            return creator_id;
+        }
+
+        public void setCreator_id(Object creator_id) {
+            this.creator_id = creator_id;
+        }
+
+        public int getCreated_at() {
+            return created_at;
+        }
+
+        public void setCreated_at(int created_at) {
+            this.created_at = created_at;
+        }
+
+        public int getIs_hidden() {
+            return is_hidden;
+        }
+
+        public void setIs_hidden(int is_hidden) {
+            this.is_hidden = is_hidden;
+        }
+
+        public TagsBean getTags() {
+            return tags;
+        }
+
+        public void setTags(TagsBean tags) {
+            this.tags = tags;
+        }
+
+        public String getTheme() {
+            return theme;
+        }
+
+        public void setTheme(String theme) {
+            this.theme = theme;
+        }
+
+        public static class CoverBean {
+            private String farm;
+            private String bucket;
+            private String key;
+            private String type;
+            private int width;
+            private int height;
+            private int frames;
+            private int file_id;
+
+            public String getFarm() {
+                return farm;
+            }
+
+            public void setFarm(String farm) {
+                this.farm = farm;
+            }
+
+            public String getBucket() {
+                return bucket;
+            }
+
+            public void setBucket(String bucket) {
+                this.bucket = bucket;
+            }
+
+            public String getKey() {
+                return key;
+            }
+
+            public void setKey(String key) {
+                this.key = key;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public int getWidth() {
+                return width;
+            }
+
+            public void setWidth(int width) {
+                this.width = width;
+            }
+
+            public int getHeight() {
+                return height;
+            }
+
+            public void setHeight(int height) {
+                this.height = height;
+            }
+
+            public int getFrames() {
+                return frames;
+            }
+
+            public void setFrames(int frames) {
+                this.frames = frames;
+            }
+
+            public int getFile_id() {
+                return file_id;
+            }
+
+            public void setFile_id(int file_id) {
+                this.file_id = file_id;
+            }
+        }
+
+        public static class TagsBean {
+            private List<String> must;
+            private List<String> should;
+
+            public List<String> getMust() {
+                return must;
+            }
+
+            public void setMust(List<String> must) {
+                this.must = must;
+            }
+
+            public List<String> getShould() {
+                return should;
+            }
+
+            public void setShould(List<String> should) {
+                this.should = should;
             }
         }
     }

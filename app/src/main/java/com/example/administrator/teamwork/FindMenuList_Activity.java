@@ -12,7 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 /**
  * Created by Administrator on 2016/9/12.
@@ -28,12 +27,12 @@ public class FindMenuList_Activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.find2_layout);
+        setContentView(R.layout.find_frag);
 
         findmenu= (ImageButton) findViewById(R.id.ib_find_menu);
         popupWindow=new PopupWindow();
         final View view= LayoutInflater.from(this).inflate(R.layout.findmenu_layout,null);
-        final View view1=LayoutInflater.from(this).inflate(R.layout.find2_layout,null);
+        final View view1=LayoutInflater.from(this).inflate(R.layout.find_frag,null);
         popupWindow.setContentView(view);
         popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);

@@ -13,41 +13,38 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-<<<<<<< HEAD
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-=======
-                <category android:name="android.intent.category.LAUNCHER"/>
-                <data android:scheme="tencent你的AppId"  />
-            </intent-filter>
-        </activity>
+        <activity android:name=".TransPondActivity"></activity>
+        <activity android:name=".CollectActivity"></activity>
+        <activity android:name=".CommentActivity"></activity>
+        <activity android:name=".ContentActivity"></activity>
 
         <activity android:name=".FindMenuList_Activity">
-
         </activity >
-
         <activity android:name=".PersonSetup.SetUpActivity">
-
-
         </activity>
-        <activity android:name=".MyFragment.MyHomeFrag">
-
+        <activity android:name=".PersonSetup.IdSetupActivity">
         </activity>
-
->>>>>>> origin/master
-
-        <activity android:name=".ContentActivity">
-
+        <activity android:name=".PersonSetup.SearchActivity">
         </activity>
+        <activity android:name=".TitleListActivity"></activity>
 
-<activity android:name=".PersonSetup.NewDrawboardActivity">
+ <activity android:name=".Board.BoardNewFinishi">
+ </activity>
+<activity android:name=".PersonSetup.PersonalSetActivity"/>
+<activity android:name=".Board.EditBoardActivity"/>
+<activity android:name=".Board.NewDrawboardActivity"/>
+ <activity android:name=".Login_Regist.LoginAcitivity">
 
-</activity>
+ </activity>
 
-
+<activity android:name=".Login_Regist.RegistActivity"/>
+<activity android:name=".Login_Regist.CompleteRegistActivity"/>
+        <activity android:name=".InterestActivity"></activity>
 
     </application>
+
 
 </manifest>

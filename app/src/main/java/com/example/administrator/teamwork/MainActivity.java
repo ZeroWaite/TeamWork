@@ -26,13 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         rg_home = (RadioGroup) findViewById(R.id.rg_all);
         rb_home = (RadioButton) findViewById(R.id.rb_homePage);
-
         showFragment(0);
 
         rg_home.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
+
                 if (fragmentNews == null) {
                     fragmentNews = new FragmentNews();
                     transaction.add(R.id.fg_homePage, fragmentNews);

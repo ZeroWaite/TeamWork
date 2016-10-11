@@ -1,26 +1,25 @@
-package com.example.administrator.teamwork.MyFragment;
+package com.example.administrator.teamwork;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.teamwork.ContentActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
-import com.example.administrator.teamwork.R;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -33,21 +32,31 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by Administrator on 2016/9/12.
+ * Created by anzhuo on 2016/10/8.
  */
-public class FragmentHome extends Fragment {
+public class InterestActivity extends Activity {
+    TextView title;
+    TextView intro;
+    ImageButton back;
+
+    String key;
+    String total;
+
     private static final int MSG = 1;
+
 
     InterShareInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
+    ImgListAdapter prettyGirlAdapter2;
     List<LocalShareInfo> mList = new ArrayList<>();
+    List<LocalShareInfo> mList1 = new ArrayList<>();
     LocalShareInfo localPrettyGirlInfo;
     public static final String HTTP = "http://img.hb.aicdn.com/";
-    StaggeredGridLayoutManager staggeredGridLayoutManager;
     SwipeRefreshLayout demo_swiperefreshlayout;
 
 
-    RecyclerView gridView;
+    RecyclerView mRecyclerViewH;
+    RecyclerView mRecyclerViewV;
     OkHttpClient okHttpClient;
     String str;
     Handler handler = new Handler() {
@@ -55,10 +64,13 @@ public class FragmentHome extends Fragment {
         public void handleMessage(final Message msg) {
             switch (msg.what) {
                 case MSG:
+                  /*  mList1.clear();*/
                     mList.clear();
+
+                  /*  getList1(str);*/
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
-                        prettyGirlAdapter = new ImgListAdapter(mList, FragmentHome.this.getActivity(),1);
+                        prettyGirlAdapter = new ImgListAdapter(mList, InterestActivity.this, 1);
                     } else {
                         prettyGirlAdapter.onDataChange(mList);
                     }
@@ -70,7 +82,7 @@ public class FragmentHome extends Fragment {
 
                         @Override
                         public void onImageContentClick(int position) {
-                            Intent intent = new Intent(FragmentHome.this.getActivity(), ContentActivity.class);
+                            Intent intent = new Intent(InterestActivity.this, ContentActivity.class);
                             intent.putExtra("contentImg", mList.get(position).getContentImg());
                             intent.putExtra("username", mList.get(position).getUsername());
                             intent.putExtra("title", mList.get(position).getTitle());
@@ -88,7 +100,7 @@ public class FragmentHome extends Fragment {
 
                             startActivity(intent);
 
-                            Toast.makeText(FragmentHome.this.getActivity(), "这是图片内容" + mList.get(position).getUsername(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(InterestActivity.this, "这是图片内容" + mList.get(position).getUsername(), Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -99,11 +111,37 @@ public class FragmentHome extends Fragment {
                             intent.putExtra("username", mList.get(position).getUsername());
                             intent.putExtra("userHead", mList.get(position).getUserHead());
                             intent.putExtra("title", mList.get(position).getTitle());
-                            Toast.makeText(FragmentHome.this.getActivity(), "这是用户信息" + position, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(InterestActivity.this, "这是用户信息" + position, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    gridView.setAdapter(prettyGirlAdapter);
-                    gridView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
+                  /*  prettyGirlAdapter2 = new ImgListAdapter(mList1,InterestActivity.this,2);
+                    prettyGirlAdapter2.setClickListener(new ImgListAdapter.MyClickListener() {
+                        @Override
+                        public void onThisItemClick(int position) {
+                            Intent intent = new Intent(InterestActivity.this, InterestActivity.class);
+                            intent.putExtra("title",mList1.get(position).getCoverTitle());
+                            intent.putExtra("intro",mList1.get(position).getCoverIntro());
+                            Toast.makeText(InterestActivity.this, "横向列表之"+position, Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onImageContentClick(int position) {
+
+                        }
+
+                        @Override
+                        public void onUserMsgClick(int position) {
+
+                        }
+                    });
+                    mRecyclerViewH.setAdapter(prettyGirlAdapter2);
+                    mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));*/
+
+
+                    mRecyclerViewV.setAdapter(prettyGirlAdapter);
+                    mRecyclerViewV.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                     demo_swiperefreshlayout.setRefreshing(false);
 
                     break;
@@ -113,23 +151,36 @@ public class FragmentHome extends Fragment {
     };
 
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_frag, null);
-        return view;
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.interest_layout);
+        title = (TextView) findViewById(R.id.tv_title_interest);
+        intro = (TextView) findViewById(R.id.tv_intro_interest);
+        back = (ImageButton) findViewById(R.id.ib_back_interest);
+        Intent intent = getIntent();
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        key = intent.getExtras().getString("title");
+        total = "http://api.huaban.com/search/?q=" + key + "&page=1&per_page=20";
+        title.setText(key);
+        intro.setText(intent.getExtras().getString("intro"));
 
 
-        gridView = (RecyclerView) view.findViewById(R.id.gv_imageList_home);
-        okHttpClient = new OkHttpClient();
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+       /* mRecyclerViewH = (RecyclerView) findViewById(R.id.rv_horizon_interest);*/
+        mRecyclerViewV = (RecyclerView) findViewById(R.id.rv_vertical_interest);
+
+
         goThread();
         inteData();
-        gridView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        mRecyclerViewV.setOnScrollListener(new RecyclerView.OnScrollListener() {
             boolean isSlidingToLast = false;
 
             @Override
@@ -141,7 +192,7 @@ public class FragmentHome extends Fragment {
                     int lastVisiblePosition = getMaxElem(lastVisiblePositions);
                     int totalItemCount = manager.getItemCount();
                     if (lastVisiblePosition == (totalItemCount - 1) && isSlidingToLast) {
-                        Toast.makeText(FragmentHome.this.getActivity(), "正在加载更多", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }
@@ -171,6 +222,7 @@ public class FragmentHome extends Fragment {
     }
 
     private String requstUrl(String s) {
+        okHttpClient = new OkHttpClient();
         Request request = new Request.Builder().url(s).build();
 
         try {
@@ -183,7 +235,7 @@ public class FragmentHome extends Fragment {
     }
 
     public void inteData() {
-        demo_swiperefreshlayout = (SwipeRefreshLayout) FragmentHome.this.getActivity().findViewById(R.id.demo_swiperefreshlayout);
+        demo_swiperefreshlayout = (SwipeRefreshLayout) InterestActivity.this.findViewById(R.id.demo_title_interest);
         //设置刷新时动画的颜色，可以设置4个
         demo_swiperefreshlayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
         demo_swiperefreshlayout.setColorSchemeResources(android.R.color.holo_blue_light,
@@ -202,9 +254,31 @@ public class FragmentHome extends Fragment {
         });
     }
 
-    private List<LocalShareInfo> getJsonData(String str) {
+
+   /* private List<LocalShareInfo> getList1(String str) {
 
         Log.i("str", "一大波数据已经更新");
+        Gson gson = new Gson();
+        interPrettyGirlInfo = gson.fromJson(str, InterShareInfo.class);
+
+        for (int i = 0; i < interPrettyGirlInfo.getExplores().toArray().length; i++) {
+            localPrettyGirlInfo = new LocalShareInfo();
+            localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
+            localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
+            localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
+            mList1.add(localPrettyGirlInfo);
+
+
+        }
+
+        return mList1;
+
+
+    }*/
+
+    private List<LocalShareInfo> getJsonData(String str) {
+
+
         Gson gson = new Gson();
         interPrettyGirlInfo = gson.fromJson(str, InterShareInfo.class);
         for (int i = 0; i < interPrettyGirlInfo.getPins().toArray().length; i++) {
@@ -220,7 +294,7 @@ public class FragmentHome extends Fragment {
             localPrettyGirlInfo.setComment_count(interPrettyGirlInfo.getPins().get(i).getComment_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getComment_count()));
             localPrettyGirlInfo.setLike_count(interPrettyGirlInfo.getPins().get(i).getLike_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getLike_count()));
             localPrettyGirlInfo.setRepin_count(interPrettyGirlInfo.getPins().get(i).getRepin_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getRepin_count()));
-            localPrettyGirlInfo.setFollow_count(interPrettyGirlInfo.getPins().get(i).getLike_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getLike_count()));
+            localPrettyGirlInfo.setFollow_count(interPrettyGirlInfo.getPins().get(i).getBoard().getFollow_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getBoard().getFollow_count()));
             localPrettyGirlInfo.setBoardImg(HTTP + interPrettyGirlInfo.getPins().get(i).getFile().getKey());
             localPrettyGirlInfo.setImgWidth(interPrettyGirlInfo.getPins().get(i).getFile().getWidth());
             localPrettyGirlInfo.setImgHeight(interPrettyGirlInfo.getPins().get(i).getFile().getHeight());
@@ -234,7 +308,7 @@ public class FragmentHome extends Fragment {
         new Thread() {
             @Override
             public void run() {
-                requstUrl("http://api.huaban.com/popular/?limit=20");
+                requstUrl(total);
                 handler.sendEmptyMessage(MSG);
             }
         }.start();
@@ -273,5 +347,4 @@ public class FragmentHome extends Fragment {
         }
         return strTime;
     }
-
 }

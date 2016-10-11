@@ -18,7 +18,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:drawableTop="@mipmap/sina3f"
+                android:drawableTop="@mipmap/xl"
                 android:text="新浪微博"
                 android:button="@null"
                 android:layout_height="wrap_content" />
@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:drawableTop="@mipmap/wx_3f"
+                android:drawableTop="@mipmap/wx"
                 android:text="微信"
                 android:button="@null"
                 android:layout_height="wrap_content" />
@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:drawableTop="@mipmap/qq_3f"
+                android:drawableTop="@mipmap/qq"
                 android:text="QQ"
                 android:button="@null"
                 android:layout_height="wrap_content" />

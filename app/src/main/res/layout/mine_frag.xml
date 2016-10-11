@@ -21,22 +21,24 @@
             android:id="@+id/ib_search_person"
             android:layout_width="wrap_content"
             android:background="#FAFFF0"
+            android:layout_margin="8dp"
             android:layout_height="wrap_content"
-            android:src="@mipmap/search" />
+            android:src="@mipmap/searcg" />
 
         <ImageButton
             android:id="@+id/ib_setup_person"
             android:layout_width="wrap_content"
             android:background="#FAFFF0"
-            android:layout_marginLeft="20dp"
+
+            android:layout_margin="8dp"
             android:layout_height="wrap_content"
-            android:src="@mipmap/setup" />
+            android:src="@mipmap/set" />
 
         <ImageButton
             android:id="@+id/iv_add_person"
             android:layout_width="wrap_content"
             android:background="#FAFFF0"
-            android:layout_marginLeft="20dp"
+            android:layout_margin="8dp"
             android:layout_height="wrap_content"
             android:src="@mipmap/add" />
     </LinearLayout>
@@ -79,7 +81,7 @@
 
             android:id="@+id/rg_1"
             android:layout_width="match_parent"
-            android:layout_marginLeft="10dp"
+           android:layout_margin="10dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
