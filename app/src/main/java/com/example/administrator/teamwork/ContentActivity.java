@@ -194,13 +194,18 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                         return false;
                     }
                 });
-
-                image_blow.setOnClickListener(new View.OnClickListener() {
+                 image_blow.setOnClickListener(new MyDraweeView.OnClickListener() {
+                     @Override
+                     public void onClick() {
+                         pop.dismiss();
+                     }
+                 });
+              /*  image_blow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pop.dismiss();
+
                     }
-                });
+                });*/
                 download.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

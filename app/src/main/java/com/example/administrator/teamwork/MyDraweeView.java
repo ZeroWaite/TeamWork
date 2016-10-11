@@ -186,6 +186,7 @@ public class MyDraweeView extends SimpleDraweeView {
 
     public interface OnClickListener {
         void onClick();
+
     }
 
     public void setOnClickListener(OnClickListener listener) {
