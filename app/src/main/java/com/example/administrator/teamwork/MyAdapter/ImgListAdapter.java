@@ -70,8 +70,10 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return ITEM_TYPE.ITEM1.ordinal();
         } else if(mItemLayoutId == 2){
             return ITEM_TYPE.ITEM2.ordinal();
-        }else {
+        }else if(mItemLayoutId == 3){
             return ITEM_TYPE.ITEM3.ordinal();
+        }else {
+            return ITEM_TYPE.ITEM4.ordinal();
         }
     }
 
@@ -83,9 +85,12 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else if (viewType == ITEM_TYPE.ITEM2.ordinal()){
             Log.i("get","adapter2");
             return new MyViewHolder2(mInflater.inflate(R.layout.find_item_layout, parent, false));
-        }else {
+        }else if (viewType == ITEM_TYPE.ITEM3.ordinal()){
             Log.i("get","adapter3");
             return new MyViewHolder3(mInflater.inflate(R.layout.transpond_list_item, parent, false));
+        }else {
+            Log.i("get","adapter4");
+            return new MyViewHolder4(mInflater.inflate(R.layout.collect_list_item, parent, false));
         }
 
 
@@ -101,6 +106,12 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         localImgListInfo = mList.get(position);
+
+        if (holder instanceof MyViewHolder4) {
+            ((MyViewHolder4) holder).userhead.setImageURI(localImgListInfo.getUserHead());
+            ((MyViewHolder4) holder).username.setText(localImgListInfo.getUsername());
+            ((MyViewHolder4) holder).follow.setText(localImgListInfo.getFollow_count());
+        }
 
          if (holder instanceof MyViewHolder3) {
 
@@ -204,6 +215,19 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.mList = list;
         this.notifyDataSetChanged();
     }
+    public static class MyViewHolder4 extends RecyclerView.ViewHolder {
+        SimpleDraweeView userhead;
+        TextView username;
+        TextView follow;
+        public MyViewHolder4(View itemView) {
+            super(itemView);
+            userhead = (SimpleDraweeView) itemView.findViewById(R.id.iv_userHead_collect_item);
+            username = (TextView) itemView.findViewById(R.id.tv_username_collect_item);
+            follow = (TextView) itemView.findViewById(R.id.tv_fans_collect_item);
+
+        }
+    }
+
     public static class MyViewHolder3 extends RecyclerView.ViewHolder {
         SimpleDraweeView boardImg;
         TextView username;

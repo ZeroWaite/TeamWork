@@ -40,7 +40,7 @@ public class FragCollect extends Fragment {
 
     private static final int MSG = 1;
     String getUrl;
-
+    String choice;
     InterShareInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
     ImgListAdapter prettyGirlAdapter2;
@@ -162,7 +162,8 @@ public class FragCollect extends Fragment {
         mRecyclerViewV= (RecyclerView) view.findViewById(R.id.rv_vertical_onTitle);
 
         Intent intent = getActivity().getIntent();
-        getUrl = intent.getExtras().getString("url");
+        choice = intent.getExtras().getString("choice");
+        getUrl = "http://api.huaban.com/favorite/"+choice ;
         goThread();
         inteData();
         mRecyclerViewV.setOnScrollListener(new RecyclerView.OnScrollListener() {
