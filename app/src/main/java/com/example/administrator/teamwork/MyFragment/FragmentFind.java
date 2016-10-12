@@ -153,6 +153,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                             Intent intent = new Intent(FragmentFind.this.getActivity(), InterestActivity.class);
                             intent.putExtra("title",mList1.get(position).getCoverTitle());
                             intent.putExtra("intro",mList1.get(position).getCoverIntro());
+                            intent.putExtra("urlName",mList1.get(position).getCoverUrlName());
                             Toast.makeText(FragmentFind.this.getActivity(), "横向列表之"+position, Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         }
@@ -379,6 +380,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
             localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
             localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
             localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
+            localPrettyGirlInfo.setCoverUrlName(interPrettyGirlInfo.getExplores().get(i).getUrlname());
             mList1.add(localPrettyGirlInfo);
 
 

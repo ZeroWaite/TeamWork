@@ -38,7 +38,8 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public enum ITEM_TYPE {
         ITEM1,
         ITEM2,
-        ITEM3
+        ITEM3,
+        ITEM4
     }
 
     public void setClickListener(MyClickListener listener) {
