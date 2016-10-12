@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import java.util.List;
 public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<LocalShareInfo> mList;
     LocalShareInfo localImgListInfo;
+
     Context mContext;
     LayoutInflater mInflater;
     private MyClickListener mListener = null;
@@ -35,7 +37,8 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public enum ITEM_TYPE {
         ITEM1,
-        ITEM2
+        ITEM2,
+        ITEM3
     }
 
     public void setClickListener(MyClickListener listener) {
@@ -64,8 +67,10 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemViewType(int position) {
         if (mItemLayoutId == 1) {
             return ITEM_TYPE.ITEM1.ordinal();
-        } else {
+        } else if(mItemLayoutId == 2){
             return ITEM_TYPE.ITEM2.ordinal();
+        }else {
+            return ITEM_TYPE.ITEM3.ordinal();
         }
     }
 
@@ -74,18 +79,15 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         if (viewType == ITEM_TYPE.ITEM1.ordinal()) {
             return new MyViewHolder1(mInflater.inflate(R.layout.home_image_item, parent, false));
-        } else {
+        } else if (viewType == ITEM_TYPE.ITEM2.ordinal()){
             Log.i("get","adapter2");
             return new MyViewHolder2(mInflater.inflate(R.layout.find_item_layout, parent, false));
+        }else {
+            Log.i("get","adapter3");
+            return new MyViewHolder3(mInflater.inflate(R.layout.transpond_list_item, parent, false));
         }
 
-       /* View view = mInflater.inflate(R.layout.home_image_item, parent, false);
 
-        View view1 = mInflater.inflate(R.layout.find_item_layout,parent,false);
-
-        MyViewHolder holder = new MyViewHolder(view);
-
-        return holder;*/
     }
 
 
@@ -99,7 +101,17 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         localImgListInfo = mList.get(position);
 
-        if (holder instanceof MyViewHolder2) {
+         if (holder instanceof MyViewHolder3) {
+
+            ((MyViewHolder3) holder).boardImg.setImageURI(localImgListInfo.getBoardImg());
+            ((MyViewHolder3) holder).boardImg.setAspectRatio(1.0f);
+            ((MyViewHolder3) holder).username.setText(localImgListInfo.getUsername());
+            ((MyViewHolder3) holder).title.setText(localImgListInfo.getTitle());
+            ((MyViewHolder3) holder).follow.setText(localImgListInfo.getFollow_count());
+
+        }
+
+         else if (holder instanceof MyViewHolder2) {
             ((MyViewHolder2) holder).coverTitle.setText(localImgListInfo.getCoverTitle());
             ((MyViewHolder2) holder).coverImg.setImageURI(localImgListInfo.getCoverImg());
             ((MyViewHolder2) holder).coverImg.setAspectRatio(1.0f);
@@ -182,13 +194,8 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         mListener.onUserMsgClick(position);
                     }
                 });
-
             }
-
-
         }
-
-
     }
 
 
@@ -196,16 +203,23 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.mList = list;
         this.notifyDataSetChanged();
     }
+    public static class MyViewHolder3 extends RecyclerView.ViewHolder {
+        SimpleDraweeView boardImg;
+        TextView username;
+        TextView title;
+        TextView follow;
+        Button bt_follow;
 
+        public MyViewHolder3(View itemView) {
+            super(itemView);
+            boardImg = (SimpleDraweeView) itemView.findViewById(R.id.iv_interImage_transPond_item);
+            username = (TextView) itemView.findViewById(R.id.tv_username_transPond_item);
+            title = (TextView) itemView.findViewById(R.id.tv_drawBoard_transPond_item);
+            follow = (TextView) itemView.findViewById(R.id.tv_follow_transPond_item);
+          /*  bt_follow = (Button) itemView.findViewById(R.id.bt_follow_transPond_item);*/
+        }
+    }
 
-    /*public void addItem(List<LocalImgListInfo> newDatas) {
-        *//* mTitles.add(position, data);
-         notifyItemInserted(position);*//*
-         newDatas.addAll(mList);
-         mList.removeAll(mList);
-         mList.addAll(newDatas);
-         notifyDataSetChanged();
-     }*/
     public static class MyViewHolder2 extends RecyclerView.ViewHolder {
 
         SimpleDraweeView coverImg;

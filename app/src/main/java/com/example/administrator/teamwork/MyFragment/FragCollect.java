@@ -48,7 +48,6 @@ public class FragCollect extends Fragment {
     List<LocalShareInfo> mList1 = new ArrayList<>();
     LocalShareInfo localPrettyGirlInfo;
     public static final String HTTP = "http://img.hb.aicdn.com/";
-    StaggeredGridLayoutManager staggeredGridLayoutManager;
     SwipeRefreshLayout demo_swiperefreshlayout;
 
 
@@ -249,9 +248,9 @@ public class FragCollect extends Fragment {
 
         for (int i = 0; i < interPrettyGirlInfo.getExplores().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
-            localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
+            localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName()==null?"":interPrettyGirlInfo.getExplores().get(i).getName());
             localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
-            localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
+            localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription()==null?"":interPrettyGirlInfo.getExplores().get(i).getDescription());
             mList1.add(localPrettyGirlInfo);
 
 

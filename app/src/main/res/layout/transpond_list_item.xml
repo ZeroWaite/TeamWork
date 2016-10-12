@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_margin="1dp"
     android:background="#ffffff"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_interImage_transPond_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
+        fresco:placeholderImage="@null" />
+
+
 
     <TextView
         android:id="@+id/tv_drawBoard_transPond_item"
@@ -38,7 +42,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_total_transPond_item"
+            android:id="@+id/tv_follow_transPond_item"
             android:text="266"
             android:textSize="20sp"
             android:layout_width="wrap_content"
