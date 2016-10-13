@@ -22,6 +22,7 @@
         <RadioButton
             android:id="@+id/rb_homePage"
             android:checked="true"
+            android:text="主页"
             android:layout_height="wrap_content"
             style="@style/all"
             android:drawableTop="@drawable/home_selector"
@@ -30,6 +31,7 @@
         <RadioButton
             style="@style/all"
             android:layout_height="wrap_content"
+            android:text="发现"
             android:drawableTop="@drawable/find_selector"
             android:id="@+id/rb_foundPage"
              />
@@ -37,6 +39,7 @@
         <RadioButton
             android:id="@+id/rb_messagePage"
             style="@style/all"
+            android:text="搜索"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/news_selector"
              />
@@ -44,6 +47,7 @@
         <RadioButton
             android:id="@+id/rb_minePage"
             style="@style/all"
+            android:text="我的"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/mine_selector"
             />
