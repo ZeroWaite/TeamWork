@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.teamwork">
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -43,7 +44,7 @@
 <activity android:name=".Login_Regist.RegistActivity"/>
 <activity android:name=".Login_Regist.CompleteRegistActivity"/>
         <activity android:name=".InterestActivity"></activity>
-
+<activity android:name=".LoginActitivity"></activity>
     </application>
 
 
