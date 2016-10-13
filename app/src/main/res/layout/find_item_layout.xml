@@ -9,7 +9,6 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-
             android:layout_height="match_parent">
 
                 <com.facebook.drawee.view.SimpleDraweeView
@@ -25,7 +24,7 @@
                     android:textColor="#ffffff"
                     android:padding="8dp"
                     android:textSize="12sp"
-                    android:background="#80000000"
+                    android:background="@drawable/shape_corner_down"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

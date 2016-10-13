@@ -10,6 +10,63 @@ public class LocalShareInfo {
     private String coverIntro;
     private String coverUrlName;
     private String boardIntro;
+private String following_count;
+    private String comeFrom;
+    private String job;
+    private String personSaying;
+
+
+    public String getPersonSaying() {
+        return personSaying;
+    }
+
+    public void setPersonSaying(String personSaying) {
+        this.personSaying = personSaying;
+    }
+
+    public String getComeFrom() {
+        return comeFrom;
+    }
+
+    public void setComeFrom(String comeFrom) {
+        this.comeFrom = comeFrom;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getFollowing_count() {
+        return following_count;
+    }
+
+    public void setFollowing_count(String following_count) {
+        this.following_count = following_count;
+    }
+
+    private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    private String userUrlName;
+
+    public String getUserUrlName() {
+        return userUrlName;
+    }
+
+    public void setUserUrlName(String userUrlName) {
+        this.userUrlName = userUrlName;
+    }
 
     public String getBoardIntro() {
         return boardIntro;

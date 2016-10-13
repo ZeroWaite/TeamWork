@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,11 +59,12 @@ public class LoginActitivity extends Activity {
                 int result = SqliteDB.getInstance(getApplicationContext()).Quer(pass, name);
                 if (result == 1) {
                     Toast.makeText(LoginActitivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(LoginActitivity.this,MainActivity.class);
+                    Intent intent = new Intent(LoginActitivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 } else if (result == 0) {
                     Toast.makeText(LoginActitivity.this, "用户名不存在！", Toast.LENGTH_SHORT).show();
-                } else if (result == -1) {
+                } else {
                     Toast.makeText(LoginActitivity.this, "密码错误！", Toast.LENGTH_SHORT).show();
                 }
             }

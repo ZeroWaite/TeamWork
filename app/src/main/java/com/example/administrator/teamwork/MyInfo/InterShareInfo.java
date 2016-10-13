@@ -7,49 +7,44 @@ import java.util.List;
  */
 public class InterShareInfo {
 
-
     /**
-     * pin_id : 858197777
-     * user_id : 18712058
-     * board_id : 30377705
-     * file_id : 91809500
-     * file : {"id":91809500,"farm":"farm1","bucket":"hbimg","key":"3688a99f4fe1aec5d10758ddc58093d3cec51aadaca49-Xftzkg","type":"image/jpeg","height":"2918","frames":"1","width":"2048"}
+     * pin_id : 883579690
+     * user_id : 6414593
+     * board_id : 18706747
+     * file_id : 116608541
+     * file : {"id":116608541,"farm":"farm1","bucket":"hbimg","key":"b9718acb4bb22b247df01af5ced665ec733b8197159aa-bhUyJa","type":"image/jpeg","height":"809","width":"580","frames":"1"}
      * media_type : 0
-     * source : null
-     * link : null
-     * raw_text : 等老了暮色，等老了年华
-     * 等老了一颗年轻热忱的心
-     * 已等了太久，
-     * 而你依然还是
-     * 那么遥远。
+     * source : tieba.baidu.com
+     * link : http://tieba.baidu.com/p/3584437910?see_lz=1&pn=16
+     * raw_text : 凉薯地瓜   精品收藏
      * text_meta : {}
-     * via : 854107094
-     * via_user_id : 14872004
-     * original : 593188701
-     * created_at : 1474254360
+     * via : 883545929
+     * via_user_id : 18497027
+     * original : 875706846
+     * created_at : 1476328453
      * like_count : 0
      * comment_count : 0
      * repin_count : 0
      * is_private : 0
      * orig_source : null
-     * user : {"user_id":18712058,"username":"Molly宝宝","urlname":"wwi9ocsksy","created_at":1462002854,"avatar":{"id":112238192,"farm":"farm1","bucket":"hbimg","key":"d623b6128c7611377d6c1ed3241d3769c091749f8a914-fNM0gq","type":"image/png","width":"580","height":"776","frames":"1"},"extra":null}
-     * board : {"board_id":30377705,"user_id":18712058,"title":"美人志*古韵如烟","description":"此情可待成追忆，只是当时已惘然。 －李商隐《锦瑟》\n北方有佳人，绝世而独立。一顾倾人城，再顾倾人国。宁不知倾城与倾国，佳人难再得！－李延年《佳人歌》","category_id":"beauty","seq":48,"pin_count":829,"follow_count":265,"like_count":11,"created_at":1466594533,"updated_at":1474254377,"deleting":0,"is_private":0,"extra":null}
-     * via_user : {"user_id":14872004,"username":"*胡纸先森ぐ","urlname":"h4qvoilmg7","created_at":1407891771,"avatar":{"id":109262807,"farm":"farm1","bucket":"hbimg","key":"ebc624d8de0f80c34391c42ba6a3b20293e74aea2295a-xcrw2t","type":"image/jpeg","width":"600","height":"900","frames":"1"},"extra":null}
+     * user : {"user_id":6414593,"username":"凉薯地瓜","urlname":"yue51240","created_at":1359785549,"avatar":{"id":10803475,"farm":"farm1","bucket":"hbimg","key":"449cdab46986c841811078283b892c3a4422f03a24f4-pAohhL","type":"image/jpeg","width":160,"height":126,"frames":1},"extra":null}
+     * board : {"board_id":18706747,"user_id":6414593,"title":"不露诱惑","description":"","category_id":"beauty","seq":7,"pin_count":126,"follow_count":1157,"like_count":18,"created_at":1417693006,"updated_at":1476328453,"deleting":0,"is_private":0,"extra":null}
+     * via_user : {"user_id":18497027,"username":"薛晓蕾","urlname":"xuexiaolei","created_at":1458025806,"avatar":{"id":96373498,"farm":"farm1","bucket":"hbimg","key":"b15e1cd87df2fd8e3653eb0740d49b70af2c1d9de69-48pIKZ","type":"image/jpeg","height":"99","frames":"1","width":"100"},"extra":null}
      */
 
     private List<PinsBean> pins;
     /**
-     * keyword_id : 871
-     * name : 闺蜜装
-     * urlname : guimizhuang
-     * cover : {"farm":"farm1","bucket":"hbimg","key":"0fbf467024184c5ea8beb9669b573e5c4511a2b219991-t74ETu","type":"image/jpeg","width":398,"height":600,"frames":1,"file_id":30983125}
-     * description : 恋人之间有情侣装，姐妹之间有闺蜜装。表达情谊的方式有很多种，穿同款不同色的闺蜜装也是不错的方式哦。
+     * keyword_id : 606
+     * name : 超模
+     * urlname : supermodel
+     * cover : {"farm":"farm1","bucket":"hbimg","key":"ab04055c67aa1892eab6b212deb73759f538687e34f46-Ha0qF3","type":"image/jpeg","width":800,"height":1208,"frames":1,"file_id":43405615}
+     * description : 超模是时尚界的女王，让我们跟着超模学穿搭。
      * recommended_users : null
      * creator_id : null
-     * created_at : 1421031816
+     * created_at : 1418718824
      * is_hidden : 0
-     * tags : {"must":["闺蜜"],"should":["穿搭","搭配"]}
-     * theme : 19181D
+     * tags : {"must":["超模"],"should":[]}
+     * theme : 080808
      */
 
     private List<ExploresBean> explores;
@@ -76,20 +71,20 @@ public class InterShareInfo {
         private int board_id;
         private int file_id;
         /**
-         * id : 91809500
+         * id : 116608541
          * farm : farm1
          * bucket : hbimg
-         * key : 3688a99f4fe1aec5d10758ddc58093d3cec51aadaca49-Xftzkg
+         * key : b9718acb4bb22b247df01af5ced665ec733b8197159aa-bhUyJa
          * type : image/jpeg
-         * height : 2918
+         * height : 809
+         * width : 580
          * frames : 1
-         * width : 2048
          */
 
         private FileBean file;
         private int media_type;
-        private Object source;
-        private Object link;
+        private String source;
+        private String link;
         private String raw_text;
         private int via;
         private int via_user_id;
@@ -101,28 +96,27 @@ public class InterShareInfo {
         private int is_private;
         private Object orig_source;
         /**
-         * user_id : 18712058
-         * username : Molly宝宝
-         * urlname : wwi9ocsksy
-         * created_at : 1462002854
-         * avatar : {"id":112238192,"farm":"farm1","bucket":"hbimg","key":"d623b6128c7611377d6c1ed3241d3769c091749f8a914-fNM0gq","type":"image/png","width":"580","height":"776","frames":"1"}
+         * user_id : 6414593
+         * username : 凉薯地瓜
+         * urlname : yue51240
+         * created_at : 1359785549
+         * avatar : {"id":10803475,"farm":"farm1","bucket":"hbimg","key":"449cdab46986c841811078283b892c3a4422f03a24f4-pAohhL","type":"image/jpeg","width":160,"height":126,"frames":1}
          * extra : null
          */
 
         private UserBean user;
         /**
-         * board_id : 30377705
-         * user_id : 18712058
-         * title : 美人志*古韵如烟
-         * description : 此情可待成追忆，只是当时已惘然。 －李商隐《锦瑟》
-         * 北方有佳人，绝世而独立。一顾倾人城，再顾倾人国。宁不知倾城与倾国，佳人难再得！－李延年《佳人歌》
+         * board_id : 18706747
+         * user_id : 6414593
+         * title : 不露诱惑
+         * description :
          * category_id : beauty
-         * seq : 48
-         * pin_count : 829
-         * follow_count : 265
-         * like_count : 11
-         * created_at : 1466594533
-         * updated_at : 1474254377
+         * seq : 7
+         * pin_count : 126
+         * follow_count : 1157
+         * like_count : 18
+         * created_at : 1417693006
+         * updated_at : 1476328453
          * deleting : 0
          * is_private : 0
          * extra : null
@@ -130,11 +124,11 @@ public class InterShareInfo {
 
         private BoardBean board;
         /**
-         * user_id : 14872004
-         * username : *胡纸先森ぐ
-         * urlname : h4qvoilmg7
-         * created_at : 1407891771
-         * avatar : {"id":109262807,"farm":"farm1","bucket":"hbimg","key":"ebc624d8de0f80c34391c42ba6a3b20293e74aea2295a-xcrw2t","type":"image/jpeg","width":"600","height":"900","frames":"1"}
+         * user_id : 18497027
+         * username : 薛晓蕾
+         * urlname : xuexiaolei
+         * created_at : 1458025806
+         * avatar : {"id":96373498,"farm":"farm1","bucket":"hbimg","key":"b15e1cd87df2fd8e3653eb0740d49b70af2c1d9de69-48pIKZ","type":"image/jpeg","height":"99","frames":"1","width":"100"}
          * extra : null
          */
 
@@ -188,19 +182,19 @@ public class InterShareInfo {
             this.media_type = media_type;
         }
 
-        public Object getSource() {
+        public String getSource() {
             return source;
         }
 
-        public void setSource(Object source) {
+        public void setSource(String source) {
             this.source = source;
         }
 
-        public Object getLink() {
+        public String getLink() {
             return link;
         }
 
-        public void setLink(Object link) {
+        public void setLink(String link) {
             this.link = link;
         }
 
@@ -315,8 +309,8 @@ public class InterShareInfo {
             private String key;
             private String type;
             private String height;
-            private String frames;
             private String width;
+            private String frames;
 
             public int getId() {
                 return id;
@@ -366,14 +360,6 @@ public class InterShareInfo {
                 this.height = height;
             }
 
-            public String getFrames() {
-                return frames;
-            }
-
-            public void setFrames(String frames) {
-                this.frames = frames;
-            }
-
             public String getWidth() {
                 return width;
             }
@@ -381,24 +367,42 @@ public class InterShareInfo {
             public void setWidth(String width) {
                 this.width = width;
             }
+
+            public String getFrames() {
+                return frames;
+            }
+
+            public void setFrames(String frames) {
+                this.frames = frames;
+            }
         }
 
         public static class UserBean {
+            private int user_id;
             private String username;
+            private String urlname;
             private int created_at;
             /**
-             * id : 112238192
+             * id : 10803475
              * farm : farm1
              * bucket : hbimg
-             * key : d623b6128c7611377d6c1ed3241d3769c091749f8a914-fNM0gq
-             * type : image/png
-             * width : 580
-             * height : 776
+             * key : 449cdab46986c841811078283b892c3a4422f03a24f4-pAohhL
+             * type : image/jpeg
+             * width : 160
+             * height : 126
              * frames : 1
              */
 
             private AvatarBean avatar;
             private Object extra;
+
+            public int getUser_id() {
+                return user_id;
+            }
+
+            public void setUser_id(int user_id) {
+                this.user_id = user_id;
+            }
 
             public String getUsername() {
                 return username;
@@ -406,6 +410,14 @@ public class InterShareInfo {
 
             public void setUsername(String username) {
                 this.username = username;
+            }
+
+            public String getUrlname() {
+                return urlname;
+            }
+
+            public void setUrlname(String urlname) {
+                this.urlname = urlname;
             }
 
             public int getCreated_at() {
@@ -433,13 +445,22 @@ public class InterShareInfo {
             }
 
             public static class AvatarBean {
+                private int id;
                 private String farm;
                 private String bucket;
                 private String key;
                 private String type;
-                private String width;
-                private String height;
-                private String frames;
+                private int width;
+                private int height;
+                private int frames;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
 
                 public String getFarm() {
                     return farm;
@@ -473,35 +494,38 @@ public class InterShareInfo {
                     this.type = type;
                 }
 
-                public String getWidth() {
+                public int getWidth() {
                     return width;
                 }
 
-                public void setWidth(String width) {
+                public void setWidth(int width) {
                     this.width = width;
                 }
 
-                public String getHeight() {
+                public int getHeight() {
                     return height;
                 }
 
-                public void setHeight(String height) {
+                public void setHeight(int height) {
                     this.height = height;
                 }
 
-                public String getFrames() {
+                public int getFrames() {
                     return frames;
                 }
 
-                public void setFrames(String frames) {
+                public void setFrames(int frames) {
                     this.frames = frames;
                 }
             }
         }
 
         public static class BoardBean {
+            private int board_id;
+            private int user_id;
             private String title;
             private String description;
+            private String category_id;
             private int seq;
             private int pin_count;
             private int follow_count;
@@ -511,6 +535,22 @@ public class InterShareInfo {
             private int deleting;
             private int is_private;
             private Object extra;
+
+            public int getBoard_id() {
+                return board_id;
+            }
+
+            public void setBoard_id(int board_id) {
+                this.board_id = board_id;
+            }
+
+            public int getUser_id() {
+                return user_id;
+            }
+
+            public void setUser_id(int user_id) {
+                this.user_id = user_id;
+            }
 
             public String getTitle() {
                 return title;
@@ -526,6 +566,14 @@ public class InterShareInfo {
 
             public void setDescription(String description) {
                 this.description = description;
+            }
+
+            public String getCategory_id() {
+                return category_id;
+            }
+
+            public void setCategory_id(String category_id) {
+                this.category_id = category_id;
             }
 
             public int getSeq() {
@@ -607,18 +655,17 @@ public class InterShareInfo {
             private String urlname;
             private int created_at;
             /**
-             * id : 109262807
+             * id : 96373498
              * farm : farm1
              * bucket : hbimg
-             * key : ebc624d8de0f80c34391c42ba6a3b20293e74aea2295a-xcrw2t
+             * key : b15e1cd87df2fd8e3653eb0740d49b70af2c1d9de69-48pIKZ
              * type : image/jpeg
-             * width : 600
-             * height : 900
+             * height : 99
              * frames : 1
+             * width : 100
              */
 
             private AvatarBean avatar;
-            private Object extra;
 
             public int getUser_id() {
                 return user_id;
@@ -660,23 +707,8 @@ public class InterShareInfo {
                 this.avatar = avatar;
             }
 
-            public Object getExtra() {
-                return extra;
-            }
-
-            public void setExtra(Object extra) {
-                this.extra = extra;
-            }
-
             public static class AvatarBean {
                 private int id;
-                private String farm;
-                private String bucket;
-                private String key;
-                private String type;
-                private String width;
-                private String height;
-                private String frames;
 
                 public int getId() {
                     return id;
@@ -684,62 +716,6 @@ public class InterShareInfo {
 
                 public void setId(int id) {
                     this.id = id;
-                }
-
-                public String getFarm() {
-                    return farm;
-                }
-
-                public void setFarm(String farm) {
-                    this.farm = farm;
-                }
-
-                public String getBucket() {
-                    return bucket;
-                }
-
-                public void setBucket(String bucket) {
-                    this.bucket = bucket;
-                }
-
-                public String getKey() {
-                    return key;
-                }
-
-                public void setKey(String key) {
-                    this.key = key;
-                }
-
-                public String getType() {
-                    return type;
-                }
-
-                public void setType(String type) {
-                    this.type = type;
-                }
-
-                public String getWidth() {
-                    return width;
-                }
-
-                public void setWidth(String width) {
-                    this.width = width;
-                }
-
-                public String getHeight() {
-                    return height;
-                }
-
-                public void setHeight(String height) {
-                    this.height = height;
-                }
-
-                public String getFrames() {
-                    return frames;
-                }
-
-                public void setFrames(String frames) {
-                    this.frames = frames;
                 }
             }
         }
@@ -752,12 +728,12 @@ public class InterShareInfo {
         /**
          * farm : farm1
          * bucket : hbimg
-         * key : 0fbf467024184c5ea8beb9669b573e5c4511a2b219991-t74ETu
+         * key : ab04055c67aa1892eab6b212deb73759f538687e34f46-Ha0qF3
          * type : image/jpeg
-         * width : 398
-         * height : 600
+         * width : 800
+         * height : 1208
          * frames : 1
-         * file_id : 30983125
+         * file_id : 43405615
          */
 
         private CoverBean cover;
@@ -934,7 +910,7 @@ public class InterShareInfo {
 
         public static class TagsBean {
             private List<String> must;
-            private List<String> should;
+            private List<?> should;
 
             public List<String> getMust() {
                 return must;
@@ -944,11 +920,11 @@ public class InterShareInfo {
                 this.must = must;
             }
 
-            public List<String> getShould() {
+            public List<?> getShould() {
                 return should;
             }
 
-            public void setShould(List<String> should) {
+            public void setShould(List<?> should) {
                 this.should = should;
             }
         }

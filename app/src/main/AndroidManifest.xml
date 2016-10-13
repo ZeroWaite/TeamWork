@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.teamwork">
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="andorid.permission.MONUN_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
@@ -21,6 +22,7 @@
         <activity android:name=".CollectActivity"></activity>
         <activity android:name=".CommentActivity"></activity>
         <activity android:name=".ContentActivity"></activity>
+        <activity android:name=".UserContentActivity"></activity>
 
         <activity android:name=".FindMenuList_Activity">
         </activity >
@@ -44,7 +46,7 @@
 <activity android:name=".Login_Regist.RegistActivity"/>
 <activity android:name=".Login_Regist.CompleteRegistActivity"/>
         <activity android:name=".InterestActivity"></activity>
-
+<activity android:name=".LoginActitivity"></activity>
     </application>
 
 

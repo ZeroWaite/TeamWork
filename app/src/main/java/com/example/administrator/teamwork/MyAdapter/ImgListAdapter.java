@@ -114,10 +114,14 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
          if (holder instanceof MyViewHolder3) {
-
             ((MyViewHolder3) holder).boardImg.setImageURI(localImgListInfo.getBoardImg());
             ((MyViewHolder3) holder).boardImg.setAspectRatio(1.0f);
-            ((MyViewHolder3) holder).username.setText(localImgListInfo.getUsername());
+             if (localImgListInfo.getUsername()==null){
+                 ((MyViewHolder3) holder).username.setVisibility(View.GONE);
+             }else {
+                 ((MyViewHolder3) holder).username.setVisibility(View.VISIBLE);
+                 ((MyViewHolder3) holder).username.setText(localImgListInfo.getUsername());
+             }
             ((MyViewHolder3) holder).title.setText(localImgListInfo.getTitle());
             ((MyViewHolder3) holder).follow.setText(localImgListInfo.getFollow_count());
 

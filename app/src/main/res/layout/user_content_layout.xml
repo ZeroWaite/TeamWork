@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/ib_user_content"
+            android:layout_width="wrap_content"
+            android:src="@mipmap/back"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_title_user_content"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_margin="5dp"
+            android:text="已收藏的用户列表"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/iv_userHead_user_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            fresco:roundedCornerRadius="20dp"
+            fresco:placeholderImage="@null" />
+
+
+
+        <TextView
+            android:id="@+id/tv_username_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_userHead_user_content"
+            android:layout_toRightOf="@+id/iv_userHead_user_content"
+            android:textSize="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="#000000"
+            android:text="用户名" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_from_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_username_user_content"
+            android:layout_below="@+id/tv_username_user_content"
+            android:text="来自"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_job_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/tv_from_user_content"
+            android:layout_below="@+id/tv_username_user_content"
+            android:text="职业"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_personSaying_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_username_user_content"
+            android:layout_below="@+id/tv_from_user_content"
+            android:text="个人说明"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_fans_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_username_user_content"
+            android:layout_below="@+id/tv_personSaying_user_content"
+            android:text="粉丝>"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+
+
+</RelativeLayout>
+
+
+
+
+
+
+<RadioGroup
+
+android:id="@+id/rg_user_content"
+android:layout_width="match_parent"
+android:layout_margin="10dp"
+android:gravity="center"
+android:orientation="horizontal"
+android:layout_height="wrap_content">
+
+
+<RadioButton
+    android:id="@+id/rb_board_user_content"
+    style="@style/fg"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:button="@null"
+    android:text="画板"
+    android:textSize="18dp" />
+
+<RadioButton
+    android:id="@+id/rb_collect_user_content"
+    style="@style/fg"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:button="@null"
+    android:text="采集"
+    android:textSize="18dp" />
+
+<RadioButton
+    android:id="@+id/rb_like_user_content"
+
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    style="@style/fg"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:button="@null"
+    android:text="喜欢"
+    android:textSize="18dp" />
+
+<RadioButton
+    android:id="@+id/rb_follow_user_content"
+    android:layout_width="0dp"
+
+    style="@style/fg"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:button="@null"
+    android:text="关注"
+    android:textSize="18dp" />
+</RadioGroup>
+<FrameLayout
+android:id="@+id/fg_user_content"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="1">
+</FrameLayout>
+
+
+    </LinearLayout>
