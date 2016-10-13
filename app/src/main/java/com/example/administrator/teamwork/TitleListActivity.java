@@ -1,12 +1,13 @@
 package com.example.administrator.teamwork;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -26,7 +27,7 @@ public class TitleListActivity extends AppCompatActivity{
     RadioGroup mRadioGroup;
     ViewPager mViewPager;
     MyViewAdapter myViewAdapter;
-
+    ImageView back;
     List<Fragment> mList;
     FragCollect fragCollect;
     FragBoard fragBoard;
@@ -36,7 +37,7 @@ public class TitleListActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title_list_layout);
-
+        back= (ImageView) findViewById(R.id.ib_back_onTitle);
         mViewPager = (ViewPager) findViewById(R.id.vp_onTitle);
         title = (TextView) findViewById(R.id.tv_title_onTitle);
         Intent intent = getIntent();
@@ -70,6 +71,12 @@ public class TitleListActivity extends AppCompatActivity{
                         break;
 
                 }
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
         //滑动界面切换

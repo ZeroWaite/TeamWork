@@ -10,12 +10,12 @@
         android:gravity="center_vertical"
         android:layout_height="wrap_content">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_back_interest"
             android:layout_width="wrap_content"
             android:src="@mipmap/back"
-            android:layout_margin="5dp"
-
+            android:layout_margin="10dp"
+            android:clickable="true"
             android:layout_height="wrap_content" />
 
         <TextView
