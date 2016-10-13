@@ -59,13 +59,47 @@
 
         <TextView
             android:layout_marginTop="5dp"
-            android:id="@+id/tv_dangmyeon_person"
+            android:id="@+id/tv_from_user_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_username_user_content"
             android:layout_below="@+id/tv_username_user_content"
-            android:text="粉丝>"
+            android:text="来自"
             android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_job_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/tv_from_user_content"
+            android:layout_below="@+id/tv_username_user_content"
+            android:text="职业"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_personSaying_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_username_user_content"
+            android:layout_below="@+id/tv_from_user_content"
+            android:text="个人说明"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_fans_user_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_username_user_content"
+            android:layout_below="@+id/tv_personSaying_user_content"
+            android:text="粉丝>"
+            android:textColor="#000000"
+            android:textSize="15dp" />
+
+
 
 </RelativeLayout>
 

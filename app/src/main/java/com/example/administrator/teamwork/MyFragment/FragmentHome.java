@@ -81,11 +81,12 @@ public class FragmentHome extends Fragment {
                             intent.putExtra("comment_count", mList.get(position).getComment_count());
                             intent.putExtra("like_count", mList.get(position).getLike_count());
                             intent.putExtra("repin_count", mList.get(position).getRepin_count());
-                           /* intent.putExtra("follow_count", "关注:" + mList.get(position).getFollow_count());*/
+                            intent.putExtra("follow_count",  mList.get(position).getFollow_count());
                             intent.putExtra("boardImg", mList.get(position).getBoardImg());
                             intent.putExtra("imgWidth", mList.get(position).getImgWidth());
                             intent.putExtra("imgHeight", mList.get(position).getImgHeight());
                             intent.putExtra("choice",mList.get(position).getUserUrlName());
+                            intent.putExtra("userID",mList.get(position).getUserID());
 
                             startActivity(intent);
 
@@ -226,6 +227,7 @@ public class FragmentHome extends Fragment {
             localPrettyGirlInfo.setImgWidth(String.valueOf(interPrettyGirlInfo.getPins().get(i).getFile().getWidth()));
             localPrettyGirlInfo.setImgHeight(String.valueOf(interPrettyGirlInfo.getPins().get(i).getFile().getHeight()));
             localPrettyGirlInfo.setUserUrlName(interPrettyGirlInfo.getPins().get(i).getUser().getUrlname());
+            localPrettyGirlInfo.setUserID(String.valueOf(interPrettyGirlInfo.getPins().get(i).getUser_id()));
             mList.add(0, localPrettyGirlInfo);
 
         }
