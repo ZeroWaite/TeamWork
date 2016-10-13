@@ -51,6 +51,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     ImageView download;
 
     String choice;
+    String userID;
     String contentImg;
     private float imgWidth;
     private float imgHeight;
@@ -103,6 +104,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
         imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
         choice = intent.getExtras().getString("choice");
+        userID = intent.getExtras().getString("userID");
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setUri(contentImg)
                 .setAutoPlayAnimations(true)
@@ -242,6 +244,8 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             case R.id.ll_userLayout_onPage:
                 Intent toUserContent=new Intent(ContentActivity.this,UserContentActivity.class);
                          toUserContent.putExtra("choice",choice);
+                toUserContent.putExtra("username",username.getText());
+                toUserContent.putExtra("userID",userID);
                 startActivity(toUserContent);
                 break;
             case R.id.ll_drawBoardLayout_onPage:
