@@ -153,6 +153,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                             Intent intent = new Intent(FragmentFind.this.getActivity(), InterestActivity.class);
                             intent.putExtra("title",mList1.get(position).getCoverTitle());
                             intent.putExtra("intro",mList1.get(position).getCoverIntro());
+                            intent.putExtra("urlName",mList1.get(position).getCoverUrlName());
                             Toast.makeText(FragmentFind.this.getActivity(), "横向列表之"+position, Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         }
@@ -379,6 +380,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
             localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
             localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
             localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
+            localPrettyGirlInfo.setCoverUrlName(interPrettyGirlInfo.getExplores().get(i).getUrlname());
             mList1.add(localPrettyGirlInfo);
 
 
@@ -486,72 +488,72 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                    popupWindow.dismiss();
                    break;
                case R.id.tv_plane:
-                   sendUrl("http://api.huaban.com/favorite/design?limit=20",plane.getText().toString());
+                   sendKey("design",plane.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_modelling:
-                   sendUrl("http://api.huaban.com/favorite/modeling_hair?limit=20",modeling.getText().toString());
+                   sendKey("modeling_hair",modeling.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_manfashion:
-                   sendUrl("http://api.huaban.com/favorite/men?limit=20",manfashion.getText().toString());
+                   sendKey("men",manfashion.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_inset:
-                   sendUrl("http://api.huaban.com/favorite/illustration?limit=20",inset.getText().toString());
+                   sendKey("illustration",inset.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_home:
-                   sendUrl("http://api.huaban.com/favorite/home?limit=20",home.getText().toString());
+                   sendKey("home",home.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_wedding:
-                   sendUrl("http://api.huaban.com/favorite/wedding_events?limit=20",wedding.getText().toString());
+                   sendKey("wedding_events",wedding.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_food:
-                   sendUrl("http://api.huaban.com/favorite/food_drink?limit=20",food.getText().toString());
+                   sendKey("food_drink",food.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_travel:
-                   sendUrl("http://api.huaban.com/favorite/travel_places?limit=20",travel.getText().toString());
+                   sendKey("travel_places",travel.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_pet:
-                   sendUrl("http://api.huaban.com/favorite/pets?limit=20",pet.getText().toString());
+                   sendKey("pets",pet.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_beauty:
-                   sendUrl("http://api.huaban.com/favorite/beauty?limit=20",beauty.getText().toString());
+                   sendKey("beauty",beauty.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_present:
-                   sendUrl("http://api.huaban.com/favorite/desire?limit=20",present.getText().toString());
+                   sendKey("desire",present.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_constructiondesign:
-                   sendUrl("http://api.huaban.com/favorite/architecture?limit=20",constructiondesign.getText().toString());
+                   sendKey("architecture",constructiondesign.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_humanityart:
-                   sendUrl("http://api.huaban.com/favorite/art?limit=20",humanityart.getText().toString());
+                   sendKey("art",humanityart.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_movie_book:
-                   sendUrl("http://api.huaban.com/favorite/film_music_books?limit=20",movie_book.getText().toString());
+                   sendKey("film_music_books",movie_book.getText().toString());
                    popupWindow.dismiss();
                    break;
                case R.id.tv_Encyclopedias:
-                   sendUrl("http://api.huaban.com/favorite/tips?limit=20",Encyclopedias.getText().toString());
+                   sendKey("tips",Encyclopedias.getText().toString());
                    popupWindow.dismiss();
                    break;
            }
     }
 
-    protected void sendUrl(String url,String title){
+    protected void sendKey(String url,String title){
 
         Intent intent = new Intent(FragmentFind.this.getActivity(), TitleListActivity.class);
-        intent.putExtra("url",url);
+        intent.putExtra("choice",url);
         intent.putExtra("title",title);
         startActivity(intent);
 

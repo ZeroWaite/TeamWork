@@ -2,7 +2,6 @@ package com.example.administrator.teamwork;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,13 +11,12 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
-import com.example.administrator.teamwork.MyInfo.InterShareInfo;
+import com.example.administrator.teamwork.MyInfo.InterExploreInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.google.gson.Gson;
 
@@ -37,7 +35,7 @@ import okhttp3.Response;
 public class InterestActivity extends Activity {
     TextView title;
     TextView intro;
-    ImageButton back;
+    ImageView back;
 
     String key;
     String total;
@@ -45,7 +43,7 @@ public class InterestActivity extends Activity {
     private static final int MSG = 1;
 
 
-    InterShareInfo interPrettyGirlInfo;
+    InterExploreInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
     ImgListAdapter prettyGirlAdapter2;
     List<LocalShareInfo> mList = new ArrayList<>();
@@ -64,10 +62,10 @@ public class InterestActivity extends Activity {
         public void handleMessage(final Message msg) {
             switch (msg.what) {
                 case MSG:
-                  /*  mList1.clear();*/
+                    mList1.clear();
                     mList.clear();
 
-                  /*  getList1(str);*/
+                    getList1(str);
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
                         prettyGirlAdapter = new ImgListAdapter(mList, InterestActivity.this, 1);
@@ -115,12 +113,13 @@ public class InterestActivity extends Activity {
                         }
                     });
 
-                  /*  prettyGirlAdapter2 = new ImgListAdapter(mList1,InterestActivity.this,2);
+                    prettyGirlAdapter2 = new ImgListAdapter(mList1,InterestActivity.this,2);
                     prettyGirlAdapter2.setClickListener(new ImgListAdapter.MyClickListener() {
                         @Override
                         public void onThisItemClick(int position) {
                             Intent intent = new Intent(InterestActivity.this, InterestActivity.class);
                             intent.putExtra("title",mList1.get(position).getCoverTitle());
+                            intent.putExtra("urlName",mList1.get(position).getCoverUrlName());
                             intent.putExtra("intro",mList1.get(position).getCoverIntro());
                             Toast.makeText(InterestActivity.this, "横向列表之"+position, Toast.LENGTH_SHORT).show();
                             startActivity(intent);
@@ -137,13 +136,13 @@ public class InterestActivity extends Activity {
                         }
                     });
                     mRecyclerViewH.setAdapter(prettyGirlAdapter2);
-                    mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));*/
+                    mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
 
 
                     mRecyclerViewV.setAdapter(prettyGirlAdapter);
                     mRecyclerViewV.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                     demo_swiperefreshlayout.setRefreshing(false);
-
+                    intro.setText(mList1.get(0).getBoardIntro());
                     break;
             }
             super.handleMessage(msg);
@@ -157,13 +156,13 @@ public class InterestActivity extends Activity {
         setContentView(R.layout.interest_layout);
         title = (TextView) findViewById(R.id.tv_title_interest);
         intro = (TextView) findViewById(R.id.tv_intro_interest);
-        back = (ImageButton) findViewById(R.id.ib_back_interest);
+        back = (ImageView) findViewById(R.id.ib_back_interest);
         Intent intent = getIntent();
 
-        key = intent.getExtras().getString("title");
-        total = "http://api.huaban.com/search/?q=" + key + "&page=1&per_page=20";
-        title.setText(key);
-        intro.setText(intent.getExtras().getString("intro"));
+        key = intent.getExtras().getString("urlName");
+        total = "http://api.huaban.com/explore/" + key;
+        title.setText(intent.getExtras().getString("title"));
+
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -174,12 +173,13 @@ public class InterestActivity extends Activity {
         });
 
 
-       /* mRecyclerViewH = (RecyclerView) findViewById(R.id.rv_horizon_interest);*/
+        mRecyclerViewH = (RecyclerView) findViewById(R.id.rv_horizon_interest);
         mRecyclerViewV = (RecyclerView) findViewById(R.id.rv_vertical_interest);
 
 
         goThread();
         inteData();
+
         mRecyclerViewV.setOnScrollListener(new RecyclerView.OnScrollListener() {
             boolean isSlidingToLast = false;
 
@@ -255,32 +255,32 @@ public class InterestActivity extends Activity {
     }
 
 
-   /* private List<LocalShareInfo> getList1(String str) {
+    private List<LocalShareInfo> getList1(String str) {
 
         Log.i("str", "一大波数据已经更新");
         Gson gson = new Gson();
-        interPrettyGirlInfo = gson.fromJson(str, InterShareInfo.class);
+        interPrettyGirlInfo = gson.fromJson(str, InterExploreInfo.class);
 
         for (int i = 0; i < interPrettyGirlInfo.getExplores().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
+            localPrettyGirlInfo.setCoverUrlName(interPrettyGirlInfo.getExplores().get(i).getUrlname());
+            localPrettyGirlInfo.setBoardIntro(interPrettyGirlInfo.getDescription());
             localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
             localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
             localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
             mList1.add(localPrettyGirlInfo);
-
-
         }
 
         return mList1;
 
 
-    }*/
+    }
 
     private List<LocalShareInfo> getJsonData(String str) {
 
 
         Gson gson = new Gson();
-        interPrettyGirlInfo = gson.fromJson(str, InterShareInfo.class);
+        interPrettyGirlInfo = gson.fromJson(str, InterExploreInfo.class);
         for (int i = 0; i < interPrettyGirlInfo.getPins().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
             localPrettyGirlInfo.setUsername(interPrettyGirlInfo.getPins().get(i).getUser().getUsername());
@@ -296,8 +296,8 @@ public class InterestActivity extends Activity {
             localPrettyGirlInfo.setRepin_count(interPrettyGirlInfo.getPins().get(i).getRepin_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getRepin_count()));
             localPrettyGirlInfo.setFollow_count(interPrettyGirlInfo.getPins().get(i).getBoard().getFollow_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getBoard().getFollow_count()));
             localPrettyGirlInfo.setBoardImg(HTTP + interPrettyGirlInfo.getPins().get(i).getFile().getKey());
-            localPrettyGirlInfo.setImgWidth(interPrettyGirlInfo.getPins().get(i).getFile().getWidth());
-            localPrettyGirlInfo.setImgHeight(interPrettyGirlInfo.getPins().get(i).getFile().getHeight());
+            localPrettyGirlInfo.setImgWidth(String.valueOf(interPrettyGirlInfo.getPins().get(i).getFile().getWidth()));
+            localPrettyGirlInfo.setImgHeight(String.valueOf(interPrettyGirlInfo.getPins().get(i).getFile().getHeight()));
             mList.add(0, localPrettyGirlInfo);
 
         }

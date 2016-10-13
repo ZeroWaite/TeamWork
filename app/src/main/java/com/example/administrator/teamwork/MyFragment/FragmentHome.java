@@ -85,6 +85,7 @@ public class FragmentHome extends Fragment {
                             intent.putExtra("boardImg", mList.get(position).getBoardImg());
                             intent.putExtra("imgWidth", mList.get(position).getImgWidth());
                             intent.putExtra("imgHeight", mList.get(position).getImgHeight());
+                            intent.putExtra("choice",mList.get(position).getUserUrlName());
 
                             startActivity(intent);
 
@@ -222,8 +223,9 @@ public class FragmentHome extends Fragment {
             localPrettyGirlInfo.setRepin_count(interPrettyGirlInfo.getPins().get(i).getRepin_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getRepin_count()));
             localPrettyGirlInfo.setFollow_count(interPrettyGirlInfo.getPins().get(i).getLike_count() == 0 ? "0" : String.valueOf(interPrettyGirlInfo.getPins().get(i).getLike_count()));
             localPrettyGirlInfo.setBoardImg(HTTP + interPrettyGirlInfo.getPins().get(i).getFile().getKey());
-            localPrettyGirlInfo.setImgWidth(interPrettyGirlInfo.getPins().get(i).getFile().getWidth());
-            localPrettyGirlInfo.setImgHeight(interPrettyGirlInfo.getPins().get(i).getFile().getHeight());
+            localPrettyGirlInfo.setImgWidth(String.valueOf(interPrettyGirlInfo.getPins().get(i).getFile().getWidth()));
+            localPrettyGirlInfo.setImgHeight(String.valueOf(interPrettyGirlInfo.getPins().get(i).getFile().getHeight()));
+            localPrettyGirlInfo.setUserUrlName(interPrettyGirlInfo.getPins().get(i).getUser().getUrlname());
             mList.add(0, localPrettyGirlInfo);
 
         }

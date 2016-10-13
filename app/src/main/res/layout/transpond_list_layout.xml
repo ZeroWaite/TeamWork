@@ -30,15 +30,23 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <GridView
-        android:layout_margin="5dp"
-        android:background="#dbd9d9"
-        android:id="@+id/gv_imageList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="2">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/demo_transPond_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_transPond_list"
+            android:layout_width="match_parent"
+            android:drawSelectorOnTop="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
 
-    </GridView>
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 </LinearLayout>

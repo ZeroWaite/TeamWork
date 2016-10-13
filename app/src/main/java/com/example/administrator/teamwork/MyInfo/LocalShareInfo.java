@@ -8,6 +8,34 @@ public class LocalShareInfo {
     private String coverTitle;
     private String coverImg;
     private String coverIntro;
+    private String coverUrlName;
+    private String boardIntro;
+
+    private String userUrlName;
+
+    public String getUserUrlName() {
+        return userUrlName;
+    }
+
+    public void setUserUrlName(String userUrlName) {
+        this.userUrlName = userUrlName;
+    }
+
+    public String getBoardIntro() {
+        return boardIntro;
+    }
+
+    public void setBoardIntro(String boardIntro) {
+        this.boardIntro = boardIntro;
+    }
+
+    public String getCoverUrlName() {
+        return coverUrlName;
+    }
+
+    public void setCoverUrlName(String coverUrlName) {
+        this.coverUrlName = coverUrlName;
+    }
 
     public String getCoverIntro() {
         return coverIntro;
