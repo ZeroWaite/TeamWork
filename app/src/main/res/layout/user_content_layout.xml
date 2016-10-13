@@ -24,7 +24,6 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_margin="5dp"
-            android:text="已收藏的用户列表"
             android:textColor="#000000"
             android:textSize="20dp"
             android:layout_height="wrap_content" />
@@ -32,6 +31,7 @@
 
 
     <RelativeLayout
+        android:layout_margin="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -40,7 +40,7 @@
             android:id="@+id/iv_userHead_user_content"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            fresco:roundedCornerRadius="20dp"
+            fresco:roundedCornerRadius="30dp"
             fresco:placeholderImage="@null" />
 
 
@@ -51,7 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/iv_userHead_user_content"
             android:layout_toRightOf="@+id/iv_userHead_user_content"
-            android:textSize="18dp"
+            android:textSize="22dp"
+            android:textStyle="bold"
+
             android:layout_marginTop="5dp"
             android:layout_marginLeft="15dp"
             android:textColor="#000000"
@@ -65,7 +67,7 @@
             android:layout_alignLeft="@+id/tv_username_user_content"
             android:layout_below="@+id/tv_username_user_content"
             android:text="来自"
-            android:textSize="15dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_marginTop="5dp"
@@ -76,7 +78,7 @@
             android:layout_toRightOf="@+id/tv_from_user_content"
             android:layout_below="@+id/tv_username_user_content"
             android:text="职业"
-            android:textSize="15dp" />
+            android:textSize="12sp"/>
 
         <TextView
             android:layout_marginTop="5dp"
@@ -86,7 +88,7 @@
             android:layout_alignLeft="@+id/tv_username_user_content"
             android:layout_below="@+id/tv_from_user_content"
             android:text="个人说明"
-            android:textSize="15dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:layout_marginTop="5dp"
@@ -97,7 +99,7 @@
             android:layout_below="@+id/tv_personSaying_user_content"
             android:text="粉丝>"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="12sp" />
 
 
 
