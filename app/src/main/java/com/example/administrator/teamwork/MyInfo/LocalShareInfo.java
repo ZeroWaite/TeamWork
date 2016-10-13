@@ -11,6 +11,16 @@ public class LocalShareInfo {
     private String coverUrlName;
     private String boardIntro;
 
+    private String userUrlName;
+
+    public String getUserUrlName() {
+        return userUrlName;
+    }
+
+    public void setUserUrlName(String userUrlName) {
+        this.userUrlName = userUrlName;
+    }
+
     public String getBoardIntro() {
         return boardIntro;
     }
