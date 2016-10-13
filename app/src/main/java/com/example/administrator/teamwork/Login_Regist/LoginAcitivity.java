@@ -29,16 +29,5 @@ public class LoginAcitivity extends Activity {
         forget_psw= (TextView) findViewById(R.id.bt_forgetPsw);
         password= (EditText) findViewById(R.id.et_loading_password);
         phone_regist= (TextView) findViewById(R.id.bt_phone_regist);
-
-
-
-        phone_regist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(LoginAcitivity.this,RegistActivity.class);
-                startActivity(intent);
-
-            }
-        });
     }
 }
