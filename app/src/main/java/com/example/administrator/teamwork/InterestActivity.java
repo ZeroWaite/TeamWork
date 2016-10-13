@@ -2,7 +2,6 @@ package com.example.administrator.teamwork;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,14 +11,12 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterExploreInfo;
-import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.google.gson.Gson;
 
@@ -38,7 +35,7 @@ import okhttp3.Response;
 public class InterestActivity extends Activity {
     TextView title;
     TextView intro;
-    ImageButton back;
+    ImageView back;
 
     String key;
     String total;
@@ -159,7 +156,7 @@ public class InterestActivity extends Activity {
         setContentView(R.layout.interest_layout);
         title = (TextView) findViewById(R.id.tv_title_interest);
         intro = (TextView) findViewById(R.id.tv_intro_interest);
-        back = (ImageButton) findViewById(R.id.ib_back_interest);
+        back = (ImageView) findViewById(R.id.ib_back_interest);
         Intent intent = getIntent();
 
         key = intent.getExtras().getString("urlName");
