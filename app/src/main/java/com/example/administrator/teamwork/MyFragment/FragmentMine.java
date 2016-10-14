@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
@@ -34,7 +35,7 @@ public class FragmentMine extends Fragment {
     DrawBoardFragment drawBoardFragment;
     LikeFragment likeFragment;
     GatherFragment gatherFragment;
-    View fragment;
+    FrameLayout fragment;
     PopupWindow popupWindow;
     PopupWindow popupWindow2;
   ImageButton search;
@@ -46,7 +47,7 @@ public class FragmentMine extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mine_frag, container, false);
-        fragment = view.findViewById(R.id.fg_minePage2);
+        fragment = (FrameLayout) view.findViewById(R.id.fg_minePage2);
         rg = (RadioGroup) view.findViewById(R.id.rg_1);
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

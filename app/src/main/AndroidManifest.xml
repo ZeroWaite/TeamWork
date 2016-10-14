@@ -21,7 +21,6 @@
         <activity android:name=".TransPondActivity"></activity>
         <activity android:name=".CollectActivity"></activity>
         <activity android:name=".CommentActivity"></activity>
-        <activity android:name=".ContentActivity"></activity>
         <activity android:name=".UserContentActivity"></activity>
 
         <activity android:name=".FindMenuList_Activity">
@@ -33,7 +32,7 @@
         <activity android:name=".PersonSetup.SearchActivity">
         </activity>
         <activity android:name=".TitleListActivity"></activity>
-
+        <activity android:name=".ContentActivity"></activity>
  <activity android:name=".Board.BoardNewFinishi">
  </activity>
 <activity android:name=".PersonSetup.PersonalSetActivity"/>
