@@ -183,6 +183,7 @@ public class DrawBoardFragment extends Fragment {
             localPrettyGirlInfo.setPin_count(interBoardInfo.getBoards().get(i).getPin_count() == 0 ? "0" : String.valueOf(interBoardInfo.getBoards().get(i).getPin_count()));
 
             localPrettyGirlInfo.setFollow_count(interBoardInfo.getBoards().get(i).getFollow_count() == 0 ? "0" : String.valueOf(interBoardInfo.getBoards().get(i).getFollow_count()));
+
             localPrettyGirlInfo.setBoardImg(HTTP+interBoardInfo.getBoards().get(i).getPins().get(0).getFile().getKey());
             mList.add(0, localPrettyGirlInfo);
 

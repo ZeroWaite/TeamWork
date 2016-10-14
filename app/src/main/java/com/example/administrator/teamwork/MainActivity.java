@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (!isNetworkAvailable(MainActivity.this)) {
-            Toast.makeText(getApplicationContext(), "当前没有可用网络！", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "当前网络不可用"+"\n"+"请检查设置", Toast.LENGTH_LONG).show();
         }
 
 
