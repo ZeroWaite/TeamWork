@@ -2,10 +2,16 @@ package com.example.administrator.teamwork;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -24,6 +30,10 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by anzhuo on 2016/9/26.
@@ -49,13 +59,11 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     ImageView share;
     ImageView back;
     ImageView download;
-
-    String choice;
-    String userID;
+    Bitmap bitmap;
     String contentImg;
     private float imgWidth;
     private float imgHeight;
-
+    private File cache;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,8 +111,6 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         String boardHead = intent.getExtras().getString("boardImg");
         imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
         imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
-        choice = intent.getExtras().getString("choice");
-        userID = intent.getExtras().getString("userID");
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setUri(contentImg)
                 .setAutoPlayAnimations(true)
@@ -168,8 +174,6 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
                 pop.setContentView(v);
 
-
-
                 image_blow = (MyDraweeView) v.findViewById(R.id.iv_image_load);
                 download= (ImageView) v.findViewById(R.id.image_load);
                 image_blow.setImageURI(contentImg);
@@ -201,6 +205,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                  image_blow.setOnClickListener(new MyDraweeView.OnClickListener() {
                      @Override
                      public void onClick() {
+
                          pop.dismiss();
                      }
                  });
@@ -210,16 +215,39 @@ public class ContentActivity extends Activity implements View.OnClickListener {
 
                     }
                 });*/
-                download.setOnClickListener(new View.OnClickListener() {
+
+            final Handler handler=new Handler(){
+                public void handleMessage(android.os.Message msg) {
+                    if(msg.what==0x123){
+                        image_blow.setImageBitmap(bitmap);
+                    }
+                };
+            };
+            class Task extends AsyncTask<String, Integer, Void> {
+
+                protected Void doInBackground(String... params) {
+                    bitmap=GetImageInputStream((String)params[0]);
+                    return null;
+                }
+
+                protected void onPostExecute(Void result) {
+                    super.onPostExecute(result);
+                    Message message=new Message();
+                    message.what=0x123;
+                    message.obj=bitmap;
+                    handler.sendMessage(message);
+                }
+
+            }
+            download.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(ContentActivity.this, "下载", Toast.LENGTH_SHORT).show();
                         String filepath="d:/test1/test2/test3";
-                        File fp=new File(filepath);
-                        if (!fp.exists()){
-                            fp.mkdir();
-                            Log.i("str","创建完成"+filepath);
-                        }
+                        new Task().execute(contentImg);
+                        SavaImage(bitmap, Environment.getExternalStorageDirectory().getPath()+"/Pictures/My Picture");
+                        Log.i("str","创建完成"+filepath);
+
                     }
                 });
                 break;
@@ -242,17 +270,11 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 startActivity(intent2);
                 break;
             case R.id.ll_userLayout_onPage:
-                Intent toUserContent=new Intent(ContentActivity.this,UserContentActivity.class);
-                         toUserContent.putExtra("choice",choice);
-                toUserContent.putExtra("username",username.getText());
-                toUserContent.putExtra("userID",userID);
-                startActivity(toUserContent);
                 break;
             case R.id.ll_drawBoardLayout_onPage:
                 break;
             case R.id.et_addNewCommit_onPage:
                 Intent intent3=new Intent(ContentActivity.this,CommentActivity.class);
-
                 startActivity(intent3);
                 break;
 
@@ -277,10 +299,67 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 break;
 
 
-
         }
     }
 
+    private Bitmap GetImageInputStream(String param) {
+        URL url=new ;
+        HttpURLConnection connection=null;
+        Bitmap bitmap=null;
+        String name =    param.substring(param.lastIndexOf("."));
+        File file=new File();
+        try {
+            url = new URL(param);
+            connection=(HttpURLConnection)url.openConnection();
+            connection.setConnectTimeout(6000);
+            //超时设置
+            connection.setRequestMethod("GET");
+            connection.setDoInput(true);
+            if (connection.getResponseCode()==200){
+                InputStream inputStream=connection.getInputStream();
+                FileOutputStream fos=new FileOutputStream()
+                bitmap= BitmapFactory.decodeStream(inputStream);
+                inputStream.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+    /**
+     * 保存位图到本地
+     * @param bitmap
+     * @param path 本地路径
+     * @return void
+     */
+
+    public void SavaImage(Bitmap bitmap, String path){
+        String strPath = getSDPath();
+        File destDir = new File(strPath);
+        if (!destDir.exists()) {
+            destDir.mkdirs();
+        }
+        File file=new File(path);
+        FileOutputStream fileOutputStream=null;
+        //文件夹不存在，则创建它
+        if(!file.exists()){
+            file.mkdir();
+        }
+        try {
+            fileOutputStream=new FileOutputStream(path+"/"+System.currentTimeMillis()+".png");
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100,fileOutputStream);
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private String getSDPath() {
+        boolean hasSDCard = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        if (hasSDCard) {
+            return Environment.getExternalStorageDirectory().toString() + "/Pictures/My Picture";
+        } else
+            return "/data/data/package";
+    }
     private class PoponDismissListener implements PopupWindow.OnDismissListener {
         @Override
         public void onDismiss() {

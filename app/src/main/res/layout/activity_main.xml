@@ -11,6 +11,7 @@
         android:id="@+id/fg_homePage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+
         android:layout_weight="1"></FrameLayout>
 
     <RadioGroup
@@ -22,14 +23,18 @@
         <RadioButton
             android:id="@+id/rb_homePage"
             android:checked="true"
+            android:text="主页"
             android:layout_height="wrap_content"
             style="@style/all"
+            android:padding="3dp"
             android:drawableTop="@drawable/home_selector"
              />
 
         <RadioButton
             style="@style/all"
             android:layout_height="wrap_content"
+            android:text="发现"
+            android:padding="3dp"
             android:drawableTop="@drawable/find_selector"
             android:id="@+id/rb_foundPage"
              />
@@ -37,6 +42,8 @@
         <RadioButton
             android:id="@+id/rb_messagePage"
             style="@style/all"
+            android:text="搜索"
+            android:padding="3dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/news_selector"
              />
@@ -44,6 +51,8 @@
         <RadioButton
             android:id="@+id/rb_minePage"
             style="@style/all"
+            android:text="我的"
+            android:padding="3dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/mine_selector"
             />
