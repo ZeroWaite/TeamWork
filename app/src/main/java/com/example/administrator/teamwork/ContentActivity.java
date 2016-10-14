@@ -118,7 +118,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
         imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
 
-        choice = intent.getExtras().getString("choice");
+
         userID = intent.getExtras().getString("userID");
 
         DraweeController controller = Fresco.newDraweeControllerBuilder()
@@ -226,13 +226,13 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                     }
                 });*/
 
-            final Handler handler=new Handler(){
+           /* final Handler handler=new Handler(){
                 public void handleMessage(android.os.Message msg) {
                     if(msg.what==0x123){
                         image_blow.setImageBitmap(bitmap);
                     }
-                };
-            };
+
+            };*/
         /*    class Task extends AsyncTask<String, Integer, Void> {
 
                 protected Void doInBackground(String... params) {
@@ -282,7 +282,6 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             case R.id.ll_userLayout_onPage:
                 Intent toUserContent=new Intent(ContentActivity.this,UserContentActivity.class);
                 toUserContent.putExtra("choice",choice);
-                toUserContent.putExtra("username",username.getText());
                 toUserContent.putExtra("userID",userID);
                 startActivity(toUserContent);
                 break;
