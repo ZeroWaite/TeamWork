@@ -223,7 +223,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                     }
                 };
             };
-            class Task extends AsyncTask<String, Integer, Void> {
+        /*    class Task extends AsyncTask<String, Integer, Void> {
 
                 protected Void doInBackground(String... params) {
                     bitmap=GetImageInputStream((String)params[0]);
@@ -238,16 +238,16 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                     handler.sendMessage(message);
                 }
 
-            }
+            }*/
             download.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(ContentActivity.this, "下载", Toast.LENGTH_SHORT).show();
-                        String filepath="d:/test1/test2/test3";
+                      /*  String filepath="d:/test1/test2/test3";
                         new Task().execute(contentImg);
                         SavaImage(bitmap, Environment.getExternalStorageDirectory().getPath()+"/Pictures/My Picture");
                         Log.i("str","创建完成"+filepath);
-
+*/
                     }
                 });
                 break;
@@ -302,7 +302,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private Bitmap GetImageInputStream(String param) {
+   /* private Bitmap GetImageInputStream(String param) {
         URL url=new ;
         HttpURLConnection connection=null;
         Bitmap bitmap=null;
@@ -326,12 +326,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         }
         return bitmap;
     }
-    /**
-     * 保存位图到本地
-     * @param bitmap
-     * @param path 本地路径
-     * @return void
-     */
+
 
     public void SavaImage(Bitmap bitmap, String path){
         String strPath = getSDPath();
@@ -359,7 +354,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
             return Environment.getExternalStorageDirectory().toString() + "/Pictures/My Picture";
         } else
             return "/data/data/package";
-    }
+    }*/
     private class PoponDismissListener implements PopupWindow.OnDismissListener {
         @Override
         public void onDismiss() {
