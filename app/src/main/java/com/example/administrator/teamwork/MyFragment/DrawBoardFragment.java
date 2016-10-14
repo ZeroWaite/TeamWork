@@ -1,5 +1,6 @@
 package com.example.administrator.teamwork.MyFragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterBoardInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
+import com.example.administrator.teamwork.UserContentActivity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -53,19 +56,17 @@ public class DrawBoardFragment extends Fragment {
                 case MSG:
                     mList.clear();
                     getJsonData(str);
-                    if (mList==null){
-                    recyclerView.setVisibility(View.GONE);
-                }else {
-                        if (prettyGirlAdapter == null) {
-                            prettyGirlAdapter = new ImgListAdapter(mList, DrawBoardFragment.this.getActivity(),3);
-                        } else {
-                            prettyGirlAdapter.onDataChange(mList);
-                        }
-                        recyclerView.setVisibility(View.VISIBLE);
-                        recyclerView.setAdapter(prettyGirlAdapter);
-                        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-                        demo_swiperefreshlayout.setRefreshing(false);
+
+                    if (prettyGirlAdapter == null) {
+                        prettyGirlAdapter = new ImgListAdapter(mList, DrawBoardFragment.this.getActivity(), 3);
+                    } else {
+                        prettyGirlAdapter.onDataChange(mList);
                     }
+
+                    recyclerView.setAdapter(prettyGirlAdapter);
+                    recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                    demo_swiperefreshlayout.setRefreshing(false);
+
 
                     break;
             }
@@ -85,13 +86,12 @@ public class DrawBoardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_board_search);
-
-
         Intent intent = getActivity().getIntent();
         choice = intent.getExtras().getString("choice");
-        getUrl = "http://api.huaban.com/"+choice ;
+
+        Log.i("log", choice + "");
+        getUrl = "http://api.huaban.com/" + choice;
 
         goThread();
         inteData();
@@ -150,7 +150,7 @@ public class DrawBoardFragment extends Fragment {
     }
 
     public void inteData() {
-        demo_swiperefreshlayout = (SwipeRefreshLayout)DrawBoardFragment.this.getActivity().findViewById(R.id.demo_board_search);
+        demo_swiperefreshlayout = (SwipeRefreshLayout) DrawBoardFragment.this.getActivity().findViewById(R.id.demo_board_search);
         //设置刷新时动画的颜色，可以设置4个
         demo_swiperefreshlayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
         demo_swiperefreshlayout.setColorSchemeResources(android.R.color.holo_blue_light,
@@ -170,8 +170,6 @@ public class DrawBoardFragment extends Fragment {
     }
 
 
-
-
     private List<LocalShareInfo> getJsonData(String str) {
 
 
@@ -183,8 +181,7 @@ public class DrawBoardFragment extends Fragment {
             localPrettyGirlInfo.setPin_count(interBoardInfo.getBoards().get(i).getPin_count() == 0 ? "0" : String.valueOf(interBoardInfo.getBoards().get(i).getPin_count()));
 
             localPrettyGirlInfo.setFollow_count(interBoardInfo.getBoards().get(i).getFollow_count() == 0 ? "0" : String.valueOf(interBoardInfo.getBoards().get(i).getFollow_count()));
-
-            localPrettyGirlInfo.setBoardImg(HTTP+interBoardInfo.getBoards().get(i).getPins().get(0).getFile().getKey());
+            localPrettyGirlInfo.setBoardImg(HTTP + interBoardInfo.getBoards().get(i).getPins().get(0).getFile().getKey());
             mList.add(0, localPrettyGirlInfo);
 
         }
@@ -192,12 +189,14 @@ public class DrawBoardFragment extends Fragment {
     }
 
     public void goThread() {
-        new Thread() {
-            @Override
-            public void run() {
-                requstUrl(getUrl);
-                handler.sendEmptyMessage(MSG);
-            }
-        }.start();
+
+            new Thread() {
+                @Override
+                public void run() {
+                    requstUrl(getUrl);
+                    handler.sendEmptyMessage(MSG);
+                }
+            }.start();
+
     }
 }

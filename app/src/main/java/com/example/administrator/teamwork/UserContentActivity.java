@@ -14,6 +14,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -73,6 +74,10 @@ public class UserContentActivity extends AppCompatActivity {
     private static final int MSG = 1;
     String getUrl;
     String userID;
+    String urlname;
+
+
+
     InterUserContentInfo interUserContentInfo;
 
 
@@ -113,7 +118,6 @@ public class UserContentActivity extends AppCompatActivity {
                     }
 
 
-
                     break;
             }
             super.handleMessage(msg);
@@ -130,16 +134,16 @@ public class UserContentActivity extends AppCompatActivity {
         job = (TextView) findViewById(R.id.tv_job_user_content);
         fans = (TextView) findViewById(R.id.tv_fans_user_content);
         person = (TextView) findViewById(R.id.tv_personSaying_user_content);
-
+        fragment = (FrameLayout) findViewById(R.id.fg_user_content);
+        rg = (RadioGroup) findViewById(R.id.rg_user_content);
 
         Intent intent = getIntent();
         userID = intent.getExtras().getString("userID");
         getUrl = "http://api.huaban.com/users/" + userID;
-
-
         goThread();
-        fragment = (FrameLayout) findViewById(R.id.fg_user_content);
-        rg = (RadioGroup) findViewById(R.id.rg_user_content);
+
+
+
         showFragment(0);
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -161,6 +165,7 @@ public class UserContentActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void showFragment(int i) {
         manager = UserContentActivity.this.getSupportFragmentManager();
@@ -223,13 +228,13 @@ public class UserContentActivity extends AppCompatActivity {
     private LocalShareInfo getJsonData(String str) {
         Gson gson = new Gson();
         interUserContentInfo = gson.fromJson(str, InterUserContentInfo.class);
-
         localPrettyGirlInfo = new LocalShareInfo();
         localPrettyGirlInfo.setUsername(interUserContentInfo.getUsername());
         localPrettyGirlInfo.setFollow_count(interUserContentInfo.getFollower_count() == 0 ? "0" : String.valueOf(interUserContentInfo.getFollower_count()));
         localPrettyGirlInfo.setPin_count(interUserContentInfo.getPin_count() == 0 ? "0" : String.valueOf(interUserContentInfo.getPin_count()));
         localPrettyGirlInfo.setFollowing_count(interUserContentInfo.getFollowing_count() == 0 ? "0" : String.valueOf(interUserContentInfo.getFollowing_count()));
-        localPrettyGirlInfo.setUserHead(HTTP + interUserContentInfo.getUser().getAvatar().getKey());
+        localPrettyGirlInfo.setUserHead(HTTP + interUserContentInfo.getAvatar().getKey());
+        localPrettyGirlInfo.setUserUrlName(interUserContentInfo.getUrlname());
         localPrettyGirlInfo.setJob(interUserContentInfo.getUser().getProfile().getJob() == null ? "" : interUserContentInfo.getUser().getProfile().getJob());
         localPrettyGirlInfo.setComeFrom(interUserContentInfo.getUser().getProfile().getLocation() == null ? "" : interUserContentInfo.getUser().getProfile().getLocation());
         localPrettyGirlInfo.setPersonSaying(interUserContentInfo.getUser().getProfile().getAbout() == null ? "" : interUserContentInfo.getUser().getProfile().getAbout());
@@ -239,13 +244,15 @@ public class UserContentActivity extends AppCompatActivity {
     }
 
     public void goThread() {
-        new Thread() {
-            @Override
-            public void run() {
-                requstUrl(getUrl);
-                handler.sendEmptyMessage(MSG);
-            }
-        }.start();
+
+            new Thread() {
+                @Override
+                public void run() {
+                    requstUrl(getUrl);
+                    handler.sendEmptyMessage(MSG);
+                }
+            }.start();
+
     }
 
     private String requstUrl(String s) {

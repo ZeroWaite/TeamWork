@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         rg_home = (RadioGroup) findViewById(R.id.rg_all);
         rb_home = (RadioButton) findViewById(R.id.rb_homePage);
         showFragment(0);
+
 
         rg_home.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
