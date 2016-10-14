@@ -117,7 +117,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         String boardHead = intent.getExtras().getString("boardImg");
         imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
         imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
-
+choice = intent.getExtras().getString("userurlname");
 
         userID = intent.getExtras().getString("userID");
 
@@ -281,8 +281,8 @@ public class ContentActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.ll_userLayout_onPage:
                 Intent toUserContent=new Intent(ContentActivity.this,UserContentActivity.class);
-                toUserContent.putExtra("choice",choice);
                 toUserContent.putExtra("userID",userID);
+                toUserContent.putExtra("choice",choice);
                 startActivity(toUserContent);
                 break;
             case R.id.ll_drawBoardLayout_onPage:

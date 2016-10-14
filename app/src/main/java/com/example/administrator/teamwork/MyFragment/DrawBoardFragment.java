@@ -1,5 +1,6 @@
 package com.example.administrator.teamwork.MyFragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterBoardInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
+import com.example.administrator.teamwork.UserContentActivity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -84,10 +87,10 @@ public class DrawBoardFragment extends Fragment {
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_board_search);
-
-
         Intent intent = getActivity().getIntent();
         choice = intent.getExtras().getString("choice");
+
+        Log.i("log", choice + "");
         getUrl = "http://api.huaban.com/" + choice;
 
         goThread();
@@ -186,12 +189,14 @@ public class DrawBoardFragment extends Fragment {
     }
 
     public void goThread() {
-        new Thread() {
-            @Override
-            public void run() {
-                requstUrl(getUrl);
-                handler.sendEmptyMessage(MSG);
-            }
-        }.start();
+
+            new Thread() {
+                @Override
+                public void run() {
+                    requstUrl(getUrl);
+                    handler.sendEmptyMessage(MSG);
+                }
+            }.start();
+
     }
 }

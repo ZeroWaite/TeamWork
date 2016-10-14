@@ -33,6 +33,7 @@
         <activity android:name=".PersonSetup.SearchActivity">
         </activity>
         <activity android:name=".TitleListActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
 
  <activity android:name=".Board.BoardNewFinishi">
  </activity>

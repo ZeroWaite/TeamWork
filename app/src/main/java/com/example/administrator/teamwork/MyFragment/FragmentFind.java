@@ -117,6 +117,9 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                             intent.putExtra("boardImg", mList.get(position).getBoardImg());
                             intent.putExtra("imgWidth", mList.get(position).getImgWidth());
                             intent.putExtra("imgHeight", mList.get(position).getImgHeight());
+                            intent.putExtra("userID",mList.get(position).getUserID());
+                            intent.putExtra("userurlname",mList.get(position).getUserUrlName());
+
 
                             startActivity(intent);
 
@@ -413,6 +416,8 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
             localPrettyGirlInfo.setBoardImg(HTTP + interPrettyGirlInfo.getPins().get(i).getFile().getKey());
             localPrettyGirlInfo.setImgWidth(interPrettyGirlInfo.getPins().get(i).getFile().getWidth());
             localPrettyGirlInfo.setImgHeight(interPrettyGirlInfo.getPins().get(i).getFile().getHeight());
+            localPrettyGirlInfo.setUserUrlName(interPrettyGirlInfo.getPins().get(i).getUser().getUrlname());
+            localPrettyGirlInfo.setUserID(String.valueOf(interPrettyGirlInfo.getPins().get(i).getUser_id()));
             mList.add(0, localPrettyGirlInfo);
 
         }

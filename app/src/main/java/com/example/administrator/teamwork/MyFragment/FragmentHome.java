@@ -85,8 +85,8 @@ public class FragmentHome extends Fragment {
                             intent.putExtra("boardImg", mList.get(position).getBoardImg());
                             intent.putExtra("imgWidth", mList.get(position).getImgWidth());
                             intent.putExtra("imgHeight", mList.get(position).getImgHeight());
-                            intent.putExtra("choice",mList.get(position).getUserUrlName());
                             intent.putExtra("userID",mList.get(position).getUserID());
+                            intent.putExtra("userurlname",mList.get(position).getUserUrlName());
 
                             startActivity(intent);
 
