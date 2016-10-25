@@ -1,6 +1,5 @@
 package com.example.administrator.teamwork.MyFragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,7 +19,6 @@ import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterBoardInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
-import com.example.administrator.teamwork.UserContentActivity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -57,6 +55,8 @@ public class DrawBoardFragment extends Fragment {
                     mList.clear();
                     getJsonData(str);
 
+
+
                     if (prettyGirlAdapter == null) {
                         prettyGirlAdapter = new ImgListAdapter(mList, DrawBoardFragment.this.getActivity(), 3);
                     } else {
@@ -90,7 +90,7 @@ public class DrawBoardFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         choice = intent.getExtras().getString("choice");
 
-        Log.i("log", choice + "");
+
         getUrl = "http://api.huaban.com/" + choice;
 
         goThread();
@@ -177,11 +177,18 @@ public class DrawBoardFragment extends Fragment {
         interBoardInfo = gson.fromJson(str, InterBoardInfo.class);
         for (int i = 0; i < interBoardInfo.getBoards().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
-            localPrettyGirlInfo.setTitle(interBoardInfo.getBoards().get(i).getTitle());
-            localPrettyGirlInfo.setPin_count(interBoardInfo.getBoards().get(i).getPin_count() == 0 ? "0" : String.valueOf(interBoardInfo.getBoards().get(i).getPin_count()));
+            localPrettyGirlInfo.setTitle(interBoardInfo.getBoards().get(i).getTitle()==null?"":interBoardInfo.getBoards().get(i).getTitle());
+            /*localPrettyGirlInfo.setPin_count(interBoardInfo.getBoards().get(i).getPin_count() == 0 ? "0" : String.valueOf(interBoardInfo.getBoards().get(i).getPin_count()));*/
 
             localPrettyGirlInfo.setFollow_count(interBoardInfo.getBoards().get(i).getFollow_count() == 0 ? "0" : String.valueOf(interBoardInfo.getBoards().get(i).getFollow_count()));
-            localPrettyGirlInfo.setBoardImg(HTTP + interBoardInfo.getBoards().get(i).getPins().get(0).getFile().getKey());
+            for (int o=0;o<interBoardInfo.getBoards().get(i).getPins().toArray().length;o++){
+                if (interBoardInfo.getBoards().get(i).getPins().toArray().length==0){
+                    localPrettyGirlInfo.setBoardImg(HTTP + interBoardInfo.getBoards().get(i).getPins().get(0).getFile().getKey());
+                }else {
+                    localPrettyGirlInfo.setBoardImg(HTTP + interBoardInfo.getBoards().get(i).getPins().get(0).getFile().getKey());
+                }
+            }
+            Log.i("log",i+"");
             mList.add(0, localPrettyGirlInfo);
 
         }
