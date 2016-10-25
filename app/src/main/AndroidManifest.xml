@@ -50,12 +50,7 @@
 <activity android:name=".PersonSetup.PersonalSetActivity"/>
 <activity android:name=".Board.EditBoardActivity"/>
 <activity android:name=".Board.NewDrawboardActivity"/>
- <activity android:name=".Login_Regist.LoginAcitivity">
 
- </activity>
-
-<activity android:name=".Login_Regist.RegistActivity"/>
-<activity android:name=".Login_Regist.CompleteRegistActivity"/>
         <activity android:name=".InterestActivity"></activity>
 <activity android:name=".LoginActitivity"></activity>
     </application>
