@@ -27,7 +27,7 @@
     android:layout_margin="16dp"
     android:layout_height="wrap_content">
     <EditText
-        android:id="@+id/et_name_register"
+        android:id="@+id/et_username_register"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@null"
@@ -44,7 +44,7 @@
         android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:hint="请输入密码(由字母和数字组成)"/>
     <EditText
-        android:id="@+id/et_passagain_register"
+        android:id="@+id/et_email_register"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"

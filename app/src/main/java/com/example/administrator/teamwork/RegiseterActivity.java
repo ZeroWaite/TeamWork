@@ -2,7 +2,6 @@ package com.example.administrator.teamwork;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +25,7 @@ public class RegiseterActivity extends Activity implements View.OnClickListener 
     EditText et_name_register;
     EditText et_mobile_register;
     EditText et_password_register;
-    EditText et_passagain_register;
+    EditText et_email_register;
     Button bt_register;
     String name;
     String mobile;
@@ -38,9 +37,9 @@ public class RegiseterActivity extends Activity implements View.OnClickListener 
         setContentView(R.layout.register_layout);
         iv_back_register = (ImageView) findViewById(R.id.iv_back_register);
         et_mobile_register = (EditText) findViewById(R.id.et_mobile_register);
-        et_name_register = (EditText) findViewById(R.id.et_name_register);
+        et_name_register = (EditText) findViewById(R.id.et_username_register);
         et_password_register = (EditText) findViewById(R.id.et_password_register);
-        et_passagain_register = (EditText) findViewById(R.id.et_passagain_register);
+        et_email_register = (EditText) findViewById(R.id.et_email_register);
         bt_register = (Button) findViewById(R.id.bt_register);
         iv_back_register.setOnClickListener(this);
         bt_register.setOnClickListener(this);
@@ -86,9 +85,7 @@ public class RegiseterActivity extends Activity implements View.OnClickListener 
                             }
                         }
                         if (START != 1) {
-                            if (!et_passagain_register.getText().toString().equals(et_password_register.getText().toString())) {
-                                Toast.makeText(RegiseterActivity.this, "密码不一致，请重新输入", Toast.LENGTH_SHORT).show();
-                            } else if (et_name_register.getText().toString().equals("") || et_password_register.getText().toString().equals("") || et_mobile_register.getText().toString().equals("")) {
+                             if (et_name_register.getText().toString().equals("") || et_password_register.getText().toString().equals("") || et_mobile_register.getText().toString().equals("")) {
                                 Toast.makeText(RegiseterActivity.this, "请填写完整信息！", Toast.LENGTH_SHORT).show();
                             }
                          /*   //只能输入汉字和英文"[^a-zA-Z0-9\u4E00-\u9FA5]";
