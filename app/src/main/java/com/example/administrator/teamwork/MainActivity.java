@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,8 @@ import com.example.administrator.teamwork.MyFragment.FragmentHome;
 import com.example.administrator.teamwork.MyFragment.FragmentMine;
 import com.example.administrator.teamwork.MyFragment.FragmentNews;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     RadioGroup rg_home;
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentFind fragmentFind;
     FragmentNews fragmentNews;
     FragmentMine fragmentMine;
-
+    File cache;
 
 
 
@@ -38,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        cache = new File(Environment.getExternalStorageDirectory(), "cache");
+        if(!cache.exists()){
+            cache.mkdirs();
+        }
+
         //第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，
       /*  BmobConfig config =new BmobConfig.Builder(this)
         //设置appkey
@@ -168,4 +176,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+ /*   @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //清空缓存
+        File[] files = cache.listFiles();
+        for(File file :files){
+            file.delete();
+        }
+        cache.delete();
+    }*/
 }
