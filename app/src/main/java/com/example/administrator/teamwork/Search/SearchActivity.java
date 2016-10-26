@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -175,9 +174,5 @@ public class SearchActivity extends Activity {
         listView = (MyListView) findViewById(R.id.listView);
         tv_clear = (TextView) findViewById(R.id.tv_clear);
 
-        // 调整EditText左边的搜索按钮的大小
-        Drawable drawable = getResources().getDrawable(R.mipmap.ss);
-        drawable.setBounds(0, 0, 60, 60);// 第一0是距左边距离，第二0是距上边距离，60分别是长宽
-        et_search.setCompoundDrawables(null, null,drawable,  null);// 只放右边
     }
 }
