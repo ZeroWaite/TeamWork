@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,10 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.administrator.teamwork.DataCleanManager;
 import com.example.administrator.teamwork.R;
+
+import java.io.File;
 
 /**
  * Created by Administrator on 2016/9/13.
@@ -23,11 +27,14 @@ public class SetUpActivity extends Activity {
     TextView exit;
     TextView personSet;
     TextView accountSet;
-    TextView clean;
+    static TextView clean;
     ImageButton setupBack;
     PopupWindow popupWindow;
     TextView cancels;
     TextView sure;
+     File cache;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +84,30 @@ public class SetUpActivity extends Activity {
                 startActivity(intent);
             }
         });
+
         clean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText( SetUpActivity.this,"清除缓存成功",Toast.LENGTH_SHORT).show();
+                DataCleanManager.cleanInternalCache(SetUpActivity.this);
+               try {
+                    //查看缓存的大小
+                    Log.e("STR", DataCleanManager.getTotalCacheSize(SetUpActivity.this));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            /*    //清除操作
+
+                DataCleanManager.clearAllCache(SetUpActivity.this);
+                try {
+                    //清除后的操作
+                    Log.e("STR", DataCleanManager.getTotalCacheSize(SetUpActivity.this));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }  */
+
+                Toast.makeText(SetUpActivity.this, "清除缓存成功", Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
 
@@ -113,5 +137,7 @@ public class SetUpActivity extends Activity {
         lp.alpha=v;
         this .getWindow().setAttributes(lp);
     }
+
+
 
 }

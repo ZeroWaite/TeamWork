@@ -32,7 +32,7 @@ import okhttp3.Response;
 /**
  * Created by Administrator on 2016/9/23.
  */
-public class DrawBoardFragment extends Fragment {
+public class DrawBoardFragment extends Fragment{
     private static final int MSG = 1;
     String getUrl;
     String choice;

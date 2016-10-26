@@ -3,10 +3,15 @@ package com.example.administrator.teamwork;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,12 +24,15 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.teamwork.MyAdapter.MyDraweeView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by anzhuo on 2016/9/26.
@@ -50,7 +58,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     ImageView share;
     ImageView back;
     ImageView download;
-    Bitmap bitmap;
+  Bitmap bitmap;
 
 
 
@@ -61,11 +69,18 @@ public class ContentActivity extends Activity implements View.OnClickListener {
     private float imgWidth;
     private float imgHeight;
     private File cache;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_page_layout);
+
+
+
+
+
+
         imageLager = (SimpleDraweeView) findViewById(R.id.iv_interImage_larger);
         userHead = (SimpleDraweeView) findViewById(R.id.iv_userHead_onPage);
         boardName = (TextView) findViewById(R.id.tv_drawBoardName_onPage);
@@ -108,7 +123,7 @@ public class ContentActivity extends Activity implements View.OnClickListener {
         String boardHead = intent.getExtras().getString("boardImg");
         imgWidth = Float.parseFloat(intent.getExtras().getString("imgWidth"));
         imgHeight = Float.parseFloat(intent.getExtras().getString("imgHeight"));
-choice = intent.getExtras().getString("userurlname");
+        choice = intent.getExtras().getString("userurlname");
 
         userID = intent.getExtras().getString("userID");
 
@@ -166,7 +181,79 @@ choice = intent.getExtras().getString("userurlname");
            /* intent.putExtra("follow_count",mList.get(position).getFollow_count());*/
 
     }
+    /**
+     * 获取网络图片
+     * @param imageurl 图片网络地址
+     * @return Bitmap 返回位图
+     */
+    public Bitmap GetImageInputStream(String imageurl){
+        URL url;
+        HttpURLConnection connection=null;
+        Bitmap bitmap=null;
+        try {
+            url = new URL(imageurl);
+            connection=(HttpURLConnection)url.openConnection();
+            connection.setConnectTimeout(6000); //超时设置
+            connection.setDoInput(true);
+            connection.setUseCaches(true); //设置不使用缓存
+            InputStream inputStream=connection.getInputStream();
+            bitmap= BitmapFactory.decodeStream(inputStream);
+            inputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+    Handler handler=new Handler(){
+        public void handleMessage(android.os.Message msg) {
+            if(msg.what==0x123){
+                imageLager.setImageBitmap(bitmap);
+            }
+        };
+    };
 
+
+    /**
+     * 异步线程下载图片
+     *
+     */
+    class Task extends AsyncTask<String, Integer, Void> {
+
+        protected Void doInBackground(String... params) {
+            bitmap=GetImageInputStream((String)params[0]);
+            return null;
+        }
+
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            Message message=new Message();
+            message.what=0x123;
+            handler.sendMessage(message);
+        }
+
+    }
+
+    /**
+     * 保存位图到本地
+     * @param bitmap
+     * @param path 本地路径
+     * @return void
+     */
+    public void SavaImage(Bitmap bitmap, String path){
+        File file=new File(path);
+        FileOutputStream fileOutputStream=null;
+        //文件夹不存在，则创建它
+        if(!file.exists()){
+            file.mkdir();
+        }
+        try {
+            fileOutputStream=new FileOutputStream(path+"/"+System.currentTimeMillis()+".jpg");
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100,fileOutputStream);
+            fileOutputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -174,7 +261,6 @@ choice = intent.getExtras().getString("userurlname");
                 final PopupWindow pop = new PopupWindow();
                 View v = LayoutInflater.from(ContentActivity.this).inflate(R.layout.image_click_load, null);
                 pop.setContentView(v);
-
                 image_blow = (MyDraweeView) v.findViewById(R.id.iv_image_load);
                 download= (ImageView) v.findViewById(R.id.image_load);
                 image_blow.setImageURI(contentImg);
@@ -186,7 +272,7 @@ choice = intent.getExtras().getString("userurlname");
                 pop.setOutsideTouchable(true);
                 pop.setAnimationStyle(R.style.Popwindow2);
                 pop.setOnDismissListener(new PoponDismissListener());
-                pop.showAtLocation(imageLager, Gravity.CENTER, 0, 0);
+                pop.showAtLocation(imageLager,Gravity.CENTER,0,0);
                 backgroundAlpha(0.3f);
                 v.setFocusable(true);
                 v.setFocusableInTouchMode(true);
@@ -206,52 +292,25 @@ choice = intent.getExtras().getString("userurlname");
                  image_blow.setOnClickListener(new MyDraweeView.OnClickListener() {
                      @Override
                      public void onClick() {
-
                          pop.dismiss();
                      }
                  });
-              /*  image_blow.setOnClickListener(new View.OnClickListener() {
+                download.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (bitmap==null){
+                            Toast.makeText(ContentActivity.this, "正在下载", Toast.LENGTH_SHORT).show();
+                            new Task().execute(contentImg);
+                            SavaImage(bitmap, Environment.getExternalStorageDirectory().getPath()+"/Testy");
+                        }else {
+                            Toast.makeText(ContentActivity.this, "图片已存在", Toast.LENGTH_SHORT).show();
+                        }
 
-                    }
-                });*/
-
-           /* final Handler handler=new Handler(){
-                public void handleMessage(android.os.Message msg) {
-                    if(msg.what==0x123){
-                        image_blow.setImageBitmap(bitmap);
-                    }
-
-            };*/
-        /*    class Task extends AsyncTask<String, Integer, Void> {
-
-                protected Void doInBackground(String... params) {
-                    bitmap=GetImageInputStream((String)params[0]);
-                    return null;
-                }
-
-                protected void onPostExecute(Void result) {
-                    super.onPostExecute(result);
-                    Message message=new Message();
-                    message.what=0x123;
-                    message.obj=bitmap;
-                    handler.sendMessage(message);
-                }
-
-            }*/
-            download.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(ContentActivity.this, "下载", Toast.LENGTH_SHORT).show();
-                      /*  String filepath="d:/test1/test2/test3";
-                        new Task().execute(contentImg);
-                        SavaImage(bitmap, Environment.getExternalStorageDirectory().getPath()+"/Pictures/My Picture");
-                        Log.i("str","创建完成"+filepath);
-*/
                     }
                 });
-                break;
+
+
+
             case R.id.tv_from_onPage:
                 break;
             case R.id.ib_back_onPage:
@@ -303,63 +362,13 @@ choice = intent.getExtras().getString("userurlname");
             case R.id.ib_getNew_onPage:
                 break;
 
-
         }
     }
 
-   /* private Bitmap GetImageInputStream(String param) {
-        URL url=new ;
-        HttpURLConnection connection=null;
-        Bitmap bitmap=null;
-        String name =    param.substring(param.lastIndexOf("."));
-        File file=new File();
-        try {
-            url = new URL(param);
-            connection=(HttpURLConnection)url.openConnection();
-            connection.setConnectTimeout(6000);
-            //超时设置
-            connection.setRequestMethod("GET");
-            connection.setDoInput(true);
-            if (connection.getResponseCode()==200){
-                InputStream inputStream=connection.getInputStream();
-                FileOutputStream fos=new FileOutputStream()
-                bitmap= BitmapFactory.decodeStream(inputStream);
-                inputStream.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return bitmap;
-    }
 
 
-    public void SavaImage(Bitmap bitmap, String path){
-        String strPath = getSDPath();
-        File destDir = new File(strPath);
-        if (!destDir.exists()) {
-            destDir.mkdirs();
-        }
-        File file=new File(path);
-        FileOutputStream fileOutputStream=null;
-        //文件夹不存在，则创建它
-        if(!file.exists()){
-            file.mkdir();
-        }
-        try {
-            fileOutputStream=new FileOutputStream(path+"/"+System.currentTimeMillis()+".png");
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100,fileOutputStream);
-            fileOutputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    private String getSDPath() {
-        boolean hasSDCard = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
-        if (hasSDCard) {
-            return Environment.getExternalStorageDirectory().toString() + "/Pictures/My Picture";
-        } else
-            return "/data/data/package";
-    }*/
+
+
     private class PoponDismissListener implements PopupWindow.OnDismissListener {
         @Override
         public void onDismiss() {
@@ -372,4 +381,6 @@ choice = intent.getExtras().getString("userurlname");
         lp.alpha = v;
         this.getWindow().setAttributes(lp);
     }
+
+
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -13,15 +14,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.administrator.teamwork.Login_Regist.LoginActitivity;
 import com.example.administrator.teamwork.MyFragment.FragmentFind;
 import com.example.administrator.teamwork.MyFragment.FragmentHome;
 import com.example.administrator.teamwork.MyFragment.FragmentMine;
 import com.example.administrator.teamwork.MyFragment.FragmentNews;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobConfig;
-import cn.bmob.v3.BmobUser;
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentFind fragmentFind;
     FragmentNews fragmentNews;
     FragmentMine fragmentMine;
-
+    File cache;
 
 
 
@@ -42,21 +40,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，
-        BmobConfig config =new BmobConfig.Builder(this)
-                //设置appkey
-                .setApplicationId("63f8317df1241bffc4987fc27b58c13b")
-                //请求超时时间（单位为秒）：默认15s
-                .setConnectTimeout(30)
-                //文件分片上传时每片的大小（单位字节），默认512*1024
-                .setUploadBlockSize(1024*1024)
-                //文件的过期时间(单位为秒)：默认1800s
-                .setFileExpiration(2500)
-                .build();
-        Bmob.initialize(config);
-
         setContentView(R.layout.activity_main);
+        cache = new File(Environment.getExternalStorageDirectory(), "cache");
+        if(!cache.exists()){
+            cache.mkdirs();
+        }
 
+        //第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，
+      /*  BmobConfig config =new BmobConfig.Builder(this)
+        //设置appkey
+        .setApplicationId("63f8317df1241bffc4987fc27b58c13b")
+       //请求超时时间（单位为秒）：默认15s
+       .setConnectTimeout(30)
+        //文件分片上传时每片的大小（单位字节），默认512*1024
+       .setUploadBlockSize(1024*1024)
+        //文件的过期时间(单位为秒)：默认1800s
+        .setFileExpiration(2500)
+        .build();
+        Bmob.initialize(config);*/
 
         if (!isNetworkAvailable(MainActivity.this)) {
             Toast.makeText(getApplicationContext(), "当前网络不可用"+"\n"+"请检查设置", Toast.LENGTH_LONG).show();
@@ -71,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
         rg_home.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                BmobUser bmobUser = BmobUser.getCurrentUser();
-                Intent intent = new Intent(MainActivity.this,LoginActitivity.class);
                 switch (i){
                     case R.id.rb_homePage:
                         showFragment(0);
@@ -81,24 +80,10 @@ public class MainActivity extends AppCompatActivity {
                         showFragment(1);
                         break;
                     case R.id.rb_messagePage:
-
-                        if(bmobUser != null){
-                            showFragment(2);
-                        }else{
-                            //缓存用户对象为空时， 可打开用户注册界面…
-                            startActivity(intent);
-                        }
-
-
+                        showFragment(2);
                         break;
                     case R.id.rb_minePage:
-
-                        if(bmobUser != null){
-                            showFragment(3);
-                        }else{
-                           startActivity(intent);
-                        }
-
+                        showFragment(3);
                         break;
                 }
             }
@@ -191,4 +176,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+ /*   @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //清空缓存
+        File[] files = cache.listFiles();
+        for(File file :files){
+            file.delete();
+        }
+        cache.delete();
+    }*/
 }
