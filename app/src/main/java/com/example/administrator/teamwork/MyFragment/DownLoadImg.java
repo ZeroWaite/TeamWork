@@ -77,7 +77,7 @@ public class DownLoadImg extends Activity implements View.OnClickListener{
                 Toast.makeText(DownLoadImg.this, "下载", Toast.LENGTH_SHORT).show();
                 SavaImage(bitmap, Environment.getExternalStorageDirectory().getPath()+"/Test");
                 break;
-           /* case R.id.iv_image_load:
+           /* case  R.id.iv_image_load:
                 //点击图片后将图片保存到SD卡跟目录下的Test文件夹内
                 SavaImage(bitmap, Environment.getExternalStorageDirectory().getPath()+"/Test");
                 Toast.makeText(DownLoadImg.this, "图片保存", Toast.LENGTH_SHORT).show();
