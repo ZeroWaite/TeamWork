@@ -1,21 +1,19 @@
-package com.example.administrator.teamwork;
+package com.example.administrator.teamwork.Login_Regist;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.administrator.teamwork.R;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.QueryListener;
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by anzhuo on 2016/9/19.
@@ -27,9 +25,6 @@ public class RegiseterActivity extends Activity implements View.OnClickListener 
     EditText et_password_register;
     EditText et_email_register;
     Button bt_register;
-    String name;
-    String mobile;
-    private int START = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +49,28 @@ public class RegiseterActivity extends Activity implements View.OnClickListener 
                 finish();
                 break;
             case R.id.bt_register:
+
+
+                BmobUser bu = new BmobUser();
+                bu.setUsername(et_name_register.getText().toString());
+                bu.setPassword(et_password_register.getText().toString());
+                bu.setEmail(et_email_register.getText().toString());
+                bu.setMobilePhoneNumber(et_mobile_register.getText().toString());
+//注意：不能用save方法进行注册
+                bu.signUp(new SaveListener<MyUser>() {
+                    @Override
+                    public void done(MyUser s, BmobException e) {
+                        if(e==null){
+                            Toast.makeText(RegiseterActivity.this, "注册成功:" +s.toString(), Toast.LENGTH_SHORT).show();
+                        }else{
+                            Log.i("exp",e+"");
+                        }
+                    }
+                });
                 /*
         读取后端云表格数据
          */
-                Bmob.initialize(this, "97c2b91c462d4a2b6538a2fe1dbb4281");
+              /*  Bmob.initialize(this, "97c2b91c462d4a2b6538a2fe1dbb4281");
                 BmobQuery n = new BmobQuery("News");
                 n.findObjectsByTable(new QueryListener<JSONArray>() {
                     @Override
@@ -88,11 +101,11 @@ public class RegiseterActivity extends Activity implements View.OnClickListener 
                              if (et_name_register.getText().toString().equals("") || et_password_register.getText().toString().equals("") || et_mobile_register.getText().toString().equals("")) {
                                 Toast.makeText(RegiseterActivity.this, "请填写完整信息！", Toast.LENGTH_SHORT).show();
                             }
-                         /*   //只能输入汉字和英文"[^a-zA-Z0-9\u4E00-\u9FA5]";
+                            //只能输入汉字和英文"[^a-zA-Z0-9\u4E00-\u9FA5]";
                             else if (!et_password_register.getText().toString().matches("[^a-zA-Z0-9\u4E00-\u9FA5]")) {
                                 Log.i("LT", et_name_register.getText().toString());
                                 Toast.makeText(RegiseterActivity.this, "用户名格式不对!", Toast.LENGTH_SHORT).show();
-                            }*/ else {
+                            } else {
                                 Bomb bomb = new Bomb(RegiseterActivity.this);
                                 bomb.register(et_name_register.getText().toString(), et_mobile_register.getText().toString(), et_password_register.getText().toString());
                                 Toast.makeText(RegiseterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
@@ -100,7 +113,7 @@ public class RegiseterActivity extends Activity implements View.OnClickListener 
                             }
                         }
                     }
-                });
+                });*/
                 break;
         }
 

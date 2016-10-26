@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -21,6 +22,7 @@ import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
+import com.example.administrator.teamwork.Search.SearchActivity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -37,13 +39,13 @@ import okhttp3.Response;
  */
 public class FragmentHome extends Fragment {
     private static final int MSG = 1;
+    SearchView searchView;
 
     InterShareInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
     List<LocalShareInfo> mList = new ArrayList<>();
     LocalShareInfo localPrettyGirlInfo;
     public static final String HTTP = "http://img.hb.aicdn.com/";
-    StaggeredGridLayoutManager staggeredGridLayoutManager;
     SwipeRefreshLayout demo_swiperefreshlayout;
 
 
@@ -126,8 +128,16 @@ public class FragmentHome extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        searchView = (SearchView) view.findViewById(R.id.sv_search_home);
         gridView = (RecyclerView) view.findViewById(R.id.gv_imageList_home);
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FragmentHome.this.getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
         okHttpClient = new OkHttpClient();
         goThread();
         inteData();

@@ -19,7 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.administrator.teamwork.Board.NewDrawboardActivity;
-import com.example.administrator.teamwork.PersonSetup.SearchActivity;
+import com.example.administrator.teamwork.Search.SearchActivity;
 import com.example.administrator.teamwork.PersonSetup.SetUpActivity;
 import com.example.administrator.teamwork.R;
 

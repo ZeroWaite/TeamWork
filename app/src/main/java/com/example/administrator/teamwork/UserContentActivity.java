@@ -1,49 +1,27 @@
 package com.example.administrator.teamwork;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.administrator.teamwork.Board.NewDrawboardActivity;
-import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyFragment.ConcernFragment;
 import com.example.administrator.teamwork.MyFragment.DrawBoardFragment;
 import com.example.administrator.teamwork.MyFragment.GatherFragment;
 import com.example.administrator.teamwork.MyFragment.LikeFragment;
-import com.example.administrator.teamwork.MyInfo.InterBoardInfo;
 import com.example.administrator.teamwork.MyInfo.InterUserContentInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
-import com.example.administrator.teamwork.PersonSetup.SearchActivity;
-import com.example.administrator.teamwork.PersonSetup.SetUpActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
