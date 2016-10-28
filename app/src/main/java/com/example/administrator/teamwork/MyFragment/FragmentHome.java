@@ -40,6 +40,7 @@ import okhttp3.Response;
 public class FragmentHome extends Fragment {
     private static final int MSG = 1;
     SearchView searchView;
+    View activityView;
 
     InterShareInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
@@ -141,6 +142,7 @@ public class FragmentHome extends Fragment {
         okHttpClient = new OkHttpClient();
         goThread();
         inteData();
+
         gridView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             boolean isSlidingToLast = false;
 
@@ -158,16 +160,23 @@ public class FragmentHome extends Fragment {
                 }
             }
 
+
+
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0) {
+                    activityView = getActivity().findViewById(R.id.rg_all);
+                    activityView.setVisibility(View.GONE);
+                    searchView.setVisibility(View.GONE);
                     isSlidingToLast = true;
                 } else {
-                    isSlidingToLast = false;
+                    activityView = getActivity().findViewById(R.id.rg_all);
+activityView.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.VISIBLE);
+                    isSlidingToLast=false;
                 }
-
-            }
+                }
         });
     }
 

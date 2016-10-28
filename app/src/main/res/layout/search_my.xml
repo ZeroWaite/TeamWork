@@ -28,6 +28,7 @@
            android:hint="搜索内容">
         </com.example.administrator.teamwork.Search.ClearEditText>
         <ImageView
+            android:id="@+id/iv_search_my"
             android:src="@mipmap/ss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

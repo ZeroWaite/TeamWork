@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ import java.util.Date;
  * Created by Administrator on 2016/9/13.
  */
 public class SearchActivity extends Activity {
+
+    ImageView goSearch;
     ImageButton backSearch;
     private ClearEditText et_search;
     private TextView tv_tip;
@@ -168,6 +171,7 @@ public class SearchActivity extends Activity {
 
     private void initView() {
         setContentView(R.layout.search_my);
+        goSearch= (ImageView) findViewById(R.id.iv_search_my);
         backSearch= (ImageButton) findViewById(R.id.iv_return_search);
         et_search = (ClearEditText) findViewById(R.id.et_search_my);
         tv_tip = (TextView) findViewById(R.id.tv_tip);

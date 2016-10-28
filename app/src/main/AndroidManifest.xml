@@ -43,7 +43,7 @@
         </activity>
         <activity android:name=".PersonSetup.IdSetupActivity">
         </activity>
-        <activity android:name=".PersonSetup.SearchActivity">
+        <activity android:name=".Search.SearchActivity">
         </activity>
         <activity android:name=".TitleListActivity"></activity>
         <activity android:name=".MyFragment.DownLoadImg">
@@ -57,7 +57,8 @@
 <activity android:name=".Board.NewDrawboardActivity"/>
 
         <activity android:name=".InterestActivity"></activity>
-<activity android:name=".LoginActitivity"></activity>
+        <activity android:name=".Login_Regist.RegiseterActivity"></activity>
+<activity android:name=".Login_Regist.LoginActitivity"></activity>
 
     </application>
 

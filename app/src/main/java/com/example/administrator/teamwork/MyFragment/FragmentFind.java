@@ -63,7 +63,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
 
     private static final int MSG_V = 1;
     private static final int MSG_H=2;
-    String getUrl_v = "http://api.huaban.com/all/?limit=20";
+    String getUrl_v = "http://api.huaban.com/all/";
     String getUrl_h = "http://api.huaban.com/";
 
     InterShareInfo interPrettyGirlInfo;

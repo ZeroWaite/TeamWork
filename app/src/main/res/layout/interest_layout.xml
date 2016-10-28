@@ -52,6 +52,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_vertical_interest"
             android:layout_width="match_parent"
+            android:background="#ff74a3"
             android:drawSelectorOnTop="true"
             android:layout_height="wrap_content"
             android:layout_margin="5dp">
