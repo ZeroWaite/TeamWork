@@ -6,13 +6,62 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <FrameLayout
-        android:id="@+id/fg_homePage"
+    <LinearLayout
+        android:id="@+id/ll_title_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:orientation="vertical"
 
-        android:layout_weight="1"></FrameLayout>
+        android:layout_height="50dp">
+        <android.support.v7.widget.SearchView
+            android:id="@+id/sv_search_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="true"
+            android:layout_margin="6dp"
+            android:background="#dbd9d9"
+            android:queryHint="大家都在搜">
+
+        </android.support.v7.widget.SearchView>
+
+        <LinearLayout
+            android:id="@+id/ll_title_find"
+            android:background="#FAFFF0"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:layout_height="50dp">
+            <TextView
+                android:text="发现"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <ImageButton
+                android:id="@+id/ib_find_menu"
+                android:src="@mipmap/menu1"
+
+                android:background="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/fg_homePage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </FrameLayout>
+
+
 
     <RadioGroup
         android:id="@+id/rg_all"

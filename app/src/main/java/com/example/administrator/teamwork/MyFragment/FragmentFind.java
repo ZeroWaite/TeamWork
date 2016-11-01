@@ -1,7 +1,6 @@
 package com.example.administrator.teamwork.MyFragment;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,14 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageButton;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.teamwork.ContentActivity;
@@ -27,9 +21,8 @@ import com.example.administrator.teamwork.InterestActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
-import com.example.administrator.teamwork.PersonSetup.IdSetupActivity;
+import com.example.administrator.teamwork.ParentsScroll;
 import com.example.administrator.teamwork.R;
-import com.example.administrator.teamwork.TitleListActivity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -41,28 +34,15 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static com.example.administrator.teamwork.R.id.tv_humanityart;
-import static com.example.administrator.teamwork.R.id.tv_movie_book;
-import static com.example.administrator.teamwork.R.id.tv_pet;
-import static com.example.administrator.teamwork.R.id.tv_present;
-import static com.example.administrator.teamwork.R.id.tv_travel;
-import static com.example.administrator.teamwork.R.id.tv_wedding;
-
 /**
  * Created by Administrator on 2016/9/12.
  */
-public class FragmentFind extends Fragment implements View.OnClickListener{
-    ImageButton findmenu;
-    PopupWindow popupWindow;
-    TextView hot,plane,modeling,manfashion, inset,home;
-    TextView  wedding, food,travel, pet ,beauty;
-    TextView present,  constructiondesign,humanityart,movie_book,Encyclopedias;
-
-
-
+public class FragmentFind extends Fragment {
+    View activityView;
+    View linearlayout;
 
     private static final int MSG_V = 1;
-    private static final int MSG_H=2;
+    private static final int MSG_H = 2;
     String getUrl_v = "http://api.huaban.com/all/";
     String getUrl_h = "http://api.huaban.com/";
 
@@ -76,7 +56,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
     StaggeredGridLayoutManager staggeredGridLayoutManager;
     SwipeRefreshLayout demo_swiperefreshlayout;
 
-
+    ParentsScroll scroll;
     RecyclerView mRecyclerViewH;
     RecyclerView mRecyclerViewV;
     OkHttpClient okHttpClient;
@@ -91,7 +71,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
 
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
-                        prettyGirlAdapter = new ImgListAdapter(mList, FragmentFind.this.getActivity(),1);
+                        prettyGirlAdapter = new ImgListAdapter(mList, FragmentFind.this.getActivity(), 1);
                     } else {
                         prettyGirlAdapter.onDataChange(mList);
                     }
@@ -100,6 +80,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                         public void onThisItemClick(int position) {
 
                         }
+
                         @Override
                         public void onImageContentClick(int position) {
                             Intent intent = new Intent(FragmentFind.this.getActivity(), ContentActivity.class);
@@ -117,15 +98,10 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                             intent.putExtra("boardImg", mList.get(position).getBoardImg());
                             intent.putExtra("imgWidth", mList.get(position).getImgWidth());
                             intent.putExtra("imgHeight", mList.get(position).getImgHeight());
-                            intent.putExtra("userID",mList.get(position).getUserID());
-                            intent.putExtra("userurlname",mList.get(position).getUserUrlName());
-
-
+                            intent.putExtra("userID", mList.get(position).getUserID());
+                            intent.putExtra("userurlname", mList.get(position).getUserUrlName());
                             startActivity(intent);
-
                             Toast.makeText(FragmentFind.this.getActivity(), "这是图片内容" + mList.get(position).getUsername(), Toast.LENGTH_SHORT).show();
-
-
                         }
 
                         @Override
@@ -137,10 +113,6 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                             Toast.makeText(FragmentFind.this.getActivity(), "这是用户信息" + position, Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
-
-
                     mRecyclerViewV.setAdapter(prettyGirlAdapter);
                     mRecyclerViewV.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                     demo_swiperefreshlayout.setRefreshing(false);
@@ -149,150 +121,47 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                 case MSG_H:
                     mList1.clear();
                     getList1(str);
-                    prettyGirlAdapter2 = new ImgListAdapter(mList1,FragmentFind.this.getActivity(),2);
+                    prettyGirlAdapter2 = new ImgListAdapter(mList1, FragmentFind.this.getActivity(), 2);
                     prettyGirlAdapter2.setClickListener(new ImgListAdapter.MyClickListener() {
                         @Override
                         public void onThisItemClick(int position) {
                             Intent intent = new Intent(FragmentFind.this.getActivity(), InterestActivity.class);
-                            intent.putExtra("title",mList1.get(position).getCoverTitle());
-                            intent.putExtra("intro",mList1.get(position).getCoverIntro());
-                            intent.putExtra("urlName",mList1.get(position).getCoverUrlName());
-                            Toast.makeText(FragmentFind.this.getActivity(), "横向列表之"+position, Toast.LENGTH_SHORT).show();
+                            intent.putExtra("title", mList1.get(position).getCoverTitle());
+                            intent.putExtra("intro", mList1.get(position).getCoverIntro());
+                            intent.putExtra("urlName", mList1.get(position).getCoverUrlName());
+                            Toast.makeText(FragmentFind.this.getActivity(), "横向列表之" + position, Toast.LENGTH_SHORT).show();
                             startActivity(intent);
                         }
 
                         @Override
                         public void onImageContentClick(int position) {
-
                         }
 
                         @Override
                         public void onUserMsgClick(int position) {
-
                         }
                     });
+                    mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
                     mRecyclerViewH.setAdapter(prettyGirlAdapter2);
-                    mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
+
                     break;
             }
             super.handleMessage(msg);
         }
     };
 
-
-
-
-
-
-
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.find_frag,null);
+        View view = inflater.inflate(R.layout.find_frag, null);
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        findmenu= (ImageButton) view.findViewById(R.id.ib_find_menu);
-        popupWindow=new PopupWindow();
-        View v= LayoutInflater.from(FragmentFind.this.getActivity()).inflate(R.layout.findmenu_layout,null);
-        popupWindow.setContentView(v);
-        popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
-        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setTouchable(true);
-        popupWindow.setFocusable(true);
-        view.setFocusableInTouchMode(true);
-        view.setFocusable(true);
-        popupWindow.setAnimationStyle(R.style.Popwindow);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));
-        popupWindow.setOnDismissListener(new PoponDismissListener());
-
-        hot= (TextView) v.findViewById(R.id.tv_latest);
-        plane= (TextView) v.findViewById(R.id.tv_plane);
-        modeling = (TextView)v. findViewById(R.id.tv_modelling);
-        manfashion= (TextView) v.findViewById(R.id.tv_manfashion);
-        inset = (TextView)v. findViewById(R.id.tv_inset);
-        home= (TextView) v.findViewById(R.id.tv_home);
-        wedding= (TextView) v.findViewById(tv_wedding);
-        food= (TextView) v.findViewById(R.id.tv_food);
-        travel= (TextView) v.findViewById(tv_travel);
-        pet= (TextView) v.findViewById(tv_pet);
-        beauty= (TextView) v.findViewById(R.id.tv_beauty);
-        present= (TextView) v.findViewById(tv_present);
-        constructiondesign= (TextView) v.findViewById(R.id.tv_constructiondesign);
-        humanityart= (TextView) v.findViewById(tv_humanityart);
-        movie_book= (TextView) v.findViewById(tv_movie_book);
-        Encyclopedias= (TextView) v.findViewById(R.id.tv_Encyclopedias);
-
-
-
-
-
-
-        hot.setOnClickListener(this);
-        plane.setOnClickListener(this);
-        modeling.setOnClickListener(this);
-        manfashion.setOnClickListener(this);
-        inset.setOnClickListener(this);
-        home.setOnClickListener(this);
-        wedding.setOnClickListener(this);
-        food.setOnClickListener(this);
-        travel.setOnClickListener(this);
-        pet.setOnClickListener(this);
-        beauty.setOnClickListener(this);
-        present.setOnClickListener(this);
-        constructiondesign.setOnClickListener(this);
-        humanityart.setOnClickListener(this);
-        movie_book.setOnClickListener(this);
-        Encyclopedias.setOnClickListener(this);
-
-
-
-
-        findmenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick( View v) {
-                backgroundAlpha(0.3f);
-
-                popupWindow.showAtLocation(findmenu, Gravity.CENTER,0,0);
-                popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                    @Override
-                    public void onDismiss() {
-
-                        backgroundAlpha(1f);
-                    }
-                });
-            /*    Animation animation;
-                animation = AnimationUtils.loadAnimation(null, R.anim.findmenu_layout);
-                view1.startAnimation(animation);*/
-
-
-            }
-          /*  private void showpop(final Context context){
-                View view1=View.inflate(context,R.layout.find2_layout,null);
-                popupWindow1=new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT,false){
-                    @Override
-                    public void dismiss() {
-                        animation.startAnimation(AnimationUtils.loadAnimation(context,R.anim.findmenu_layout));
-                        animation.setVisibility(View.GONE);
-                        super.dismiss();
-                    }
-                };
-                animation.setVisibility(View.VISIBLE);
-                animation.startAnimation(AnimationUtils.loadAnimation(context,R.anim.findmenu_layout));
-                popupWindow1.showAtLocation(animation,Gravity.BOTTOM,0,0);
-            }*/
-        });
-
         mRecyclerViewH = (RecyclerView) view.findViewById(R.id.rv_horizon_onFind);
-        mRecyclerViewV= (RecyclerView) view.findViewById(R.id.rv_vertical_onFind);
-
+        mRecyclerViewV = (RecyclerView) view.findViewById(R.id.rv_vertical_onFind);
 
 
         goThread();
@@ -309,7 +178,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
                     int lastVisiblePosition = getMaxElem(lastVisiblePositions);
                     int totalItemCount = manager.getItemCount();
                     if (lastVisiblePosition == (totalItemCount - 1) && isSlidingToLast) {
-
+                        Toast.makeText(FragmentFind.this.getActivity(), "正在加载更多", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -317,12 +186,17 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                activityView = getActivity().findViewById(R.id.rg_all);
+                linearlayout = getActivity().findViewById(R.id.ll_title_main);
                 if (dy > 0) {
+                    activityView.setVisibility(View.GONE);
+                    linearlayout.setVisibility(View.GONE);
                     isSlidingToLast = true;
                 } else {
+                    activityView.setVisibility(View.VISIBLE);
+                    linearlayout.setVisibility(View.VISIBLE);
                     isSlidingToLast = false;
                 }
-
             }
         });
     }
@@ -352,7 +226,16 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
     }
 
     public void inteData() {
-        demo_swiperefreshlayout = (SwipeRefreshLayout)FragmentFind.this.getActivity().findViewById(R.id.demo_title_onFind);
+       /* scroll = (ParentsScroll) FragmentFind.this.getActivity().findViewById(R.id.sv_find_frag);*/
+        demo_swiperefreshlayout = (SwipeRefreshLayout) FragmentFind.this.getActivity().findViewById(R.id.demo_title_onFind);
+       /* scroll.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                if (demo_swiperefreshlayout != null) {
+                    demo_swiperefreshlayout.setEnabled(scroll.getScrollY() == 0);
+                }
+            }
+        });*/
         //设置刷新时动画的颜色，可以设置4个
         demo_swiperefreshlayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
         demo_swiperefreshlayout.setColorSchemeResources(android.R.color.holo_blue_light,
@@ -381,7 +264,7 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
         for (int i = 0; i < interPrettyGirlInfo.getExplores().toArray().length; i++) {
             localPrettyGirlInfo = new LocalShareInfo();
             localPrettyGirlInfo.setCoverTitle(interPrettyGirlInfo.getExplores().get(i).getName());
-            localPrettyGirlInfo.setCoverImg(HTTP+interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
+            localPrettyGirlInfo.setCoverImg(HTTP + interPrettyGirlInfo.getExplores().get(i).getCover().getKey());
             localPrettyGirlInfo.setCoverIntro(interPrettyGirlInfo.getExplores().get(i).getDescription());
             localPrettyGirlInfo.setCoverUrlName(interPrettyGirlInfo.getExplores().get(i).getUrlname());
             mList1.add(localPrettyGirlInfo);
@@ -474,101 +357,6 @@ public class FragmentFind extends Fragment implements View.OnClickListener{
             }
         }
         return strTime;
-    }
-
-
-    private void backgroundAlpha(float v) {
-        WindowManager.LayoutParams lp=this.getActivity().getWindow().getAttributes();
-        lp.alpha=v;
-        this .getActivity().getWindow().setAttributes(lp);
-    }
-
-    @Override
-    public void onClick(View v) {
-           switch (v.getId()){
-               case R.id.tv_latest:
-                   Toast.makeText(FragmentFind.this.getActivity(), "SS", Toast.LENGTH_SHORT).show();
-                   Intent intent=new Intent(FragmentFind.this.getActivity(), IdSetupActivity.class);
-                   startActivity(intent);
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_plane:
-                   sendKey("design",plane.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_modelling:
-                   sendKey("modeling_hair",modeling.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_manfashion:
-                   sendKey("men",manfashion.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_inset:
-                   sendKey("illustration",inset.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_home:
-                   sendKey("home",home.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_wedding:
-                   sendKey("wedding_events",wedding.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_food:
-                   sendKey("food_drink",food.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_travel:
-                   sendKey("travel_places",travel.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_pet:
-                   sendKey("pets",pet.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_beauty:
-                   sendKey("beauty",beauty.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_present:
-                   sendKey("desire",present.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_constructiondesign:
-                   sendKey("architecture",constructiondesign.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_humanityart:
-                   sendKey("art",humanityart.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_movie_book:
-                   sendKey("film_music_books",movie_book.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-               case R.id.tv_Encyclopedias:
-                   sendKey("tips",Encyclopedias.getText().toString());
-                   popupWindow.dismiss();
-                   break;
-           }
-    }
-
-    protected void sendKey(String url,String title){
-
-        Intent intent = new Intent(FragmentFind.this.getActivity(), TitleListActivity.class);
-        intent.putExtra("choice",url);
-        intent.putExtra("title",title);
-        startActivity(intent);
-
-    }
-
-
-    private class PoponDismissListener implements PopupWindow.OnDismissListener {
-        @Override
-        public void onDismiss() {
-        }
     }
 
 

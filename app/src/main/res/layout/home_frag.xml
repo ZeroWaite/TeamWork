@@ -6,16 +6,7 @@
     android:orientation="vertical">
 
 
-        <android.support.v7.widget.SearchView
-            android:id="@+id/sv_search_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:iconifiedByDefault="true"
-            android:layout_margin="6dp"
-            android:background="#dbd9d9"
-            android:queryHint="大家都在搜">
 
-        </android.support.v7.widget.SearchView>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/demo_swiperefreshlayout"

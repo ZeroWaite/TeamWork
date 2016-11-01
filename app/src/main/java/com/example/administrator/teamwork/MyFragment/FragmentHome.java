@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -22,7 +21,6 @@ import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
 import com.example.administrator.teamwork.R;
-import com.example.administrator.teamwork.Search.SearchActivity;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -39,8 +37,9 @@ import okhttp3.Response;
  */
 public class FragmentHome extends Fragment {
     private static final int MSG = 1;
-    SearchView searchView;
+
     View activityView;
+    View linearlayout;
 
     InterShareInfo interPrettyGirlInfo;
     ImgListAdapter prettyGirlAdapter;
@@ -61,7 +60,7 @@ public class FragmentHome extends Fragment {
                     mList.clear();
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
-                        prettyGirlAdapter = new ImgListAdapter(mList, FragmentHome.this.getActivity(),1);
+                        prettyGirlAdapter = new ImgListAdapter(mList, FragmentHome.this.getActivity(), 1);
                     } else {
                         prettyGirlAdapter.onDataChange(mList);
                     }
@@ -84,12 +83,12 @@ public class FragmentHome extends Fragment {
                             intent.putExtra("comment_count", mList.get(position).getComment_count());
                             intent.putExtra("like_count", mList.get(position).getLike_count());
                             intent.putExtra("repin_count", mList.get(position).getRepin_count());
-                            intent.putExtra("follow_count",  mList.get(position).getFollow_count());
+                            intent.putExtra("follow_count", mList.get(position).getFollow_count());
                             intent.putExtra("boardImg", mList.get(position).getBoardImg());
                             intent.putExtra("imgWidth", mList.get(position).getImgWidth());
                             intent.putExtra("imgHeight", mList.get(position).getImgHeight());
-                            intent.putExtra("userID",mList.get(position).getUserID());
-                            intent.putExtra("userurlname",mList.get(position).getUserUrlName());
+                            intent.putExtra("userID", mList.get(position).getUserID());
+                            intent.putExtra("userurlname", mList.get(position).getUserUrlName());
 
                             startActivity(intent);
 
@@ -129,15 +128,9 @@ public class FragmentHome extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        searchView = (SearchView) view.findViewById(R.id.sv_search_home);
+
         gridView = (RecyclerView) view.findViewById(R.id.gv_imageList_home);
-        searchView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FragmentHome.this.getActivity(), SearchActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         okHttpClient = new OkHttpClient();
         goThread();
@@ -161,22 +154,22 @@ public class FragmentHome extends Fragment {
             }
 
 
-
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                activityView = getActivity().findViewById(R.id.rg_all);
+                linearlayout = getActivity().findViewById(R.id.ll_title_main);
                 if (dy > 0) {
-                    activityView = getActivity().findViewById(R.id.rg_all);
+
                     activityView.setVisibility(View.GONE);
-                    searchView.setVisibility(View.GONE);
+                    linearlayout.setVisibility(View.GONE);
                     isSlidingToLast = true;
                 } else {
-                    activityView = getActivity().findViewById(R.id.rg_all);
-activityView.setVisibility(View.VISIBLE);
-                    searchView.setVisibility(View.VISIBLE);
-                    isSlidingToLast=false;
+                    activityView.setVisibility(View.VISIBLE);
+                    linearlayout.setVisibility(View.VISIBLE);
+                    isSlidingToLast = false;
                 }
-                }
+            }
         });
     }
 
