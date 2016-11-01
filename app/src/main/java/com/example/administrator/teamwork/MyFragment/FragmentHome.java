@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -108,6 +109,7 @@ public class FragmentHome extends Fragment {
                     });
                     gridView.setAdapter(prettyGirlAdapter);
                     gridView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
                     demo_swiperefreshlayout.setRefreshing(false);
 
                     break;
@@ -131,7 +133,7 @@ public class FragmentHome extends Fragment {
 
         gridView = (RecyclerView) view.findViewById(R.id.gv_imageList_home);
 
-
+        ((SimpleItemAnimator)gridView.getItemAnimator()).setSupportsChangeAnimations(false);
         okHttpClient = new OkHttpClient();
         goThread();
         inteData();

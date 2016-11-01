@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.util.TypedValue;
@@ -115,6 +116,7 @@ public class FragmentFind extends Fragment {
                     });
                     mRecyclerViewV.setAdapter(prettyGirlAdapter);
                     mRecyclerViewV.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
                     demo_swiperefreshlayout.setRefreshing(false);
 
                     break;
@@ -162,10 +164,11 @@ public class FragmentFind extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerViewH = (RecyclerView) view.findViewById(R.id.rv_horizon_onFind);
         mRecyclerViewV = (RecyclerView) view.findViewById(R.id.rv_vertical_onFind);
-
+        ((SimpleItemAnimator)mRecyclerViewV.getItemAnimator()).setSupportsChangeAnimations(false);
 
         goThread();
         inteData();
+
         mRecyclerViewV.setOnScrollListener(new RecyclerView.OnScrollListener() {
             boolean isSlidingToLast = false;
 

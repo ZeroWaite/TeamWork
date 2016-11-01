@@ -6,20 +6,16 @@
     android:animateLayoutChanges="true"
     android:background="#DCDCDC"
     android:orientation="vertical">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_horizon_onFind"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="5dp"
-        android:drawSelectorOnTop="true">
-
-    </android.support.v7.widget.RecyclerView>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/demo_title_onFind"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scrollbars="vertical">
+<ScrollView
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +23,14 @@
             android:layout_height="match_parent">
 
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_horizon_onFind"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:drawSelectorOnTop="true">
 
+            </android.support.v7.widget.RecyclerView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -49,6 +52,7 @@
 
 
         </LinearLayout>
+</ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
