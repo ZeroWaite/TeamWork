@@ -6,7 +6,7 @@ package com.example.administrator.teamwork;
 
 public class Application extends android.app.Application {
     private static Application mApplication;
-    public static int mNetWorkState;
+    public static int mNetWorkStates;
 
     public static synchronized Application getInstance() {
         return mApplication;
@@ -22,6 +22,6 @@ public class Application extends android.app.Application {
 
 
     public void initData() {
-        mNetWorkState = NetUtil.getNetworkState(this);
+        mNetWorkStates = NetUtil.getNetworkState(this);
     }
 }
