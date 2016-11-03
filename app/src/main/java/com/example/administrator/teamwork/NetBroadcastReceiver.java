@@ -16,7 +16,7 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(NET_CHANGE_ACTION)) {
-            Application.mNetWorkState = NetUtil.getNetworkState(context);
+            Application.mNetWorkStates = NetUtil.getNetworkState(context);
             if (mListeners.size() > 0)// 通知接口完成加载
                 for (netEventHandler handler : mListeners) {
                     handler.onNetChange();

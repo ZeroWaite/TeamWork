@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
  */
 public class NetUtil {
 
-    public static final int NETWORN_NONE = 0;
+    public static final int NETWORN_NONE1 = 0;
     public static final int NETWORN_WIFI = 1;
     public static final int NETWORN_MOBILE = 2;
 
@@ -30,6 +30,6 @@ public class NetUtil {
         if (state == NetworkInfo.State.CONNECTED || state == NetworkInfo.State.CONNECTING) {
             return NETWORN_MOBILE;
         }
-        return NETWORN_NONE;
+        return NETWORN_NONE1;
     }
 }
