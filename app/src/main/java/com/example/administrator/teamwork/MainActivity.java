@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,7 @@ import static com.example.administrator.teamwork.R.id.tv_present;
 import static com.example.administrator.teamwork.R.id.tv_travel;
 import static com.example.administrator.teamwork.R.id.tv_wedding;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,NetBroadcastReceiver.netEventHandler {
 
     RadioGroup rg_home;
     RadioButton rb_home;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        NetBroadcastReceiver.mListeners.add(this);
         cache = new File(Environment.getExternalStorageDirectory(), "cache");
         if (!cache.exists()) {
             cache.mkdirs();
@@ -405,6 +407,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra("title", title);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onNetChange() {
+        // TODO Auto-generated method stub
+        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
+            Log.i("str", "网络好像有点问题");
+        }else {
+            Log.i("str", "网络可以使用");
+        }
     }
 
 
