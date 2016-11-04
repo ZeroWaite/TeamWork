@@ -29,6 +29,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -40,7 +42,10 @@ import okhttp3.Response;
 public class FragmentFind extends Fragment {
     View activityView;
     View linearlayout;
-
+    private final int ERROR_MESSAGE = 0;
+    private final int CHECK_TIME = 5000;
+    Timer timer;
+    Thread thread;
     private static final int MSG_V = 1;
     private static final int MSG_H = 2;
     String getUrl_v = "http://api.huaban.com/all/";
@@ -66,7 +71,7 @@ public class FragmentFind extends Fragment {
         public void handleMessage(final Message msg) {
             switch (msg.what) {
                 case MSG_V:
-
+                    timer.cancel();
                     mList.clear();
 
                     getJsonData(str);
@@ -116,6 +121,7 @@ public class FragmentFind extends Fragment {
                     mRecyclerViewV.setAdapter(prettyGirlAdapter);
                     mRecyclerViewV.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                     demo_swiperefreshlayout.setRefreshing(false);
+                    Toast.makeText(FragmentFind.this.getActivity(), "刷新完成", Toast.LENGTH_SHORT).show();
 
                     break;
                 case MSG_H:
@@ -144,6 +150,10 @@ public class FragmentFind extends Fragment {
                     mRecyclerViewH.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
                     mRecyclerViewH.setAdapter(prettyGirlAdapter2);
 
+                    break;
+                case ERROR_MESSAGE:
+                    thread.interrupt();
+                    Toast.makeText(FragmentFind.this.getActivity(), "哎呀，网络好像有问题", Toast.LENGTH_SHORT).show();
                     break;
             }
             super.handleMessage(msg);
@@ -311,10 +321,23 @@ public class FragmentFind extends Fragment {
         new Thread() {
             @Override
             public void run() {
+                try {
                 requstUrl(getUrl_v);
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
                 handler.sendEmptyMessage(MSG_V);
             }
         }.start();
+        timer=new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                sendTimeOutMsg();
+            }
+        },CHECK_TIME);
         new Thread() {
             @Override
             public void run() {
@@ -358,6 +381,10 @@ public class FragmentFind extends Fragment {
         }
         return strTime;
     }
-
+    private void sendTimeOutMsg(){
+        Message timeOutMsg=new Message();
+        timeOutMsg.what=ERROR_MESSAGE;
+        handler.sendMessage(timeOutMsg);
+    }
 
 }

@@ -40,9 +40,10 @@ import okhttp3.Response;
  */
 public class FragmentHome extends Fragment {
     private static final int MSG = 1;
+
+    ProgressDialog progressDialog;
     private final int ERROR_MESSAGE = 0;
     private final int CHECK_TIME = 5000;
-    ProgressDialog progressDialog;
     Timer timer;
      Thread thread;
     View activityView;
@@ -117,11 +118,11 @@ public class FragmentHome extends Fragment {
                     gridView.setAdapter(prettyGirlAdapter);
                     gridView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                     demo_swiperefreshlayout.setRefreshing(false);
-
+                    Toast.makeText(FragmentHome.this.getActivity(), "刷新完成", Toast.LENGTH_SHORT).show();
                     break;
                 case ERROR_MESSAGE:
                      thread.interrupt();
-                    Toast.makeText(FragmentHome.this.getActivity(), "网络超时", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FragmentHome.this.getActivity(), "哎呀，网络好像有问题", Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
@@ -227,6 +228,7 @@ public class FragmentHome extends Fragment {
             @Override
             public void onRefresh() {
                 demo_swiperefreshlayout.setRefreshing(true);
+
                 goThread();
             }
         });
