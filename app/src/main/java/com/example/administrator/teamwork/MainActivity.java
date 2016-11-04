@@ -412,7 +412,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onNetChange() {
         // TODO Auto-generated method stub
-        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
+        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE1) {
             Log.i("str", "网络好像有点问题!");
         }else {
             Log.i("str", "网络可以使用");
