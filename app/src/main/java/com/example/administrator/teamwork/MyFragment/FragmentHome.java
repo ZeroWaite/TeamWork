@@ -1,5 +1,6 @@
 package com.example.administrator.teamwork.MyFragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +29,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -39,6 +42,11 @@ import okhttp3.Response;
 public class FragmentHome extends Fragment {
     private static final int MSG = 1;
 
+    ProgressDialog progressDialog;
+    private final int ERROR_MESSAGE = 0;
+    private final int CHECK_TIME = 5000;
+    Timer timer;
+     Thread thread;
     View activityView;
     View linearlayout;
 
@@ -58,6 +66,7 @@ public class FragmentHome extends Fragment {
         public void handleMessage(final Message msg) {
             switch (msg.what) {
                 case MSG:
+                    timer.cancel();
                     mList.clear();
                     getJsonData(str);
                     if (prettyGirlAdapter == null) {
@@ -111,11 +120,19 @@ public class FragmentHome extends Fragment {
                     gridView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
                     demo_swiperefreshlayout.setRefreshing(false);
-
+                    Toast.makeText(FragmentHome.this.getActivity(), "刷新完成", Toast.LENGTH_SHORT).show();
                     break;
+                case ERROR_MESSAGE:
+                     thread.interrupt();
+                    Toast.makeText(FragmentHome.this.getActivity(), "哎呀，网络好像有问题", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+
             }
             super.handleMessage(msg);
         }
+
     };
 
 
@@ -213,6 +230,7 @@ public class FragmentHome extends Fragment {
             @Override
             public void onRefresh() {
                 demo_swiperefreshlayout.setRefreshing(true);
+
                 goThread();
             }
         });
@@ -249,13 +267,27 @@ public class FragmentHome extends Fragment {
     }
 
     public void goThread() {
-        new Thread() {
+      new Thread() {
             @Override
             public void run() {
-                requstUrl("http://api.huaban.com/popular/?limit=20");
+              try {
+                  requstUrl("http://api.huaban.com/popular/?limit=20");
+                  sleep(1000);
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+
                 handler.sendEmptyMessage(MSG);
+
             }
         }.start();
+        timer=new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                sendTimeOutMsg();
+            }
+        },CHECK_TIME);
     }
 
     public static String getDiffTime(long date) {
@@ -292,5 +324,12 @@ public class FragmentHome extends Fragment {
         return strTime;
     }
 
+    private void sendTimeOutMsg(){
+        Message timeOutMsg=new Message();
+        timeOutMsg.what=ERROR_MESSAGE;
+        handler.sendMessage(timeOutMsg);
+    }
+
 
 }
+
