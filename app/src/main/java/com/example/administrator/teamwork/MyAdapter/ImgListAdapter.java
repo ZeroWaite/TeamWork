@@ -21,6 +21,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -35,11 +37,14 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private MyClickListener mListener = null;
     protected final int mItemLayoutId;
 
+
+    //打造个人风格的万能adapter 不同ITEM，添加到不同的RecyclerView
     public enum ITEM_TYPE {
         ITEM1,
         ITEM2,
         ITEM3,
-        ITEM4
+        ITEM4,
+        ITEM5
     }
 
     public void setClickListener(MyClickListener listener) {
@@ -72,8 +77,10 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return ITEM_TYPE.ITEM2.ordinal();
         }else if(mItemLayoutId == 3){
             return ITEM_TYPE.ITEM3.ordinal();
-        }else {
+        }else if (mItemLayoutId == 4){
             return ITEM_TYPE.ITEM4.ordinal();
+        }else {
+         return   ITEM_TYPE.ITEM5.ordinal();
         }
     }
 
@@ -88,15 +95,15 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }else if (viewType == ITEM_TYPE.ITEM3.ordinal()){
             Log.i("get","adapter3");
             return new MyViewHolder3(mInflater.inflate(R.layout.transpond_list_item, parent, false));
-        }else {
+        }else if (viewType == ITEM_TYPE.ITEM4.ordinal()){
             Log.i("get","adapter4");
             return new MyViewHolder4(mInflater.inflate(R.layout.collect_list_item, parent, false));
         }
-
-
+        else {
+            Log.i("get","adapter5");
+            return new MyViewHolder5(mInflater.inflate(R.layout.search_hor_item, parent, false));
+        }
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -106,14 +113,32 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         localImgListInfo = mList.get(position);
+        if (holder instanceof MyViewHolder5){
+if (localImgListInfo.getSearchCount().equals("0")){
+    ((MyViewHolder5) holder).itemView.setVisibility(View.GONE);
+}else {
+    ((MyViewHolder5) holder).itemView.setVisibility(View.VISIBLE);
+    ((MyViewHolder5) holder).title.setText(localImgListInfo.getSearchTitle());
+    ((MyViewHolder5) holder).count.setText(localImgListInfo.getSearchCount());
+    if (mListener != null) {
+        ((MyViewHolder5) holder).itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onThisItemClick(position);
+            }
+        });
+    }
+}
 
-        if (holder instanceof MyViewHolder4) {
+        }
+
+       else if (holder instanceof MyViewHolder4) {
             ((MyViewHolder4) holder).userhead.setImageURI(localImgListInfo.getUserHead());
             ((MyViewHolder4) holder).username.setText(localImgListInfo.getUsername());
             ((MyViewHolder4) holder).follow.setText(localImgListInfo.getFollow_count());
         }
 
-         if (holder instanceof MyViewHolder3) {
+        else if (holder instanceof MyViewHolder3) {
             ((MyViewHolder3) holder).boardImg.setImageURI(localImgListInfo.getBoardImg());
             ((MyViewHolder3) holder).boardImg.setAspectRatio(1.0f);
              if (localImgListInfo.getUsername()==null){
@@ -124,7 +149,6 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
              }
             ((MyViewHolder3) holder).title.setText(localImgListInfo.getTitle());
             ((MyViewHolder3) holder).follow.setText(localImgListInfo.getFollow_count());
-
         }
 
          else if (holder instanceof MyViewHolder2) {
@@ -218,6 +242,16 @@ public class ImgListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onDataChange(List<LocalShareInfo> list) {
         this.mList = list;
         this.notifyDataSetChanged();
+    }
+    public static  class  MyViewHolder5 extends RecyclerView.ViewHolder{
+
+        TextView title;
+        TextView count;
+        public MyViewHolder5(View itemView) {
+            super(itemView);
+            title = (TextView) itemView.findViewById(R.id.tv_title_search_hor);
+            count = (TextView) itemView.findViewById(R.id.tv_count_search_hor);
+        }
     }
     public static class MyViewHolder4 extends RecyclerView.ViewHolder {
         SimpleDraweeView userhead;

@@ -13,7 +13,6 @@ import java.util.List;
 public class MyViewAdapter extends FragmentPagerAdapter {
     List<Fragment> mList;
 
-
     public MyViewAdapter(FragmentManager fm,List<Fragment> list) {
         super(fm);
         this.mList=list;

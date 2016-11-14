@@ -2,6 +2,7 @@ package com.example.administrator.teamwork.Search;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -74,7 +75,10 @@ public class SearchActivity extends Activity {
                         insertData(et_search.getText().toString().trim());
                         queryData("");
                     }
-                    // TODO 根据输入的内容模糊查询商品，并跳转到另一个界面，由你自己去实现
+                    Intent intent = new Intent(SearchActivity.this,SearchResultActivity.class);
+                    intent.putExtra("keyWord",et_search.getText().toString());
+                    startActivity(intent);
+                    // TODO 根据输入的内容模糊查询商品，并跳转到另一个界面
                     Toast.makeText(SearchActivity.this, "clicked!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -115,14 +119,14 @@ public class SearchActivity extends Activity {
                 String name = textView.getText().toString();
                 et_search.setText(name);
                 Toast.makeText(SearchActivity.this, name, Toast.LENGTH_SHORT).show();
-                // TODO 获取到item上面的文字，根据该关键字跳转到另一个页面查询，由你自己去实现
+                // TODO 获取到item上面的文字，根据该关键字跳转到另一个页面查询
             }
         });
 
         // 插入数据，便于测试，否则第一次进入没有数据怎么测试呀？
-        Date date = new Date();
+      /*  Date date = new Date();
         long time = date.getTime();
-        insertData("Leo" + time);
+        insertData("Leo" + time);*/
 
         // 第一次进入查询所有的历史记录
         queryData("");

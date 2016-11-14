@@ -22,7 +22,7 @@ import com.example.administrator.teamwork.InterestActivity;
 import com.example.administrator.teamwork.MyAdapter.ImgListAdapter;
 import com.example.administrator.teamwork.MyInfo.InterShareInfo;
 import com.example.administrator.teamwork.MyInfo.LocalShareInfo;
-import com.example.administrator.teamwork.ParentsScroll;
+import com.example.administrator.teamwork.MyScrollView;
 import com.example.administrator.teamwork.R;
 import com.google.gson.Gson;
 
@@ -30,12 +30,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static com.example.administrator.teamwork.R.id.scrollView;
 
 /**
  * Created by Administrator on 2016/9/12.
@@ -43,10 +43,7 @@ import okhttp3.Response;
 public class FragmentFind extends Fragment {
     View activityView;
     View linearlayout;
-    private final int ERROR_MESSAGE = 0;
-    private final int CHECK_TIME = 5000;
-    Timer timer;
-    Thread thread;
+
     private static final int MSG_V = 1;
     private static final int MSG_H = 2;
     String getUrl_v = "http://api.huaban.com/all/";
@@ -62,7 +59,7 @@ public class FragmentFind extends Fragment {
     StaggeredGridLayoutManager staggeredGridLayoutManager;
     SwipeRefreshLayout demo_swiperefreshlayout;
 
-    ParentsScroll scroll;
+    MyScrollView scroll;
     RecyclerView mRecyclerViewH;
     RecyclerView mRecyclerViewV;
     OkHttpClient okHttpClient;
@@ -72,7 +69,7 @@ public class FragmentFind extends Fragment {
         public void handleMessage(final Message msg) {
             switch (msg.what) {
                 case MSG_V:
-                    timer.cancel();
+
                     mList.clear();
 
                     getJsonData(str);
@@ -123,7 +120,6 @@ public class FragmentFind extends Fragment {
                     mRecyclerViewV.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
                     demo_swiperefreshlayout.setRefreshing(false);
-                    Toast.makeText(FragmentFind.this.getActivity(), "刷新完成", Toast.LENGTH_SHORT).show();
 
                     break;
                 case MSG_H:
@@ -153,10 +149,6 @@ public class FragmentFind extends Fragment {
                     mRecyclerViewH.setAdapter(prettyGirlAdapter2);
 
                     break;
-                case ERROR_MESSAGE:
-                    thread.interrupt();
-                    Toast.makeText(FragmentFind.this.getActivity(), "哎呀，网络好像有问题", Toast.LENGTH_SHORT).show();
-                    break;
             }
             super.handleMessage(msg);
         }
@@ -172,14 +164,52 @@ public class FragmentFind extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        scroll = (MyScrollView) view.findViewById(R.id.sv_scroll_find_frag);
         mRecyclerViewH = (RecyclerView) view.findViewById(R.id.rv_horizon_onFind);
         mRecyclerViewV = (RecyclerView) view.findViewById(R.id.rv_vertical_onFind);
         ((SimpleItemAnimator)mRecyclerViewV.getItemAnimator()).setSupportsChangeAnimations(false);
 
         goThread();
         inteData();
+        scroll.setScrollViewListener(new MyScrollView.ScrollViewListener() {
+            @Override
+            public void onScrollChanged(MyScrollView scrollView, int x, int y, int oldx, int oldy) {
+                activityView = getActivity().findViewById(R.id.rg_all);
+                linearlayout = getActivity().findViewById(R.id.ll_title_main);
+                if (oldy>y+5){
+                    activityView.setVisibility(View.VISIBLE);
+                    linearlayout.setVisibility(View.VISIBLE);
+                }else if (y>oldy+5){
 
-        mRecyclerViewV.setOnScrollListener(new RecyclerView.OnScrollListener() {
+
+                    activityView.setVisibility(View.GONE);
+                    linearlayout.setVisibility(View.GONE);
+                }
+            }
+        });
+        scroll.setOnScrollToBottomLintener(new MyScrollView.OnScrollToBottomListener() {
+
+            @Override
+            public void onScrollBottomListener(boolean isBottom) {
+                /**这里遇到一个问题，当数据加载完成后，向上滑动ScrollView,还会提示一遍“没有更多数据了”，所以多加了一个向下滑动的标记isTop;如果是判断向下滑动，并且isBottom是滑动到了最低端才加载数据**/
+                if (isBottom&&scroll.isLast()) {
+                    //GetToast.showToast(ScrollingActivity.this,isBottom+"");
+                    if (demo_swiperefreshlayout.isRefreshing()) {
+                       demo_swiperefreshlayout.setRefreshing(false);
+                    }
+                    Toast.makeText(FragmentFind.this.getActivity(), "正在加载更多", Toast.LENGTH_SHORT).show();
+                  /*  currentPage++;
+                    if (currentPage <= 4) {
+                        queryDynamtic(currentPage);
+                    } else {
+                        Toast.makeText(FragmentFind.this.getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+                    }*/
+                }else{
+                    //GetToast.showToast(ScrollingActivity.this,isBottom+"");
+                }
+            }
+        });
+     /*   mRecyclerViewV.setOnScrollListener(new RecyclerView.OnScrollListener() {
             boolean isSlidingToLast = false;
 
             @Override
@@ -199,19 +229,16 @@ public class FragmentFind extends Fragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                activityView = getActivity().findViewById(R.id.rg_all);
-                linearlayout = getActivity().findViewById(R.id.ll_title_main);
+
                 if (dy > 0) {
-                    activityView.setVisibility(View.GONE);
-                    linearlayout.setVisibility(View.GONE);
+
                     isSlidingToLast = true;
                 } else {
-                    activityView.setVisibility(View.VISIBLE);
-                    linearlayout.setVisibility(View.VISIBLE);
+
                     isSlidingToLast = false;
                 }
             }
-        });
+        });*/
     }
 
     private int getMaxElem(int[] arr) {
@@ -239,16 +266,7 @@ public class FragmentFind extends Fragment {
     }
 
     public void inteData() {
-       /* scroll = (ParentsScroll) FragmentFind.this.getActivity().findViewById(R.id.sv_find_frag);*/
         demo_swiperefreshlayout = (SwipeRefreshLayout) FragmentFind.this.getActivity().findViewById(R.id.demo_title_onFind);
-       /* scroll.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                if (demo_swiperefreshlayout != null) {
-                    demo_swiperefreshlayout.setEnabled(scroll.getScrollY() == 0);
-                }
-            }
-        });*/
         //设置刷新时动画的颜色，可以设置4个
         demo_swiperefreshlayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
         demo_swiperefreshlayout.setColorSchemeResources(android.R.color.holo_blue_light,
@@ -324,23 +342,10 @@ public class FragmentFind extends Fragment {
         new Thread() {
             @Override
             public void run() {
-                try {
                 requstUrl(getUrl_v);
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
                 handler.sendEmptyMessage(MSG_V);
             }
         }.start();
-        timer=new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                sendTimeOutMsg();
-            }
-        },CHECK_TIME);
         new Thread() {
             @Override
             public void run() {
@@ -384,10 +389,6 @@ public class FragmentFind extends Fragment {
         }
         return strTime;
     }
-    private void sendTimeOutMsg(){
-        Message timeOutMsg=new Message();
-        timeOutMsg.what=ERROR_MESSAGE;
-        handler.sendMessage(timeOutMsg);
-    }
+
 
 }

@@ -46,7 +46,7 @@ public class FragmentHome extends Fragment {
     private final int ERROR_MESSAGE = 0;
     private final int CHECK_TIME = 5000;
     Timer timer;
-     Thread thread;
+    Thread thread;
     View activityView;
     View linearlayout;
 
@@ -55,6 +55,9 @@ public class FragmentHome extends Fragment {
     List<LocalShareInfo> mList = new ArrayList<>();
     LocalShareInfo localPrettyGirlInfo;
     public static final String HTTP = "http://img.hb.aicdn.com/";
+    public static final String WEB ="http://api.huaban.com/";
+    String KEY;
+
     SwipeRefreshLayout demo_swiperefreshlayout;
 
 
@@ -120,7 +123,7 @@ public class FragmentHome extends Fragment {
                     gridView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
                     demo_swiperefreshlayout.setRefreshing(false);
-                    Toast.makeText(FragmentHome.this.getActivity(), "刷新完成", Toast.LENGTH_SHORT).show();
+
                     break;
                 case ERROR_MESSAGE:
                      thread.interrupt();
@@ -149,9 +152,12 @@ public class FragmentHome extends Fragment {
 
 
         gridView = (RecyclerView) view.findViewById(R.id.gv_imageList_home);
-
         ((SimpleItemAnimator)gridView.getItemAnimator()).setSupportsChangeAnimations(false);
         okHttpClient = new OkHttpClient();
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            KEY=bundle.get("keyWord").toString();
+        }
         goThread();
         inteData();
 
@@ -176,21 +182,22 @@ public class FragmentHome extends Fragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                activityView = getActivity().findViewById(R.id.rg_all);
-                linearlayout = getActivity().findViewById(R.id.ll_title_main);
+             /*   activityView = getActivity().findViewById(R.id.rg_all);
+                linearlayout = getActivity().findViewById(R.id.ll_title_main);*/
                 if (dy > 0) {
-
-                    activityView.setVisibility(View.GONE);
-                    linearlayout.setVisibility(View.GONE);
+                    /*activityView.setVisibility(View.GONE);
+                    linearlayout.setVisibility(View.GONE);*/
                     isSlidingToLast = true;
                 } else {
-                    activityView.setVisibility(View.VISIBLE);
-                    linearlayout.setVisibility(View.VISIBLE);
+                   /* activityView.setVisibility(View.VISIBLE);
+                    linearlayout.setVisibility(View.VISIBLE);*/
                     isSlidingToLast = false;
                 }
             }
         });
     }
+
+
 
     private int getMaxElem(int[] arr) {
         int size = arr.length;
@@ -271,7 +278,7 @@ public class FragmentHome extends Fragment {
             @Override
             public void run() {
               try {
-                  requstUrl("http://api.huaban.com/popular/?limit=20");
+                  requstUrl(WEB+KEY);
                   sleep(1000);
               } catch (InterruptedException e) {
                   e.printStackTrace();

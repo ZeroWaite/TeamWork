@@ -5,6 +5,34 @@ package com.example.administrator.teamwork.MyInfo;
  */
 public class LocalShareInfo {
 
+    private String searchTitle;
+    private String searchCount;
+    private String searchKey;
+
+    public String getSearchKey() {
+        return searchKey;
+    }
+
+    public void setSearchKey(String searchKey) {
+        this.searchKey = searchKey;
+    }
+
+    public String getSearchTitle() {
+        return searchTitle;
+    }
+
+    public void setSearchTitle(String searchTitle) {
+        this.searchTitle = searchTitle;
+    }
+
+    public String getSearchCount() {
+        return searchCount;
+    }
+
+    public void setSearchCount(String searchCount) {
+        this.searchCount = searchCount;
+    }
+
     private String coverTitle;
     private String coverImg;
     private String coverIntro;
@@ -243,4 +271,6 @@ private String following_count;
     public void setFollow_count(String follow_count) {
         this.follow_count = follow_count;
     }
+
+
 }

@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         inteData();
 
+
         showFragment(0);
         intePop();
 
@@ -129,6 +130,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 0:
                 if (fragmentHome == null) {
                     fragmentHome = new FragmentHome();
+                    Bundle args = new Bundle();
+                    args.putString("keyWord", "popular");
+                    fragmentHome.setArguments(args);
                     transaction.add(R.id.fg_homePage, fragmentHome);
                 } else {
                     transaction.show(fragmentHome);
